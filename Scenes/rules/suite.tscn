@@ -17,7 +17,7 @@ fait le plus petit score, ils recommencent pour se départager, mais cette fois 
 (puis 30 points, etc).Attention : si un joueur réalise la suite 1-2-3, en plus de la règle de la Suite s’applique la règle de la
 Velute, c’est-à-dire que le joueur qui a lancé les dés gagne 18 pts."
 selectable_player = true
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="ShortDescription" parent="." index="0"]
 text = "SUITE :

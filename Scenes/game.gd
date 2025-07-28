@@ -1,9 +1,10 @@
 @tool
 extends Control
+class_name Game
 
 @onready var dice_values:Array[int] = [0, 0, 0]
 
-@onready var players:Array = ["Alice", "Bob", "Charlie", "Denise"]:
+@export var players:Array = ["Alice", "Bob", "Charlie", "Denise"]:
 	set(value):
 		players = value
 		nb_players = len(players)

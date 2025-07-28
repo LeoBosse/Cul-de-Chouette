@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://h5vm2iosihj1"]
+
+[ext_resource type="Script" uid="uid://ot5xhvdcgln1" path="res://Scenes/set_up_game.gd" id="1_w5t50"]
+
+[node name="SetUpGame" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w5t50")
+
+[node name="NewGameLabel" type="Label" parent="."]
+layout_mode = 2
+text = "NEW GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NbPlayers" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NbPlayers"]
+layout_mode = 2
+text = "Nombre de joueurs :"
+
+[node name="TextEdit" type="LineEdit" parent="NbPlayers"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+max_length = 2
+emoji_menu_enabled = false
+
+[node name="PlayerNames" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Joueur 1" type="HBoxContainer" parent="PlayerNames"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerNames/Joueur 1"]
+layout_mode = 2
+text = "Joueur 1"
+
+[node name="TextEdit" type="LineEdit" parent="PlayerNames/Joueur 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Joueur 1"
+
+[node name="CreateGameButton" type="Button" parent="."]
+visible = false
+layout_mode = 2
+text = "VALIDER"
+
+[connection signal="text_changed" from="NbPlayers/TextEdit" to="." method="_on_nb_players_text_changed"]
+[connection signal="pressed" from="CreateGameButton" to="." method="_on_create_game_button_pressed"]
