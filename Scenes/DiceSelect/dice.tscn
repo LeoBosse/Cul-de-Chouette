@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://trj0v6863p2k"]
+
+[ext_resource type="Script" uid="uid://kfqswcgrvjot" path="res://Scenes/DiceSelect/dice.gd" id="1_7cx2c"]
+[ext_resource type="Texture2D" uid="uid://d3sw0q8voyr8o" path="res://Scenes/DiceSelect/Textures/dice_1_sprites.png" id="1_jrnvd"]
+[ext_resource type="Texture2D" uid="uid://4f4vewtapw02" path="res://Scenes/DiceSelect/Textures/dice_1_sprites_pressed.png" id="2_e4rom"]
+
+[node name="Dice" type="TextureButton"]
+offset_right = 105.0
+offset_bottom = 105.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("1_jrnvd")
+texture_pressed = ExtResource("2_e4rom")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_7cx2c")

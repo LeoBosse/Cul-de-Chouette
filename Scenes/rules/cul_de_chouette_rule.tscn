@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq68mxcsve8o7"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_kaxp1"]
+[ext_resource type="Script" uid="uid://dn4yksxdxdljq" path="res://Scenes/rules/cul_de_chouette_rule.gd" id="2_0qpyv"]
+
+[node name="CulDeChouette" instance=ExtResource("1_kaxp1")]
+script = ExtResource("2_0qpyv")
+rule_name = "cul de chouette"
+short_description = "Trois dés identiques."
+short_score = "40 + 10 * (1 dé)"
+overrides = Array[String](["chouette", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="ShortDescription" parent="." index="0"]
+text = "CUL DE CHOUETTE :
+Trois dés identiques.
+Score : 40 + 10 * (1 dé)"
+
+[node name="MenuButton" parent="." index="1"]
+disabled = true

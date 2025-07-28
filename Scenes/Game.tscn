@@ -1,0 +1,138 @@
+[gd_scene load_steps=14 format=3 uid="uid://drk4ise4rkyfg"]
+
+[ext_resource type="Script" uid="uid://c48sum0lcyi3l" path="res://Scenes/game.gd" id="1_iukft"]
+[ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_gl6un"]
+[ext_resource type="ButtonGroup" uid="uid://bcwtixhh3jrw2" path="res://Scenes/DiceSelect/row1_button_group.tres" id="3_b2bpf"]
+[ext_resource type="ButtonGroup" uid="uid://dsxjka17o73pj" path="res://Scenes/DiceSelect/row2_button_group.tres" id="4_7lihs"]
+[ext_resource type="ButtonGroup" uid="uid://c21340qp52gfj" path="res://Scenes/DiceSelect/row3_button_group.tres" id="5_fgofq"]
+[ext_resource type="PackedScene" uid="uid://d2ieq50tkebgy" path="res://Scenes/rules/chouette_velute_rule.tscn" id="6_bf53h"]
+[ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="7_71axn"]
+[ext_resource type="PackedScene" uid="uid://cq68mxcsve8o7" path="res://Scenes/rules/cul_de_chouette_rule.tscn" id="8_dahhg"]
+[ext_resource type="PackedScene" uid="uid://c04lj4ep0bth5" path="res://Scenes/rules/velute_rule.tscn" id="9_3so38"]
+[ext_resource type="PackedScene" uid="uid://dn0bwdhfrbya3" path="res://Scenes/rules/suite.tscn" id="10_71axn"]
+[ext_resource type="PackedScene" uid="uid://bv8b3dtp4xmgr" path="res://Scenes/rules/souflette.tscn" id="11_dahhg"]
+[ext_resource type="PackedScene" uid="uid://dr176pc5p06or" path="res://Scenes/rules/neant.tscn" id="12_3so38"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dahhg"]
+font_size = 42
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_iukft")
+
+[node name="DiceRolls" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 27.0
+offset_bottom = 278.0
+grow_horizontal = 2
+
+[node name="DiceRoll1" parent="DiceRolls" instance=ExtResource("2_gl6un")]
+layout_mode = 2
+button_group = ExtResource("3_b2bpf")
+
+[node name="DiceRoll2" parent="DiceRolls" instance=ExtResource("2_gl6un")]
+layout_mode = 2
+button_group = ExtResource("4_7lihs")
+
+[node name="DiceRoll3" parent="DiceRolls" instance=ExtResource("2_gl6un")]
+layout_mode = 2
+button_group = ExtResource("5_fgofq")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -266.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_scroll_mode = 0
+
+[node name="Rules" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Chouette" parent="ScrollContainer/Rules" instance=ExtResource("7_71axn")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="Velute" parent="ScrollContainer/Rules" instance=ExtResource("9_3so38")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+overrides = Array[String]([])
+
+[node name="ChouetteVelute" parent="ScrollContainer/Rules" instance=ExtResource("6_bf53h")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+overrides = Array[String](["chouette", "velute", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="CulDeChouette" parent="ScrollContainer/Rules" instance=ExtResource("8_dahhg")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+overrides = Array[String](["chouette", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="Suite" parent="ScrollContainer/Rules" instance=ExtResource("10_71axn")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="Souflette" parent="ScrollContainer/Rules" instance=ExtResource("11_dahhg")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="Neant" parent="ScrollContainer/Rules" instance=ExtResource("12_3so38")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="PlayersScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 285.0
+offset_right = 40.0
+offset_bottom = 308.0
+
+[node name="RollScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 338.0
+offset_right = 263.0
+offset_bottom = 428.0
+label_settings = SubResource("LabelSettings_dahhg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValidateRollButton" type="Button" parent="."]
+modulate = Color(0.0313726, 1, 0.0509804, 1)
+layout_mode = 0
+offset_left = 284.0
+offset_top = 297.0
+offset_right = 458.0
+offset_bottom = 388.0
+text = "Validate"
+
+[node name="CurrentPlayerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Alice"
+
+[connection signal="pressed" from="ValidateRollButton" to="." method="_on_validate_roll_button_pressed"]

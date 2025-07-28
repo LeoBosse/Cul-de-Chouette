@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv8b3dtp4xmgr"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_gkpnx"]
+[ext_resource type="Script" uid="uid://batc6aa0e7f1d" path="res://Scenes/rules/souflette.gd" id="2_1kd0b"]
+
+[node name="Souflette" instance=ExtResource("1_gkpnx")]
+script = ExtResource("2_1kd0b")
+rule_name = "souflette"
+short_description = "3 dés formant 4, 2 et 1."
+short_score = "50, 40 ou 30 suivant suivant le résultat du défi."
+full_description = "Le joueur peut défier un autre joueur de son choix. Ce joueur a alors trois jets de dés pour réaliser lui
+aussi un 421. Les éventuels points données par d'éventuelles combinaisons réalisées lors de ces
+éventuels jets ne sont pas comptés. Les joueurs peuvent conserver les dés ayant donné 4, 2 ou 1 entre
+chaque lancer, pour ainsi éviter de les relancer et avoir plus de chances de réussir le défi.
+Si le joueur défié réussit à faire 421 :
+- du premier coup, il gagne 50 points et le défiant les perd.
+- du deuxième coup, il gagne 40 points et le défiant les perd.
+- du troisième coup, il gagne 30 points et le défiant les perd.
+Si le joueur défié échoue, il perd 30 points et le défiant les gagne."
+selectable_player = true
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="ShortDescription" parent="." index="0"]
+text = "SOUFLETTE :
+3 dés formant 4, 2 et 1.
+Score : 50, 40 ou 30 suivant suivant le résultat du défi."

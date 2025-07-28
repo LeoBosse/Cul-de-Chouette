@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2ieq50tkebgy"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_l8c6p"]
+[ext_resource type="PackedScene" uid="uid://c04lj4ep0bth5" path="res://Scenes/rules/velute_rule.tscn" id="2_808m8"]
+[ext_resource type="Script" uid="uid://c64vyx34o44mj" path="res://Scenes/rules/chouette_velute_rule.gd" id="2_g6s1a"]
+[ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="3_g6s1a"]
+
+[node name="ChouetteVelute" instance=ExtResource("1_l8c6p")]
+script = ExtResource("2_g6s1a")
+rule_name = "chouette velute"
+short_description = "La somme de deux dés identiques vaut le troisième (chouette + velute)"
+short_score = "Les points de la velute sont attribué au premier joueur qui cri \"Pas mou le caillou !\" en tapant dans ses mains."
+selectable_player = true
+overrides = Array[String](["chouette", "velute", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="ShortDescription" parent="." index="0"]
+text = "CHOUETTE VELUTE :
+La somme de deux dés identiques vaut le troisième (chouette + velute)
+Score : Les points de la velute sont attribué au premier joueur qui cri \"Pas mou le caillou !\" en tapant dans ses mains."
+
+[node name="VeluteRule" parent="." index="1" instance=ExtResource("2_808m8")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="Chouette" parent="." index="2" instance=ExtResource("3_g6s1a")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])

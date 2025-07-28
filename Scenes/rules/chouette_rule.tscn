@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxrqtwl1xlmm3"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_g15ui"]
+[ext_resource type="Script" uid="uid://bg73h0pfur70j" path="res://Scenes/rules/chouette_rule.gd" id="2_71yht"]
+
+[node name="Chouette" instance=ExtResource("1_g15ui")]
+script = ExtResource("2_71yht")
+rule_name = "chouette"
+short_description = "Deux dés identiques (la chouette)."
+short_score = "Le carré de la chouette"
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+
+[node name="ShortDescription" parent="." index="0"]
+text = "CHOUETTE :
+Deux dés identiques (la chouette).
+Score : Le carré de la chouette"
+
+[node name="MenuButton" parent="." index="1"]
+disabled = true

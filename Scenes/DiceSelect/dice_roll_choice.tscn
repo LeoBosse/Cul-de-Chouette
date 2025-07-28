@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://cgn4muntpeooq"]
+
+[ext_resource type="Script" uid="uid://bth58vkp0heuv" path="res://Scenes/DiceSelect/dice_roll_choice.gd" id="1_pr1y5"]
+[ext_resource type="PackedScene" uid="uid://trj0v6863p2k" path="res://Scenes/DiceSelect/dice.tscn" id="1_uh3ep"]
+[ext_resource type="Texture2D" uid="uid://b77t8xh4fu00w" path="res://Scenes/DiceSelect/Textures/dice_2_sprites.png" id="4_82fke"]
+[ext_resource type="Texture2D" uid="uid://b1vivortys7pg" path="res://Scenes/DiceSelect/Textures/dice_2_sprites_pressed.png" id="5_2ixu1"]
+[ext_resource type="Texture2D" uid="uid://7xgcj41w0wqq" path="res://Scenes/DiceSelect/Textures/dice_3_sprites.png" id="6_libbg"]
+[ext_resource type="Texture2D" uid="uid://d16eoji51sxgu" path="res://Scenes/DiceSelect/Textures/dice_3_sprites_pressed.png" id="7_n0sdm"]
+[ext_resource type="Texture2D" uid="uid://ctfed30iwlb7b" path="res://Scenes/DiceSelect/Textures/dice_4_sprites.png" id="8_ondce"]
+[ext_resource type="Texture2D" uid="uid://cds4mcrrq1njj" path="res://Scenes/DiceSelect/Textures/dice_4_sprites_pressed.png" id="9_c8o5j"]
+[ext_resource type="Texture2D" uid="uid://d1rajfqk2jjad" path="res://Scenes/DiceSelect/Textures/dice_5_sprites.png" id="10_q3hgl"]
+[ext_resource type="Texture2D" uid="uid://bna0yvocqlqyu" path="res://Scenes/DiceSelect/Textures/dice_5_sprites_pressed.png" id="11_uoj1a"]
+[ext_resource type="Texture2D" uid="uid://bqjb32ohfeest" path="res://Scenes/DiceSelect/Textures/dice_6_sprites.png" id="12_86xyg"]
+[ext_resource type="Texture2D" uid="uid://c8ill0ho0f680" path="res://Scenes/DiceSelect/Textures/dice_6_sprites_pressed.png" id="13_0jjuv"]
+
+[node name="DiceRoll" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 81)
+anchors_preset = -1
+anchor_top = 0.001
+anchor_bottom = 0.001
+offset_top = 0.28
+offset_right = 480.0
+offset_bottom = 81.28
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_pr1y5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Dice" parent="." instance=ExtResource("1_uh3ep")]
+layout_mode = 2
+
+[node name="Dice2" parent="." instance=ExtResource("1_uh3ep")]
+layout_mode = 2
+texture_normal = ExtResource("4_82fke")
+texture_pressed = ExtResource("5_2ixu1")
+value = 2
+
+[node name="Dice3" parent="." instance=ExtResource("1_uh3ep")]
+layout_mode = 2
+texture_normal = ExtResource("6_libbg")
+texture_pressed = ExtResource("7_n0sdm")
+value = 3
+
+[node name="Dice4" parent="." instance=ExtResource("1_uh3ep")]
+layout_mode = 2
+texture_normal = ExtResource("8_ondce")
+texture_pressed = ExtResource("9_c8o5j")
+value = 4
+
+[node name="Dice5" parent="." instance=ExtResource("1_uh3ep")]
+layout_mode = 2
+texture_normal = ExtResource("10_q3hgl")
+texture_pressed = ExtResource("11_uoj1a")
+value = 5
+
+[node name="Dice6" parent="." instance=ExtResource("1_uh3ep")]
+layout_mode = 2
+texture_normal = ExtResource("12_86xyg")
+texture_pressed = ExtResource("13_0jjuv")
+value = 6
