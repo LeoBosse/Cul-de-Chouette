@@ -2,54 +2,245 @@
 
 [ext_resource type="Script" uid="uid://ot5xhvdcgln1" path="res://Scenes/set_up_game.gd" id="1_w5t50"]
 
-[node name="SetUpGame" type="VBoxContainer"]
+[node name="SetUpGame" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_w5t50")
 
-[node name="NewGameLabel" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 620)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Options" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="NewGameLabel" type="Label" parent="VBoxContainer/ScrollContainer/Options"]
 layout_mode = 2
 text = "NEW GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NbPlayers" type="HBoxContainer" parent="."]
+[node name="NbPlayers" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/Options"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NbPlayers"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/Options/NbPlayers"]
 layout_mode = 2
 text = "Nombre de joueurs :"
 
-[node name="TextEdit" type="LineEdit" parent="NbPlayers"]
+[node name="TextEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/Options/NbPlayers"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "1"
+placeholder_text = "Nombre de joueurs :"
 max_length = 2
 emoji_menu_enabled = false
 
-[node name="PlayerNames" type="VBoxContainer" parent="."]
-visible = false
+[node name="ScrollContainer2" type="ScrollContainer" parent="VBoxContainer/ScrollContainer/Options"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PlayerNames" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Joueur 1" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer2/PlayerNames"]
 layout_mode = 2
 
-[node name="Joueur 1" type="HBoxContainer" parent="PlayerNames"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PlayerNames/Joueur 1"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer2/PlayerNames/Joueur 1"]
 layout_mode = 2
 text = "Joueur 1"
 
-[node name="TextEdit" type="LineEdit" parent="PlayerNames/Joueur 1"]
+[node name="TextEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer2/PlayerNames/Joueur 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Joueur 1"
 
-[node name="CreateGameButton" type="Button" parent="."]
-visible = false
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/ScrollContainer/Options"]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Rules" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer"]
+unique_name_in_owner = true
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="Chouette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+disabled = true
+button_pressed = true
+text = "Chouette"
+alignment = 1
+icon_alignment = 1
+
+[node name="Velute" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+disabled = true
+button_pressed = true
+text = "Velute"
+alignment = 1
+icon_alignment = 1
+
+[node name="Chouette Velute" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+disabled = true
+button_pressed = true
+text = "Chouette Velute"
+alignment = 1
+icon_alignment = 1
+
+[node name="Cul de Chouette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+disabled = true
+button_pressed = true
+text = "Cul de Chouette"
+alignment = 1
+icon_alignment = 1
+
+[node name="Suite" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+button_pressed = true
+text = "Suite"
+alignment = 1
+icon_alignment = 1
+
+[node name="Souflette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+button_pressed = true
+text = "Souflette"
+alignment = 1
+icon_alignment = 1
+
+[node name="Neant" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+button_pressed = true
+text = "Neant"
+alignment = 1
+icon_alignment = 1
+
+[node name="Sirotage" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Sirotage"
+alignment = 1
+icon_alignment = 1
+
+[node name="Contre-Sirop" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Contre-Sirop"
+alignment = 1
+icon_alignment = 1
+
+[node name="Civet Siroté" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Civet Siroté"
+alignment = 1
+icon_alignment = 1
+
+[node name="Civet" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Civet"
+alignment = 1
+icon_alignment = 1
+
+[node name="Grelottine" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Grelottine"
+alignment = 1
+icon_alignment = 1
+
+[node name="Passe-Grelot" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Passe-Grelot"
+alignment = 1
+icon_alignment = 1
+
+[node name="Bleu-Rouge" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Bleu-Rouge"
+alignment = 1
+icon_alignment = 1
+
+[node name="Boucliette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Boucliette"
+alignment = 1
+icon_alignment = 1
+
+[node name="Bévue" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Bévue"
+alignment = 1
+icon_alignment = 1
+
+[node name="Achat de Dé" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Achat de Dé"
+alignment = 1
+icon_alignment = 1
+
+[node name="Doublette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Doublette"
+alignment = 1
+icon_alignment = 1
+
+[node name="Chante-Sloubi" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Chante-Sloubi "
+alignment = 1
+icon_alignment = 1
+
+[node name="Banque" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+layout_mode = 2
+text = "Banque"
+alignment = 1
+icon_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/Options"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="CreateGameButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
 text = "VALIDER"
 
-[connection signal="text_changed" from="NbPlayers/TextEdit" to="." method="_on_nb_players_text_changed"]
-[connection signal="pressed" from="CreateGameButton" to="." method="_on_create_game_button_pressed"]
+[connection signal="text_changed" from="VBoxContainer/ScrollContainer/Options/NbPlayers/TextEdit" to="." method="_on_nb_players_text_changed"]
+[connection signal="pressed" from="VBoxContainer/CreateGameButton" to="." method="_on_create_game_button_pressed"]
