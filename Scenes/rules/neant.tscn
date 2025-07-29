@@ -13,6 +13,3 @@ short_score = "Rien"
 text = "NEANT :
 Aucune autre combinaison valable.
 Score : Rien"
-
-[node name="MenuButton" parent="." index="1"]
-disabled = true

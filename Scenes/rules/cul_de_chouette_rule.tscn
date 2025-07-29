@@ -8,12 +8,9 @@ script = ExtResource("2_0qpyv")
 rule_name = "cul de chouette"
 short_description = "Trois dés identiques."
 short_score = "40 + 10 * (1 dé)"
-overrides = Array[String](["chouette", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["chouette", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="ShortDescription" parent="." index="0"]
 text = "CUL DE CHOUETTE :
 Trois dés identiques.
 Score : 40 + 10 * (1 dé)"
-
-[node name="MenuButton" parent="." index="1"]
-disabled = true

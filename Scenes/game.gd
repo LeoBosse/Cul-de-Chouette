@@ -38,7 +38,7 @@ func _ready() -> void:
 		r.SetUpPlayerOptions(players)
 		r.select_player.connect(_on_rule_player_changed)
 
-func _on_rule_player_changed(new_player_id:int) -> void:
+func _on_rule_player_changed() -> void:
 	UpdateRoll()
 
 func _on_dice_roll_pressed(dice, roll_value) -> void:

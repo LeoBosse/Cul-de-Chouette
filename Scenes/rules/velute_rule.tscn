@@ -8,12 +8,9 @@ script = ExtResource("2_skngs")
 rule_name = "velute"
 short_description = "La somme de deux dés vaut le troisième (la velute)."
 short_score = "le double du carré de la velute. "
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="ShortDescription" parent="." index="0"]
 text = "VELUTE :
 La somme de deux dés vaut le troisième (la velute).
 Score : le double du carré de la velute. "
-
-[node name="MenuButton" parent="." index="1"]
-disabled = true
