@@ -5,6 +5,7 @@ extends Control
 @onready var nb_players:int = 1
 
 func _on_nb_players_text_changed(new_text: String) -> void:
+	"""When entering or changing the number of players for the new game, setup the options and make them visible."""
 	if new_text.is_valid_int():
 		nb_players = int(new_text)
 		UpdateSettings()
@@ -13,8 +14,8 @@ func _on_nb_players_text_changed(new_text: String) -> void:
 		%Rules.visible = true
 		%CreateGameButton.visible = true
 
-
 func UpdateSettings():
+	"""Duplicate the first node of player names to match number of players"""
 	for i in range(1, nb_players):
 		print("adding player")
 		var new_player = %PlayerNames/"Joueur 1".duplicate(8)
@@ -23,6 +24,7 @@ func UpdateSettings():
 		%PlayerNames.add_child(new_player)
 
 func GetPlayers() -> Array:
+	"""Return an array with the name of all players named in the options"""
 	var players:Array = []
 	var player_name:String = ""
 	for j in %PlayerNames.get_children():
@@ -34,6 +36,7 @@ func GetPlayers() -> Array:
 	return players
 	
 func _on_create_game_button_pressed() -> void:
+	"""Create a new game node from the options and sets it as main scene."""
 	var new_game:Game = game_scene.instantiate()
 	
 	new_game.SetupPlayers(GetPlayers())
