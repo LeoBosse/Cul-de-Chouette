@@ -35,7 +35,8 @@ func GetPlayers() -> Array:
 	
 func _on_create_game_button_pressed() -> void:
 	var new_game:Game = game_scene.instantiate()
-	new_game.nb_players = nb_players
-	new_game.players = GetPlayers()
+	
+	new_game.SetupPlayers(GetPlayers())
+	
 	get_tree().root.add_child(new_game)
 	get_tree().unload_current_scene()

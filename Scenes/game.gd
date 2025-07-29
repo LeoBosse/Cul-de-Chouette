@@ -2,16 +2,22 @@
 extends Control
 class_name Game
 
+var player_scene:PackedScene = load("res://Scenes/player.tscn")
+var players:Array[Player]
+var nb_players:int
+
 @onready var dice_values:Array[int] = [0, 0, 0]
 
-@export var players:Array = ["Alice", "Bob", "Charlie", "Denise"]:
-	set(value):
-		players = value
-		nb_players = len(players)
-@onready var nb_players:int = len(players)
+@onready var player_names:Array:
+	get():
+		var names:Array = players.map(func(element:Player) -> String: return element.player_name)
+		return names
 
-@onready var roll_scores:Array
-@onready var player_scores:Array
+@onready var player_scores:Array:
+	get():
+		return players.map(func(element:Player): return element.score as int)
+		
+@onready var roll_scores:Array[int]
 
 @onready var current_player:int = 0:
 	get():
@@ -19,14 +25,17 @@ class_name Game
 
 @onready var rules_node:Node = $ScrollContainer/Rules
 
+enum {PLAY, WIN, LOSE, DISQUALIFIED}
+@onready var current_player_state:int = PLAY
 
 func _ready() -> void:
+	if not nb_players:
+		SetupPlayers(["Alice", "Bob", "Charlie", "Denise"])
+	
 	roll_scores.resize(nb_players)
 	roll_scores.fill(0)
-	player_scores.resize(nb_players)
-	player_scores.fill(0)
 	
-	$CurrentPlayerLabel.text = players[0]
+	UpdateCurrentPlayerLabel()
 	
 	## Connect every dices used for choosing the 3 dice rolls to a function that stores the choice
 	var i:int = 0
@@ -35,8 +44,18 @@ func _ready() -> void:
 		i += 1
 	
 	for r in rules_node.get_children():
-		r.SetUpPlayerOptions(players)
+		r.SetUpPlayerOptions(player_names)
 		r.select_player.connect(_on_rule_player_changed)
+
+func SetupPlayers(player_names:Array) -> void:
+	nb_players = len(player_names)
+	players = []
+	for n in player_names:
+		var new_player:Player = player_scene.instantiate()
+		new_player.player_name = n
+		new_player.index = len(players)
+		new_player.state = PLAY
+		players.append(new_player)
 
 func _on_rule_player_changed() -> void:
 	UpdateRoll()
@@ -67,15 +86,28 @@ func UpdateRoll(reset_player:bool=false):
 
 func ValidateDices():
 	for i in range(nb_players):
-		player_scores[i] += roll_scores[i]
+		players[i].score += roll_scores[i]
 	
 	$PlayersScoreLabel.text = str(player_scores)
 	
 	PassTurn()
 
+func WinLoseCondition():
+	if player_scores[current_player] >= 343:
+		return WIN
+	elif player_scores[current_player] <= -343:
+		return DISQUALIFIED
+	
+	return PLAY
+
 func PassTurn():
+	
+	current_player_state = WinLoseCondition()
+	if current_player_state == WIN:
+		prints(players[current_player].player_name, "won!")
+	
 	current_player += 1
-	$CurrentPlayerLabel.text = players[current_player]
+	UpdateCurrentPlayerLabel()
 	
 	roll_scores.fill(0)
 	UpdateRollScoreLabel()
@@ -87,8 +119,22 @@ func PassTurn():
 		roll.reset()
 	dice_values.fill(0)
 
+func UpdateCurrentPlayerLabel():
+	$CurrentPlayerLabel.text = "Au tour de : " + player_names[current_player]
+	
 func UpdateRollScoreLabel():
-	$RollScoreLabel.text = "Roll score :\n" + str(roll_scores)
+	$RollScoreLabel.text = ""
+	var unchanged_score_string:String = "%s :\t%d"
+	var greater_score_string:String = "\t +%d\t\t (%d)"
+	var lower_score_string:String = "\t %d\t\t (%d)"
+	
+	for i in range(nb_players):
+		$RollScoreLabel.text += unchanged_score_string % [player_names[i], player_scores[i]]
+		if roll_scores[i] > 0:
+			$RollScoreLabel.text += greater_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
+		elif roll_scores[i] < 0:
+			$RollScoreLabel.text += lower_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
+		$RollScoreLabel.text += "\n"
 	
 func GetValidRules() -> Array:
 	var valid_rules:Array[Rule] = []
