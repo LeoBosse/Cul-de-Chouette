@@ -49,7 +49,7 @@ func check_validity(dice_values:Array) -> bool:
 	
 	return validity
 
-func GetPlayerScores(dice_values:Array[int], current_player:int) -> Array[int]:
+func GetPlayerScores(dice_values:Array[int]) -> Array[int]:
 	"""Compute and return the points given to each players."""
 	var scores:Array[int] = []
 	scores.resize(players_list_menu.item_count)
@@ -73,5 +73,5 @@ func GetPlayer() -> int:
 	return players_list_menu.selected
 
 
-func _on_menu_button_item_selected(index: int) -> void:
+func _on_menu_button_item_selected(_index: int) -> void:
 	select_player.emit()

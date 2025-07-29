@@ -47,10 +47,10 @@ func _ready() -> void:
 		r.SetUpPlayerOptions(player_names)
 		r.select_player.connect(_on_rule_player_changed)
 
-func SetupPlayers(player_names:Array) -> void:
-	nb_players = len(player_names)
+func SetupPlayers(new_player_names:Array) -> void:
+	nb_players = len(new_player_names)
 	players = []
-	for n in player_names:
+	for n in new_player_names:
 		var new_player:Player = player_scene.instantiate()
 		new_player.player_name = n
 		new_player.index = len(players)
@@ -171,7 +171,7 @@ func ComputePoints(valid_rules) -> Array[int]:
 		
 	for r in valid_rules:
 		print(r)
-		var rule_scores:Array[int] = r.GetPlayerScores(dice_values, current_player)
+		var rule_scores:Array[int] = r.GetPlayerScores(dice_values)
 		for i in range(nb_players):
 			scores[i] += rule_scores[i]
 			

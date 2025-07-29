@@ -24,11 +24,11 @@ func UpdateSettings():
 
 func GetPlayers() -> Array:
 	var players:Array = []
-	var name:String = ""
+	var player_name:String = ""
 	for j in %PlayerNames.get_children():
-		name = j.get_child(1).text.to_lower()
-		if name:
-			players.append(name)
+		player_name = j.get_child(1).text.to_lower()
+		if player_name:
+			players.append(player_name)
 		else:
 			players.append(j.get_child(1).placeholder_text.to_lower())
 	return players
@@ -39,4 +39,4 @@ func _on_create_game_button_pressed() -> void:
 	new_game.SetupPlayers(GetPlayers())
 	
 	get_tree().root.add_child(new_game)
-	get_tree().unload_current_scene()
+	queue_free()

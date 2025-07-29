@@ -34,7 +34,7 @@ alignment = 1
 
 [node name="NewGameLabel" type="Label" parent="VBoxContainer/ScrollContainer/Options"]
 layout_mode = 2
-text = "NEW GAME"
+text = "Nouvelle Partie"
 horizontal_alignment = 1
 vertical_alignment = 1
 

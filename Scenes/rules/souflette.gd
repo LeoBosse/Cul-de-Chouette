@@ -7,9 +7,9 @@ enum results {FIRST=50, SEC=40, THIRD=30, LOST=-30}
 @onready var result = -1
 @onready var challenged_player:int = -1
 
-func GetPlayerScores(dice_values:Array[int], current_player:int) -> Array[int]:
+func GetPlayerScores(dice_values:Array[int]) -> Array[int]:
 	"""Compute and return the points given to each players."""
-	var scores:Array[int] = super(dice_values, current_player)
+	var scores:Array[int] = super(dice_values)
 	
 	scores.fill(0)
 	
@@ -46,7 +46,7 @@ func SetPlayer(player_id:int) -> void:
 	challenged_player = player_id
 	$VBoxContainer/MenuButton2.select(player_id)
 	
-func _on_menu_button_item_selected(index: int) -> void:
+func _on_menu_button_item_selected(_index: int) -> void:
 	select_player.emit()
 
 func _on_result_item_selected(index: int) -> void:
