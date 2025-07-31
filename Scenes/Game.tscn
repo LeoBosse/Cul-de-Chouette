@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://drk4ise4rkyfg"]
+[gd_scene load_steps=16 format=3 uid="uid://drk4ise4rkyfg"]
 
 [ext_resource type="Script" uid="uid://c48sum0lcyi3l" path="res://Scenes/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_gl6un"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://dn0bwdhfrbya3" path="res://Scenes/rules/suite.tscn" id="10_71axn"]
 [ext_resource type="PackedScene" uid="uid://bv8b3dtp4xmgr" path="res://Scenes/rules/souflette.tscn" id="11_dahhg"]
 [ext_resource type="PackedScene" uid="uid://dr176pc5p06or" path="res://Scenes/rules/neant.tscn" id="12_3so38"]
+[ext_resource type="PackedScene" uid="uid://bpvduqq3he6cu" path="res://Scenes/win_panel.tscn" id="13_wxwew"]
+[ext_resource type="PackedScene" uid="uid://i3lfkk788ybc" path="res://Scenes/win_animation.tscn" id="14_acvyw"]
+[ext_resource type="PackedScene" uid="uid://byveysu48hdxp" path="res://Scenes/game_stats.tscn" id="15_acvyw"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -28,8 +31,8 @@ script = ExtResource("1_iukft")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_top = 27.0
-offset_bottom = 278.0
+offset_top = 38.0
+offset_bottom = 289.0
 grow_horizontal = 2
 
 [node name="DiceRoll1" parent="DiceRolls" instance=ExtResource("2_gl6un")]
@@ -65,43 +68,57 @@ size_flags_vertical = 3
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="Velute" parent="ScrollContainer/Rules" instance=ExtResource("9_3so38")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="ChouetteVelute" parent="ScrollContainer/Rules" instance=ExtResource("6_bf53h")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["chouette", "velute", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["chouette", "velute", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="CulDeChouette" parent="ScrollContainer/Rules" instance=ExtResource("8_dahhg")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["chouette", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["chouette", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="Suite" parent="ScrollContainer/Rules" instance=ExtResource("10_71axn")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="Souflette" parent="ScrollContainer/Rules" instance=ExtResource("11_dahhg")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="Neant" parent="ScrollContainer/Rules" instance=ExtResource("12_3so38")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
 overrides = Array[String](["neant"])
+
+[node name="TopMenu" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CurrentPlayerLabel" type="Label" parent="TopMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Alice"
+
+[node name="Button" type="Button" parent="TopMenu"]
+layout_mode = 2
+text = "Stats"
 
 [node name="PlayersScoreLabel" type="Label" parent="."]
 visible = false
@@ -128,10 +145,17 @@ offset_right = 458.0
 offset_bottom = 388.0
 text = "Validate"
 
-[node name="CurrentPlayerLabel" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Alice"
+[node name="WinPanel" parent="." instance=ExtResource("13_wxwew")]
+visible = false
+z_index = 1
+layout_mode = 1
 
+[node name="WinAnimation" parent="." instance=ExtResource("14_acvyw")]
+
+[node name="GameStats" parent="." instance=ExtResource("15_acvyw")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="TopMenu/Button" to="." method="_on_stats_button_pressed"]
 [connection signal="pressed" from="ValidateRollButton" to="." method="_on_validate_roll_button_pressed"]

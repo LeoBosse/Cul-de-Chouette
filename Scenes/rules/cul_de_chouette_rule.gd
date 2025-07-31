@@ -11,4 +11,4 @@ func check_validity(dice_values:Array) -> bool:
 
 
 func ComputePoints(dice_values:Array) -> int:
-	return 40 + 10 * dice_values[0]
+	return 3000 + 10 * dice_values[0]

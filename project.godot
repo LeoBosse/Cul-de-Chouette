@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cul de Chouette"
-run/main_scene="uid://h5vm2iosihj1"
+run/main_scene="uid://byn434gnm6qyh"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 

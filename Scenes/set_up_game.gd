@@ -1,8 +1,8 @@
 extends Control
 
-@onready var game_scene:PackedScene = load("res://Scenes/Game.tscn")
-
 @onready var nb_players:int = 1
+
+signal launch_new_game(players:Array, rules:Dictionary)
 
 func _on_nb_players_text_changed(new_text: String) -> void:
 	"""When entering or changing the number of players for the new game, setup the options and make them visible."""
@@ -34,12 +34,28 @@ func GetPlayers() -> Array:
 		else:
 			players.append(j.get_child(1).placeholder_text.to_lower())
 	return players
+
+
+func GetRules() -> Dictionary:
+	"""Return a dictionary with the name of all rules and a bool ON/OFF"""
+	var rules:Dictionary = {}
+	var rule_name:String = ""
+	for r in %Rules.get_children():
+		rule_name = r.text.to_lower()
+		rules[rule_name] = r.button_pressed
+	return rules
 	
 func _on_create_game_button_pressed() -> void:
 	"""Create a new game node from the options and sets it as main scene."""
-	var new_game:Game = game_scene.instantiate()
 	
-	new_game.SetupPlayers(GetPlayers())
+	launch_new_game.emit(GetPlayers(), GetRules())
 	
-	get_tree().root.add_child(new_game)
-	queue_free()
+	#var new_game:Game = game_scene.instantiate()
+	#
+	#new_game.SetupPlayers(GetPlayers())
+	#new_game.SetupRules(GetRules())
+	#
+	#get_tree().root.add_child(new_game)
+	#self.visibility = false
+	#
+	##queue_free()

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://byn434gnm6qyh"]
+
+[ext_resource type="Script" uid="uid://cntvypokq0i1k" path="res://Scenes/main.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://h5vm2iosihj1" path="res://Scenes/set_up_game.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bpvduqq3he6cu" path="res://Scenes/win_panel.tscn" id="4_jjvhh"]
+
+[node name="Main" type="Node"]
+process_mode = 3
+script = ExtResource("1_jjgbg")
+
+[node name="SetUpGame" parent="." instance=ExtResource("2_8gbba")]
+unique_name_in_owner = true
+process_mode = 1
+z_index = 1
+
+[node name="WinPanel" parent="." instance=ExtResource("4_jjvhh")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+z_index = 1
+
+[connection signal="launch_new_game" from="SetUpGame" to="." method="_on_set_up_game_launch_new_game"]
+[connection signal="launch_new_game" from="WinPanel" to="." method="_on_win_panel_launch_new_game"]

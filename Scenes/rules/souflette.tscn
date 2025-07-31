@@ -18,12 +18,15 @@ Si le joueur défié réussit à faire 421 :
 - du troisième coup, il gagne 30 points et le défiant les perd.
 Si le joueur défié échoue, il perd 30 points et le défiant les gagne."
 selectable_player = true
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="ShortDescription" parent="." index="0"]
 text = "SOUFLETTE :
 3 dés formant 4, 2 et 1.
-Score : 50, 40 ou 30 suivant suivant le résultat du défi."
+Score : 50, 40 ou 30 suivant le résultat du défi."
+
+[node name="MenuButton" parent="." index="1"]
+disabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="2"]
 layout_mode = 2

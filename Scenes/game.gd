@@ -6,6 +6,8 @@ var player_scene:PackedScene = load("res://Scenes/player.tscn")
 var players:Array[Player]
 var nb_players:int
 
+signal game_is_won(winner_name, winner_score)
+
 @onready var dice_values:Array[int] = [0, 0, 0]
 
 @onready var player_names:Array:
@@ -23,6 +25,10 @@ var nb_players:int
 	get():
 		return current_player % nb_players
 
+@onready var current_round:int = 0:
+	get():
+		return int(current_player / nb_players) 
+
 @onready var rules_node:Node = $ScrollContainer/Rules
 
 enum {PLAY, WIN, LOSE, DISQUALIFIED}
@@ -35,7 +41,7 @@ func _ready() -> void:
 	roll_scores.resize(nb_players)
 	roll_scores.fill(0)
 	
-	UpdateCurrentPlayerLabel()
+	#UpdateCurrentPlayerLabel()
 	
 	## Connect every dices used for choosing the 3 dice rolls to a function that stores the choice
 	var i:int = 0
@@ -56,6 +62,18 @@ func SetupPlayers(new_player_names:Array) -> void:
 		new_player.index = len(players)
 		new_player.state = PLAY
 		players.append(new_player)
+	UpdateCurrentPlayerLabel()
+	%GameStats.Setup(player_names)
+
+func SetupRules(rules_dict:Dictionary):
+	for r in $ScrollContainer/Rules.get_children():
+		if r.rule_name.to_lower() in rules_dict:
+			r.in_use = rules_dict[r.rule_name]
+		
+		if not r.in_use:
+			r.queue_free()
+			
+		prints(r.rule_name, r.in_use)
 
 func _on_rule_player_changed() -> void:
 	UpdateRoll()
@@ -100,12 +118,19 @@ func WinLoseCondition():
 	
 	return PLAY
 
+func NewRound() -> bool:
+	return current_player == nb_players - 1
+	
 func PassTurn():
+	
+	%GameStats.UpdateScore(NewRound(), player_scores)
 	
 	current_player_state = WinLoseCondition()
 	if current_player_state == WIN:
 		prints(players[current_player].player_name, "won!")
-	
+		game_is_won.emit(player_names[current_player], player_scores[current_player])
+		
+		
 	current_player += 1
 	UpdateCurrentPlayerLabel()
 	
@@ -120,7 +145,7 @@ func PassTurn():
 	dice_values.fill(0)
 
 func UpdateCurrentPlayerLabel():
-	$CurrentPlayerLabel.text = "Au tour de : " + player_names[current_player]
+	%CurrentPlayerLabel.text = "Au tour de : " + player_names[current_player]
 	
 func UpdateRollScoreLabel():
 	$RollScoreLabel.text = ""
@@ -180,3 +205,7 @@ func ComputePoints(valid_rules) -> Array[int]:
 
 func _on_validate_roll_button_pressed() -> void:
 	ValidateDices()
+
+
+func _on_stats_button_pressed() -> void:
+	%GameStats.visible = true

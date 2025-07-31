@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://i3lfkk788ybc"]
+
+[sub_resource type="Animation" id="Animation_7h0e4"]
+resource_name = "fireworks"
+length = 2.0
+
+[sub_resource type="Animation" id="Animation_qe5j4"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ce5ae"]
+_data = {
+&"RESET": SubResource("Animation_qe5j4"),
+&"fireworks": SubResource("Animation_7h0e4")
+}
+
+[node name="WinAnimation" type="AnimationPlayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_ce5ae")
+}
