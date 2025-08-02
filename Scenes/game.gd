@@ -29,7 +29,7 @@ signal game_is_won(winner_name, winner_score)
 	get():
 		return int(current_player / nb_players) 
 
-@onready var rules_node:Node = $ScrollContainer/Rules
+@onready var rules_node:Node = %Rules
 
 enum {PLAY, WIN, LOSE, DISQUALIFIED}
 @onready var current_player_state:int = PLAY
@@ -45,7 +45,7 @@ func _ready() -> void:
 	
 	## Connect every dices used for choosing the 3 dice rolls to a function that stores the choice
 	var i:int = 0
-	for roll in $DiceRolls.get_children():
+	for roll in %DiceRolls.get_children():
 		roll.button_group.pressed.connect(_on_dice_roll_pressed.bind(i))
 		i += 1
 	
@@ -63,10 +63,11 @@ func SetupPlayers(new_player_names:Array) -> void:
 		new_player.state = PLAY
 		players.append(new_player)
 	UpdateCurrentPlayerLabel()
-	%GameStats.Setup(player_names)
+	%Stats.Setup(player_names)
+	%Sirotage.Setup(player_names)
 
 func SetupRules(rules_dict:Dictionary):
-	for r in $ScrollContainer/Rules.get_children():
+	for r in %Rules.get_children():
 		if r.rule_name.to_lower() in rules_dict:
 			r.in_use = rules_dict[r.rule_name]
 		
@@ -106,8 +107,6 @@ func ValidateDices():
 	for i in range(nb_players):
 		players[i].score += roll_scores[i]
 	
-	$PlayersScoreLabel.text = str(player_scores)
-	
 	PassTurn()
 
 func WinLoseCondition():
@@ -123,7 +122,7 @@ func NewRound() -> bool:
 	
 func PassTurn():
 	
-	%GameStats.UpdateScore(NewRound(), player_scores)
+	%Stats.UpdateScore(NewRound(), player_scores)
 	
 	current_player_state = WinLoseCondition()
 	if current_player_state == WIN:
@@ -140,7 +139,7 @@ func PassTurn():
 	for rule in rules_node.get_children():
 		rule.visible = false
 	
-	for roll in $DiceRolls.get_children():
+	for roll in %DiceRolls.get_children():
 		roll.reset()
 	dice_values.fill(0)
 
@@ -148,18 +147,18 @@ func UpdateCurrentPlayerLabel():
 	%CurrentPlayerLabel.text = "Au tour de : " + player_names[current_player]
 	
 func UpdateRollScoreLabel():
-	$RollScoreLabel.text = ""
+	%RollScoreLabel.text = ""
 	var unchanged_score_string:String = "%s :\t%d"
 	var greater_score_string:String = "\t +%d\t\t (%d)"
 	var lower_score_string:String = "\t %d\t\t (%d)"
 	
 	for i in range(nb_players):
-		$RollScoreLabel.text += unchanged_score_string % [player_names[i], player_scores[i]]
+		%RollScoreLabel.text += unchanged_score_string % [player_names[i], player_scores[i]]
 		if roll_scores[i] > 0:
-			$RollScoreLabel.text += greater_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
+			%RollScoreLabel.text += greater_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
 		elif roll_scores[i] < 0:
-			$RollScoreLabel.text += lower_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
-		$RollScoreLabel.text += "\n"
+			%RollScoreLabel.text += lower_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
+		%RollScoreLabel.text += "\n"
 	
 func GetValidRules() -> Array:
 	var valid_rules:Array[Rule] = []
@@ -209,3 +208,8 @@ func _on_validate_roll_button_pressed() -> void:
 
 func _on_stats_button_pressed() -> void:
 	%GameStats.visible = true
+
+
+func _on_sirotage_trying_sirotage() -> void:
+	%Sirotage.Update(current_player, dice_values)
+	

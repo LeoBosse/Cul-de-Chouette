@@ -8,7 +8,7 @@ script = ExtResource("2_71yht")
 rule_name = "chouette"
 short_description = "Deux dés identiques (la chouette)."
 short_score = "Le carré de la chouette"
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="ShortDescription" parent="." index="0"]
 text = "CHOUETTE :

@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://fpqqqll0ardo"]
+
+[ext_resource type="Script" uid="uid://b38twdx0w6rx3" path="res://Scenes/rules/sirotage.gd" id="2_aenqw"]
+
+[node name="Sirotage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_aenqw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ner.
+
+
+
+
+"
+fit_content = true
+
+[node name="PlayerBetList" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ExamplePlayerBet" type="HBoxContainer" parent="VBoxContainer/PlayerBetList"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PlayerBetList/ExamplePlayerBet"]
+layout_mode = 2
+text = "PLAYER_NAME"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/PlayerBetList/ExamplePlayerBet"]
+layout_mode = 2
+selected = 0
+item_count = 7
+popup/item_0/id = 0
+popup/item_1/text = "Linotte"
+popup/item_1/id = 1
+popup/item_2/text = "Alouette"
+popup/item_2/id = 2
+popup/item_3/text = "Fauvette"
+popup/item_3/id = 3
+popup/item_4/text = "Mouette"
+popup/item_4/id = 4
+popup/item_5/text = "Bergeronette"
+popup/item_5/id = 5
+popup/item_6/text = "Chouette"
+popup/item_6/id = 6
+
+[node name="ResultLineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "Résultat"
+
+[node name="ValidateButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Valider
+"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/ValidateButton" to="." method="_on_validate_button_pressed"]

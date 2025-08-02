@@ -33,6 +33,7 @@ grow_vertical = 2
 texture = ExtResource("2_qe60g")
 
 [node name="CloseButton" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0

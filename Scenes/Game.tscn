@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://drk4ise4rkyfg"]
+[gd_scene load_steps=15 format=3 uid="uid://drk4ise4rkyfg"]
 
 [ext_resource type="Script" uid="uid://c48sum0lcyi3l" path="res://Scenes/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_gl6un"]
@@ -12,8 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dn0bwdhfrbya3" path="res://Scenes/rules/suite.tscn" id="10_71axn"]
 [ext_resource type="PackedScene" uid="uid://bv8b3dtp4xmgr" path="res://Scenes/rules/souflette.tscn" id="11_dahhg"]
 [ext_resource type="PackedScene" uid="uid://dr176pc5p06or" path="res://Scenes/rules/neant.tscn" id="12_3so38"]
-[ext_resource type="PackedScene" uid="uid://bpvduqq3he6cu" path="res://Scenes/win_panel.tscn" id="13_wxwew"]
-[ext_resource type="PackedScene" uid="uid://i3lfkk788ybc" path="res://Scenes/win_animation.tscn" id="14_acvyw"]
+[ext_resource type="PackedScene" uid="uid://fpqqqll0ardo" path="res://Scenes/rules/sirotage.tscn" id="13_wxwew"]
 [ext_resource type="PackedScene" uid="uid://byveysu48hdxp" path="res://Scenes/game_stats.tscn" id="15_acvyw"]
 
 [node name="Game" type="Control"]
@@ -27,135 +26,121 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_iukft")
 
-[node name="DiceRolls" type="VBoxContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
-offset_top = 38.0
-offset_bottom = 289.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+all_tabs_in_front = true
 
-[node name="DiceRoll1" parent="DiceRolls" instance=ExtResource("2_gl6un")]
+[node name="Lancé" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CurrentPlayerLabel" type="Label" parent="TabContainer/Lancé"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Alice"
+
+[node name="DiceRolls" type="VBoxContainer" parent="TabContainer/Lancé"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DiceRoll1" parent="TabContainer/Lancé/DiceRolls" instance=ExtResource("2_gl6un")]
 layout_mode = 2
 button_group = ExtResource("3_b2bpf")
 
-[node name="DiceRoll2" parent="DiceRolls" instance=ExtResource("2_gl6un")]
+[node name="DiceRoll2" parent="TabContainer/Lancé/DiceRolls" instance=ExtResource("2_gl6un")]
 layout_mode = 2
 button_group = ExtResource("4_7lihs")
 
-[node name="DiceRoll3" parent="DiceRolls" instance=ExtResource("2_gl6un")]
+[node name="DiceRoll3" parent="TabContainer/Lancé/DiceRolls" instance=ExtResource("2_gl6un")]
 layout_mode = 2
 button_group = ExtResource("5_fgofq")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -266.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Lancé"]
+layout_mode = 2
+
+[node name="RollScoreLabel" type="RichTextLabel" parent="TabContainer/Lancé/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+fit_content = true
+vertical_alignment = 1
+
+[node name="ValidateRollButton" type="Button" parent="TabContainer/Lancé/HBoxContainer"]
+modulate = Color(0.0313726, 1, 0.0509804, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Validate"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Lancé"]
+layout_mode = 2
+size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="Rules" type="VBoxContainer" parent="ScrollContainer"]
+[node name="Rules" type="VBoxContainer" parent="TabContainer/Lancé/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Chouette" parent="ScrollContainer/Rules" instance=ExtResource("7_71axn")]
+[node name="Chouette" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("7_71axn")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
-[node name="Velute" parent="ScrollContainer/Rules" instance=ExtResource("9_3so38")]
+[node name="Velute" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("9_3so38")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
-[node name="ChouetteVelute" parent="ScrollContainer/Rules" instance=ExtResource("6_bf53h")]
+[node name="ChouetteVelute" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("6_bf53h")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["chouette", "velute", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["chouette", "velute", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
-[node name="CulDeChouette" parent="ScrollContainer/Rules" instance=ExtResource("8_dahhg")]
+[node name="CulDeChouette" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("8_dahhg")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["chouette", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["chouette", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
-[node name="Suite" parent="ScrollContainer/Rules" instance=ExtResource("10_71axn")]
+[node name="Suite" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("10_71axn")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
-[node name="Souflette" parent="ScrollContainer/Rules" instance=ExtResource("11_dahhg")]
+[node name="Souflette" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("11_dahhg")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
-[node name="Neant" parent="ScrollContainer/Rules" instance=ExtResource("12_3so38")]
+[node name="Neant" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("12_3so38")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1
 overrides = Array[String](["neant"])
 
-[node name="TopMenu" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CurrentPlayerLabel" type="Label" parent="TopMenu"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Alice"
-
-[node name="Button" type="Button" parent="TopMenu"]
-layout_mode = 2
-text = "Stats"
-
-[node name="PlayersScoreLabel" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_top = 285.0
-offset_right = 40.0
-offset_bottom = 308.0
-
-[node name="RollScoreLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_top = 297.0
-offset_right = 263.0
-offset_bottom = 405.0
-fit_content = true
-scroll_active = false
-vertical_alignment = 1
-
-[node name="ValidateRollButton" type="Button" parent="."]
-modulate = Color(0.0313726, 1, 0.0509804, 1)
-layout_mode = 0
-offset_left = 284.0
-offset_top = 297.0
-offset_right = 458.0
-offset_bottom = 388.0
-text = "Validate"
-
-[node name="WinPanel" parent="." instance=ExtResource("13_wxwew")]
-visible = false
-z_index = 1
-layout_mode = 1
-
-[node name="WinAnimation" parent="." instance=ExtResource("14_acvyw")]
-
-[node name="GameStats" parent="." instance=ExtResource("15_acvyw")]
+[node name="Sirotage" parent="TabContainer" instance=ExtResource("13_wxwew")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
+layout_mode = 2
+metadata/_tab_index = 1
 
-[connection signal="pressed" from="TopMenu/Button" to="." method="_on_stats_button_pressed"]
-[connection signal="pressed" from="ValidateRollButton" to="." method="_on_validate_roll_button_pressed"]
+[node name="Stats" parent="TabContainer" instance=ExtResource("15_acvyw")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[connection signal="pressed" from="TabContainer/Lancé/HBoxContainer/ValidateRollButton" to="." method="_on_validate_roll_button_pressed"]
+[connection signal="trying_sirotage" from="TabContainer/Sirotage" to="." method="_on_sirotage_trying_sirotage"]

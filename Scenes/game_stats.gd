@@ -50,7 +50,7 @@ func InitGraph():
 	for i in range(nb_players):
 		var graph_line:Line2D = Line2D.new()
 		graph_line.width = 3
-		graph_line.default_color = Color(graph_colors[i % nb_players])
+		graph_line.default_color = Color(graph_colors[i % len(graph_colors)])
 		graph_line.add_point(graph_origin)
 		graph_line.add_point(graph_origin)
 		%GraphScore.add_child(graph_line)
