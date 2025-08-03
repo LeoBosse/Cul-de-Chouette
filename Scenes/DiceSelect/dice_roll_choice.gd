@@ -14,7 +14,12 @@ func reset():
 		d.button_pressed = false
 
 func SelectDice(value:int):
-
 	#button_group.pressed.emit(get_child(value - 1))
 	prints("SELECTING DICE", value)
 	get_child(value - 1).button_pressed = true
+
+func SetAccess(accessible:bool):
+	for b in button_group.get_buttons():
+		b.SetDisabled(not accessible)
+
+		prints(b.disabled, b.button_pressed)

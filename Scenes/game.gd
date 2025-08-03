@@ -34,6 +34,8 @@ signal game_is_won(winner_name, winner_score)
 enum {PLAY, WIN, LOSE, DISQUALIFIED}
 @onready var current_player_state:int = PLAY
 
+var tabs_index:Dictionary = {"lancé": 0, "sirotage": 1, "stats": 2}
+
 func _ready() -> void:
 	if not nb_players:
 		SetupPlayers(["Alice", "Bob", "Charlie", "Denise"])
@@ -53,6 +55,13 @@ func _ready() -> void:
 		r.SetUpPlayerOptions(player_names)
 		r.select_player.connect(_on_rule_player_changed)
 
+func Setup(new_player_names:Array, rules_dict:Dictionary):
+	SetupRules(rules_dict)
+	SetupPlayers(new_player_names)
+	%Stats.Setup(player_names)
+	prints("contre sirop", %Rules.get_node_or_null("ContreSirop"), null, %Rules.get_node_or_null("ContreSirop") != null)
+	%Sirotage.Setup(player_names, %Rules.get_node_or_null("ContreSirop") != null)
+
 func SetupPlayers(new_player_names:Array) -> void:
 	nb_players = len(new_player_names)
 	players = []
@@ -63,18 +72,23 @@ func SetupPlayers(new_player_names:Array) -> void:
 		new_player.state = PLAY
 		players.append(new_player)
 	UpdateCurrentPlayerLabel()
-	%Stats.Setup(player_names)
-	%Sirotage.Setup(player_names)
 
 func SetupRules(rules_dict:Dictionary):
 	for r in %Rules.get_children():
 		if r.rule_name.to_lower() in rules_dict:
 			r.in_use = rules_dict[r.rule_name]
 		
-		if not r.in_use:
-			r.queue_free()
+		prints("Rules setup: ", r.rule_name, r.in_use)
+		#if not r.in_use:
+			#r.queue_free()
 			
-		prints(r.rule_name, r.in_use)
+	if not rules_dict["sirotage"]:
+		%Sirotage.disabled = true
+		$TabContainer.set_tab_hidden(tabs_index["sirotage"], true)
+		%Rules/Sirotage.in_use = false
+		%Rules/SirotageSuccess.in_use = false
+		%Rules/SirotageFail.in_use = false
+		%Rules/ContreSirop.in_use = false
 
 func _on_rule_player_changed() -> void:
 	UpdateRoll()
@@ -103,6 +117,7 @@ func UpdateRoll(reset_player:bool=false):
 				print("reseting to current" + str(current_player))
 				rule.SetPlayer(current_player)
 	
+	#SetupSirotageRules(%Sirotage.successfull, %Sirotage.contre_sirop_player)
 	roll_scores = ComputePoints(valid_rules)
 	UpdateRollScoreLabel()
 	
@@ -113,6 +128,7 @@ func ValidateDices():
 		players[i].score += roll_scores[i]
 	
 	PassTurn()
+	SetDicesAccess(true)
 
 func WinLoseCondition():
 	if player_scores[current_player] >= 343:
@@ -175,8 +191,18 @@ func GetValidRules() -> Array:
 		return valid_rules
 		
 	for r in rules_node.get_children():
-		if r.check_validity(dice_values.duplicate()):
+		if r.check_validity(dice_values.duplicate()) and r.in_use:
 			valid_rules.append(r)
+	
+	if %Sirotage.successfull:
+		valid_rules.append(%Rules/SirotageSuccess)
+	elif not %Sirotage.successfull and %Sirotage.already_rolled:
+		valid_rules.append(%Rules/SirotageFail)
+		if %Rules/ContreSirop.in_use and %Sirotage.contre_sirop_player >= 0:
+			valid_rules.append(%Rules/ContreSirop)
+	
+	prints("sirotage: ", %Sirotage.successfull, %Sirotage.already_rolled)
+	prints("valid rules: ", valid_rules)
 	
 	return RulesOverride(valid_rules)
 
@@ -196,6 +222,10 @@ func RulesOverride(valid_rules:Array) -> Array:
 	print(valid_rules, " ", overridden_rules, " ", winning_rules)
 	return winning_rules
 
+func SetDicesAccess(enabled:bool):
+	for r in %DiceRolls.get_children():
+		r.SetAccess(enabled)
+	
 
 func ComputePoints(valid_rules) -> Array[int]:
 	var scores:Array[int] = []
@@ -226,12 +256,39 @@ func _on_sirotage_trying_sirotage() -> void:
 	%Sirotage.Update(current_player, dice_values)
 	
 
-func _on_sirotage_validating_sirotage(sirotage_scores: Array, dices: Array) -> void:
-	#dice_values = dices
+func _on_sirotage_validating_sirotage(succesfull:bool, sirotage_scores: Array, dices: Array, contre_sirop_player: int) -> void:
+	
+	## Update scores with sirotage results
 	for i in range(nb_players):
 		players[i].sirotage_score += sirotage_scores[i]
-		
+	
+	## Update dices with sirotage results
 	for i in range(3):
 		%DiceRolls.get_child(i).SelectDice(dices[i])
 	
+	SetDicesAccess(false)
+	
+	#SetupSirotageRules(succesfull, contre_sirop_player)
+	if not succesfull and contre_sirop_player >= 0:
+		%Rules/ContreSirop.in_use = true
+		%Rules/ContreSirop.SetPlayer(contre_sirop_player)
+	else:
+		%Rules/ContreSirop.in_use = false
+	
 	$TabContainer.current_tab = 0
+	
+	UpdateRoll()
+	
+#func SetupSirotageRules(successfull:bool, contre_sirop_player:int):
+	### Update rules list with sirotage results
+	#%Rules/Sirotage.visible = false
+	#%Rules/SirotageSuccess.visible = successfull
+	#%Rules/SirotageFail.visible = not successfull
+	#%Rules/Sirotage.SetPlayer(current_player)
+	#%Rules/SirotageSuccess.SetPlayer(current_player)
+	#%Rules/SirotageFail.SetPlayer(current_player)
+#
+	#if %Rules/ContreSirop.in_use:
+		#%Rules/ContreSirop.visible = contre_sirop_player > 0 and not successfull
+		#if contre_sirop_player > 0 and not successfull:
+			#%Rules/ContreSirop.SetPlayer(contre_sirop_player - 1)

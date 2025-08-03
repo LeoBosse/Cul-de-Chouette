@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dawwj05mksy3g"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_ld7mt"]
+
+[node name="ContreSirop" instance=ExtResource("1_ld7mt")]
+rule_name = "contre-sirop"
+short_description = "En cas de sirotage perdu, le premier adversaire à crier \"J'aime les fruits au sirop !\" en levant son poing gagne des points."
+short_score = "Le double du dixième du cul de chouette tenté."
+
+[node name="ShortDescription" parent="." index="0"]
+text = "CONTRE-SIROP :
+En cas de sirotage perdu, le premier adversaire à crier \"J'aime les fruits au sirop !\" en levant son poing gagne des points.
+Score : Le double du dixième du cul de chouette tenté."

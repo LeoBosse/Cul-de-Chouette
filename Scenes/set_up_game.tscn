@@ -157,12 +157,14 @@ icon_alignment = 1
 
 [node name="Sirotage" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
 layout_mode = 2
+button_pressed = true
 text = "Sirotage"
 alignment = 1
 icon_alignment = 1
 
 [node name="Contre-Sirop" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
 layout_mode = 2
+button_pressed = true
 text = "Contre-Sirop"
 alignment = 1
 icon_alignment = 1

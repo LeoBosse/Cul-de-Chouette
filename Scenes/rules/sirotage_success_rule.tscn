@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://coxwwklnof43j"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_uuuku"]
+
+[node name="SirotageSuccessRule" instance=ExtResource("1_uuuku")]
+rule_name = "sirotage réussi"
+short_description = "Vous avez transformer votre Chouette en Cul de Chouette !"
+short_score = "Les points du Cul de Chouette.
+Les points parié pour les autres (-5 / +20)."
+
+[node name="ShortDescription" parent="." index="0"]
+text = "SIROTAGE RÉUSSI :
+Vous avez transformer votre Chouette en Cul de Chouette !
+Score : Les points du Cul de Chouette.
+Les points parié pour les autres (-5 / +20)."

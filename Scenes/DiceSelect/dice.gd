@@ -10,10 +10,22 @@ signal emit_value(value)
 			return
 		value = new_value
 		var new_texture_names:Dictionary = GetTextName()
-		texture_normal = load("res://Scenes/DiceSelect/Textures/" + new_texture_names["normal"])
-		texture_pressed = load("res://Scenes/DiceSelect/Textures/" + new_texture_names["pressed"])
+		texture_normal = load(texture_normal_name)
+		texture_pressed = load(texture_pressed_name)
 		
+var texture_normal_name:String:
+	get():
+		return "res://Scenes/DiceSelect/Textures/" + GetTextName()["normal"]
+var texture_pressed_name:String:
+	get():
+		return "res://Scenes/DiceSelect/Textures/" + GetTextName()["pressed"]
 
+func SetDisabled(disable:bool):
+	disabled = disable
+	if button_pressed and disabled:
+		texture_normal = load(texture_pressed_name)
+	else:
+		texture_normal = load(texture_normal_name)
 
 func _on_toggled(toggled_on) -> void:
 	if toggled_on:

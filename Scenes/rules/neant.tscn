@@ -8,6 +8,7 @@ script = ExtResource("2_wv0oa")
 rule_name = "neant"
 short_description = "Aucune autre combinaison valable."
 short_score = "Rien"
+overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="ShortDescription" parent="." index="0"]
 text = "NEANT :

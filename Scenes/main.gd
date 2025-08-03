@@ -8,8 +8,7 @@ func _on_set_up_game_launch_new_game(players: Array, rules: Dictionary) -> void:
 	
 	var new_game:Game = game_scene.instantiate()
 	new_game.name = 'Game'
-	new_game.SetupPlayers(players)
-	new_game.SetupRules(rules)
+	new_game.Setup(players, rules)
 	new_game.process_mode = Node.PROCESS_MODE_PAUSABLE
 	new_game.z_index = 0
 	add_child(new_game)

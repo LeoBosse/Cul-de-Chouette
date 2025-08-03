@@ -39,15 +39,17 @@ func ComputePoints(_dice_values:Array) -> int:
 
 
 func check_validity(dice_values:Array) -> bool:
-	var validity = true
+	var validities = []
 	
 	for rule in get_children():
 		if not rule is Rule:
 			continue
 			
-		validity = validity and rule.check_validity(dice_values)
+		validities.append(rule.check_validity(dice_values))
 	
-	return validity
+	var valid:bool = len(validities) > 0 and validities.all(func check(x): x)
+	
+	return valid
 
 func GetPlayerScores(dice_values:Array[int]) -> Array[int]:
 	"""Compute and return the points given to each players."""

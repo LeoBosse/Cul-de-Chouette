@@ -66,10 +66,31 @@ layout_mode = 2
 size_flags_horizontal = 4
 placeholder_text = "Résultat"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Contre-sirop pour :"
+
+[node name="ContreSiropWinnerButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 1
+popup/item_0/id = 0
+
 [node name="ValidateButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Valider
 "
+
+[node name="ErrorLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Vous devez rentrer un résultat valide !"
+horizontal_alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/ValidateButton" to="." method="_on_validate_button_pressed"]
