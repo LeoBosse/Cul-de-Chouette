@@ -22,7 +22,7 @@ signal validating_sirotage(sirotage_scores:Array, dice_values:Array)
 func Update(current_player:int, dices:Array):
 	dice_values = dices
 	chouette_value = CheckValidity(dices)
-	SetupInterface(chouette_value > 0, already_rolled)
+	SetupInterface(chouette_value > 0)
 	
 	
 	sirotage_player = current_player
@@ -52,15 +52,15 @@ func Setup(player_list:Array):
 		new_player_bet_node.get_child(1).item_selected.connect(_on_player_bet_selected.bind(i))
 		%PlayerBetList.add_child(new_player_bet_node)
 
-func CheckValidity(dice_values:Array) -> int:
+func CheckValidity(dices:Array) -> int:
 	"""Return an int. 
 			-1 : cul de chouette -> can't bet
 			0 : no 2 dices identical
 			> 0 : the value of the chouette."""
-	if CulDeChouetteRule.new().check_validity(dice_values):
+	if CulDeChouetteRule.new().check_validity(dices):
 		return -1
 	
-	var value:int = ChouetteRule.new().GetChouetteValue(dice_values)
+	var value:int = ChouetteRule.new().GetChouetteValue(dices)
 	if value > 0:
 		return value
 		
@@ -122,7 +122,7 @@ func _on_visibility_changed() -> void:
 	trying_sirotage.emit()
 
 
-func SetupInterface(valid:bool, already_rolled:bool):
+func SetupInterface(valid:bool):
 	%Description.visible = true
 	%PlayerBetList.visible = valid
 	$VBoxContainer/ResultLineEdit.visible = valid
