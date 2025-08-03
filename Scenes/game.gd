@@ -14,7 +14,7 @@ signal game_is_won(winner_name, winner_score)
 	get():
 		var names:Array = players.map(func(element:Player) -> String: return element.player_name)
 		return names
-
+		
 @onready var player_scores:Array:
 	get():
 		return players.map(func(element:Player): return element.score as int)
@@ -79,7 +79,12 @@ func SetupRules(rules_dict:Dictionary):
 func _on_rule_player_changed() -> void:
 	UpdateRoll()
 
-func _on_dice_roll_pressed(dice, roll_value) -> void:
+func _on_dice_roll_pressed(dice:Node, roll_value:int) -> void:
+	"""Called when you click on a dice. 
+	dice:[Node] """
+	
+	prints("DICE ROLL PRESSED", dice, roll_value)
+	
 	if dice.button_pressed:
 		dice_values[roll_value] = dice.value
 	else:
@@ -136,6 +141,10 @@ func PassTurn():
 	roll_scores.fill(0)
 	UpdateRollScoreLabel()
 	
+	%Sirotage.Clean()
+	for i in range(nb_players):
+		players[i].sirotage_score = 0
+	
 	for rule in rules_node.get_children():
 		rule.visible = false
 	
@@ -190,15 +199,18 @@ func RulesOverride(valid_rules:Array) -> Array:
 
 func ComputePoints(valid_rules) -> Array[int]:
 	var scores:Array[int] = []
-	for i in range(nb_players):
-		scores.append(0)
+	scores.resize(nb_players)
+	scores.fill(0)
 		
 	for r in valid_rules:
 		print(r)
 		var rule_scores:Array[int] = r.GetPlayerScores(dice_values)
 		for i in range(nb_players):
 			scores[i] += rule_scores[i]
-			
+	
+	for i in range(nb_players):
+		scores[i] += %Sirotage.scores[i]
+	
 	return scores
 
 
@@ -213,3 +225,13 @@ func _on_stats_button_pressed() -> void:
 func _on_sirotage_trying_sirotage() -> void:
 	%Sirotage.Update(current_player, dice_values)
 	
+
+func _on_sirotage_validating_sirotage(sirotage_scores: Array, dices: Array) -> void:
+	#dice_values = dices
+	for i in range(nb_players):
+		players[i].sirotage_score += sirotage_scores[i]
+		
+	for i in range(3):
+		%DiceRolls.get_child(i).SelectDice(dices[i])
+	
+	$TabContainer.current_tab = 0

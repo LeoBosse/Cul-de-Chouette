@@ -12,3 +12,9 @@ func _ready() -> void:
 func reset():
 	for d in get_children():
 		d.button_pressed = false
+
+func SelectDice(value:int):
+
+	#button_group.pressed.emit(get_child(value - 1))
+	prints("SELECTING DICE", value)
+	get_child(value - 1).button_pressed = true
