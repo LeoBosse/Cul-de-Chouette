@@ -9,7 +9,6 @@ signal emit_value(value)
 		if new_value < 1 or new_value > 6:
 			return
 		value = new_value
-		var new_texture_names:Dictionary = GetTextName()
 		texture_normal = load(texture_normal_name)
 		texture_pressed = load(texture_pressed_name)
 		
