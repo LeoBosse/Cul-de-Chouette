@@ -14,8 +14,12 @@ func _on_nb_players_text_changed(new_text: String) -> void:
 		%Rules.visible = true
 		%CreateGameButton.visible = true
 
+
 func UpdateSettings():
 	"""Duplicate the first node of player names to match number of players"""
+	for i in range(1, %PlayerNames.get_child_count()):
+		%PlayerNames.get_child(i).queue_free()
+		
 	for i in range(1, nb_players):
 		print("adding player")
 		var new_player = %PlayerNames/"Joueur 1".duplicate(8)

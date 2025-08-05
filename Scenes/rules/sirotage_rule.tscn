@@ -9,7 +9,7 @@ Les autres joueurs peuvent parier sur le résultat."
 short_score = "Sirotage réussi : + pts du Cul de Chouette
 Sirotage perdu :  - pts de la Chouette
 Pour parier : mise de 5 pts, gain de 25."
-overrides = Array[String](["neant"])
+overrides = Array[String](["neant", "neant"])
 
 [node name="ShortDescription" parent="." index="0"]
 text = "SIROTAGE :
