@@ -7,5 +7,6 @@ class_name Player
 var score:int = 0
 var sirotage_score:int = 0
 var grelottine:bool = false
+var has_civet:bool = false
 
 var state:int = 0

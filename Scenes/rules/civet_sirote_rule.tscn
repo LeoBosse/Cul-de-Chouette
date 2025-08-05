@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvbl1t4kjacbe"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_85g3u"]
+
+[node name="CivetSiroteRule" instance=ExtResource("1_85g3u")]
+rule_name = "Civet Siroté"
+short_description = "Gagnez un Civet lorsque vous perdez un sirotage sur une chouette de 6."
+short_score = "Un civet."
+overrides = Array[String](["neant"])
