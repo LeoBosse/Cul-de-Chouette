@@ -21,7 +21,7 @@ signal select_player()
 func _ready() -> void:
 	rule_name = rule_name.to_lower()
 	
-	if not self is NeantRule:
+	if not self is NeantRule and not overrides.has("neant"):
 		#print("not neant")
 		overrides.append("neant")
 	for i in overrides.size():

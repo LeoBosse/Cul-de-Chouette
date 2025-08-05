@@ -124,6 +124,10 @@ func UpdateRoll(reset_player:bool=false):
 	print(dice_values, " ", valid_rules, " ", roll_scores)
 
 func ValidateDices():
+	
+	if dice_values.has(0):
+		return 
+	
 	for i in range(nb_players):
 		players[i].score += roll_scores[i]
 	
