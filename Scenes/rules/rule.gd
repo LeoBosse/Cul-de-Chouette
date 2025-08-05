@@ -29,7 +29,6 @@ func _ready() -> void:
 	
 	players_list_menu.disabled = not selectable_player
 	
-	
 	short_text.text = rule_name.to_upper() + " :\n"
 	short_text.text += short_description + "\n"
 	short_text.text += "Score : " + short_score
