@@ -8,7 +8,7 @@ script = ExtResource("2_1kd0b")
 rule_name = "souflette"
 short_description = "3 dés formant 4, 2 et 1."
 short_score = "50, 40 ou 30 suivant le résultat du défi."
-full_description = "Le joueur peut défier un autre joueur de son choix. Ce joueur a alors trois jets de dés pour réaliser lui
+full_description = "Le joueur peut défier un autre joueur de son choix en le pointant du doigt et en criant \"En garde ma mignonne !\". Ce joueur a alors trois jets de dés pour réaliser lui
 aussi un 421. Les éventuels points données par d'éventuelles combinaisons réalisées lors de ces
 éventuels jets ne sont pas comptés. Les joueurs peuvent conserver les dés ayant donné 4, 2 ou 1 entre
 chaque lancer, pour ainsi éviter de les relancer et avoir plus de chances de réussir le défi.

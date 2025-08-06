@@ -81,7 +81,7 @@ func SetupRules(rules_dict:Dictionary):
 		prints("Rules setup: ", r.rule_name, r.in_use)
 		#if not r.in_use:
 			#r.queue_free()
-			
+	
 	if not rules_dict["sirotage"]:
 		%Sirotage.disabled = true
 		$TabContainer.set_tab_hidden(tabs_index["sirotage"], true)
@@ -155,9 +155,6 @@ func PassTurn():
 		game_is_won.emit(player_names[current_player], player_scores[current_player])
 		
 		
-	current_player += 1
-	UpdateCurrentPlayerLabel()
-	
 	roll_scores.fill(0)
 	UpdateRollScoreLabel()
 	
@@ -166,20 +163,26 @@ func PassTurn():
 		players[i].sirotage_score = 0
 	
 	for rule in rules_node.get_children():
+		rule.Clean()
 		rule.visible = false
 	
 	for roll in %DiceRolls.get_children():
 		roll.reset()
 	dice_values.fill(0)
+	
+	current_player += 1
+	UpdateCurrentPlayerLabel()
+	
+	UpdateRoll(true)
 
 func UpdateCurrentPlayerLabel():
 	%CurrentPlayerLabel.text = "Au tour de : " + player_names[current_player]
 	
 func UpdateRollScoreLabel():
 	%RollScoreLabel.text = ""
-	var unchanged_score_string:String = "%s :\t%d"
-	var greater_score_string:String = "\t +%d\t\t (%d)"
-	var lower_score_string:String = "\t %d\t\t (%d)"
+	var unchanged_score_string:String = "%s :\t%d\t"
+	var greater_score_string:String = "\t +%d\t\t (%d)\t"
+	var lower_score_string:String = "\t %d\t\t (%d)\t"
 	
 	for i in range(nb_players):
 		%RollScoreLabel.text += unchanged_score_string % [player_names[i], player_scores[i]]
@@ -187,25 +190,26 @@ func UpdateRollScoreLabel():
 			%RollScoreLabel.text += greater_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
 		elif roll_scores[i] < 0:
 			%RollScoreLabel.text += lower_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
+		
+		if players[i].has_civet:
+			%RollScoreLabel.text += " \tC"
 		%RollScoreLabel.text += "\n"
 	
 func GetValidRules() -> Array:
 	var valid_rules:Array[Rule] = []
-	if dice_values.has(0):
-		return valid_rules
 		
 	for r in rules_node.get_children():
-		if r.check_validity(dice_values.duplicate()) and r.in_use:
+		if r.check_validity(dice_values.duplicate(), players, current_player) and r.in_use:
 			valid_rules.append(r)
 	
-	if %Sirotage.successfull:
-		valid_rules.append(%Rules/SirotageSuccess)
-	elif not %Sirotage.successfull and %Sirotage.already_rolled:
-		valid_rules.append(%Rules/SirotageFail)
-		if %Rules/ContreSirop.in_use and %Sirotage.contre_sirop_player >= 0:
-			valid_rules.append(%Rules/ContreSirop)
-		if players[current_player].has_civet:
-			valid_rules.append(%Rules/CivetSirote)
+	#if %Sirotage.successfull:
+		#valid_rules.append(%Rules/SirotageSuccess)
+	#elif not %Sirotage.successfull and %Sirotage.already_rolled:
+		#valid_rules.append(%Rules/SirotageFail)
+		#if %Rules/ContreSirop.in_use and %Sirotage.contre_sirop_player >= 0:
+			#valid_rules.append(%Rules/ContreSirop)
+		#if players[current_player].has_civet:
+			#valid_rules.append(%Rules/CivetSirote)
 	
 	prints("sirotage: ", %Sirotage.successfull, %Sirotage.already_rolled)
 	prints("valid rules: ", valid_rules)
@@ -262,7 +266,7 @@ func _on_sirotage_trying_sirotage() -> void:
 	%Sirotage.Update(current_player, dice_values)
 	
 
-func _on_sirotage_validating_sirotage(succesfull:bool, sirotage_scores: Array, dices: Array, contre_sirop_player: int) -> void:
+func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, dices: Array, contre_sirop_player: int) -> void:
 	
 	## Update scores with sirotage results
 	for i in range(nb_players):
@@ -274,17 +278,25 @@ func _on_sirotage_validating_sirotage(succesfull:bool, sirotage_scores: Array, d
 	
 	SetDicesAccess(false)
 	
-	#SetupSirotageRules(succesfull, contre_sirop_player)
-	if not succesfull and contre_sirop_player >= 0:
+	%Rules/Sirotage.Setup(true, successfull) 
+	
+	if not successfull and contre_sirop_player >= 0:
 		%Rules/ContreSirop.in_use = true
 		%Rules/ContreSirop.SetPlayer(contre_sirop_player)
 	else:
 		%Rules/ContreSirop.in_use = false
 	
-	if not succesfull and dices.count(6) == 2:
+	if not successfull and dices.count(6) == 2:
 		players[current_player].has_civet = true
 	
 	$TabContainer.current_tab = 0
 	
 	UpdateRoll()
-	
+
+
+#func _on_civet_civet_bet(value: int, combinaisons: Array) -> void:
+	#pass # Replace with function body.
+
+
+func _on_civet_lose_civet() -> void:
+	players[current_player].has_civet = false

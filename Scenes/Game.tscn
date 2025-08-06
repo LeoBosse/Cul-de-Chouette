@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://drk4ise4rkyfg"]
+[gd_scene load_steps=21 format=3 uid="uid://drk4ise4rkyfg"]
 
 [ext_resource type="Script" uid="uid://c48sum0lcyi3l" path="res://Scenes/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_gl6un"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bryqlfwfnq7fc" path="res://Scenes/rules/sirotage_fail_rule.tscn" id="15_tfod6"]
 [ext_resource type="PackedScene" uid="uid://dawwj05mksy3g" path="res://Scenes/rules/contre_sirop.tscn" id="16_rajel"]
 [ext_resource type="PackedScene" uid="uid://bvbl1t4kjacbe" path="res://Scenes/rules/civet_sirote_rule.tscn" id="17_8r6kd"]
+[ext_resource type="PackedScene" uid="uid://bxthx016g7j8m" path="res://Scenes/rules/civet_rule.tscn" id="18_rajel"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -147,11 +148,14 @@ overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant",
 [node name="SirotageSuccess" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("14_8r6kd")]
 visible = false
 layout_mode = 2
+rule_name = "sirotage succes"
+in_use = false
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="SirotageFail" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("15_tfod6")]
 visible = false
 layout_mode = 2
+in_use = false
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="ContreSirop" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("16_rajel")]
@@ -162,8 +166,11 @@ overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant",
 [node name="CivetSirote" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("17_8r6kd")]
 visible = false
 layout_mode = 2
-rule_name = "civet siroté"
 overrides = Array[String](["neant", "neant"])
+
+[node name="Civet" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("18_rajel")]
+visible = false
+layout_mode = 2
 
 [node name="Sirotage" parent="TabContainer" instance=ExtResource("13_wxwew")]
 unique_name_in_owner = true
@@ -178,5 +185,6 @@ layout_mode = 2
 metadata/_tab_index = 2
 
 [connection signal="pressed" from="TabContainer/Lancé/HBoxContainer/ValidateRollButton" to="." method="_on_validate_roll_button_pressed"]
+[connection signal="lose_civet" from="TabContainer/Lancé/ScrollContainer/Rules/Civet" to="." method="_on_civet_lose_civet"]
 [connection signal="trying_sirotage" from="TabContainer/Sirotage" to="." method="_on_sirotage_trying_sirotage"]
 [connection signal="validating_sirotage" from="TabContainer/Sirotage" to="." method="_on_sirotage_validating_sirotage"]

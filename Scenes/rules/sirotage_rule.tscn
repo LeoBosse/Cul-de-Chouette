@@ -1,19 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://tgtcdnhiu3ry"]
+[gd_scene load_steps=3 format=3 uid="uid://tgtcdnhiu3ry"]
 
 [ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_ajnmm"]
+[ext_resource type="Script" uid="uid://bht6ppq6tmh55" path="res://Scenes/rules/sirotage_rule.gd" id="2_83yab"]
 
 [node name="SirotageRule" instance=ExtResource("1_ajnmm")]
+script = ExtResource("2_83yab")
 rule_name = "sirotage"
-short_description = "Relance un dé pour tansformer ta Chouette en Cul de Chouette !
-Les autres joueurs peuvent parier sur le résultat."
-short_score = "Sirotage réussi : + pts du Cul de Chouette
-Sirotage perdu :  - pts de la Chouette
-Pour parier : mise de 5 pts, gain de 25."
+short_description = "Relance un dé pour transformer ta chouette en Cul de Chouette !"
+short_score = "Les pts du Cul de chouette si tu réussi. Moins les pts de la chouette si tu échoue."
 
 [node name="ShortDescription" parent="." index="0"]
 text = "SIROTAGE :
-Relance un dé pour tansformer ta Chouette en Cul de Chouette !
-Les autres joueurs peuvent parier sur le résultat.
-Score : Sirotage réussi : + pts du Cul de Chouette
-Sirotage perdu :  - pts de la Chouette
-Pour parier : mise de 5 pts, gain de 25."
+Relance un dé pour transformer ta chouette en Cul de Chouette !
+Score : Les pts du Cul de chouette si tu réussi. Moins les pts de la chouette si tu échoue."

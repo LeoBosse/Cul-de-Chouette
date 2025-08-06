@@ -3,7 +3,10 @@ extends Rule
 class_name CulDeChouetteRule
 
 
-func check_validity(dice_values:Array) -> bool:
+func check_validity(dice_values:Array, _players:Array=[], _current_player:int=-1) -> bool:
+	if dice_values.has(0):
+		return false
+		
 	if dice_values[0] == dice_values[1] and dice_values[0] == dice_values[2]:
 		return true
 	

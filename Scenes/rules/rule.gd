@@ -29,6 +29,9 @@ func _ready() -> void:
 	
 	players_list_menu.disabled = not selectable_player
 	
+	UpdateText(rule_name, short_description, short_score)
+
+func UpdateText(rule_name:String, short_description:String, short_score:String):
 	short_text.text = rule_name.to_upper() + " :\n"
 	short_text.text += short_description + "\n"
 	short_text.text += "Score : " + short_score
@@ -37,7 +40,7 @@ func ComputePoints(_dice_values:Array) -> int:
 	return 0
 
 
-func check_validity(dice_values:Array) -> bool:
+func check_validity(dice_values:Array, _players:Array=[], _current_player:int=-1) -> bool:
 	var validities = []
 	
 	for rule in get_children():
@@ -76,3 +79,6 @@ func GetPlayer() -> int:
 
 func _on_menu_button_item_selected(_index: int) -> void:
 	select_player.emit()
+	
+func Clean():
+	pass

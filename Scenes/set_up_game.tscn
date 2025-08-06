@@ -178,6 +178,7 @@ icon_alignment = 1
 
 [node name="Civet" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
 layout_mode = 2
+button_pressed = true
 text = "Civet"
 alignment = 1
 icon_alignment = 1

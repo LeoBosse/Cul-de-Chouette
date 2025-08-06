@@ -1,5 +1,5 @@
 extends Control
-class_name SirotageRule
+class_name SirotageTab
 
 var disabled:bool = false
 var player_names:Array = []

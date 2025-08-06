@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://castya56ln27c"]
+
+[sub_resource type="GDScript" id="GDScript_l25qp"]
+script/source = "extends Control
+class_name Civet
+
+var bet_value:int = -1
+var bet_combinaison:int = -1:
+	get():
+		return %CombinaisonsOptionButton.selected
+		
+var cominaisons:Array = [[ChouetteRule], [VeluteRule], [ChouetteVeluteRule], [SuiteRule], [CulDeChouetteRule], [CulDeChouetteRule, SirotageSucessRule]]
+
+var in_use:bool = false
+var ongoing_bet:bool = false
+signal civet_bet(value:int, combinaisons:Array)
+
+func Clean():
+	bet_value = -1
+	%CombinaisonsOptionButton.selected = -1
+	%BetValueLine.text = \"\"
+	ongoing_bet = false
+	
+	
+func _on_validate_button_pressed() -> void:
+	if bet_value < 0 or ongoing_bet or bet_combinaison < 0:
+		return
+		
+	ongoing_bet = true
+	civet_bet.emit(bet_value, cominaisons[bet_combinaison])
+
+
+func _on_bet_value_line_text_changed(new_text: String) -> void:
+	if not new_text.is_valid_int():
+		%BetValueLine.text = \"\"
+	var new_bet_value:int = int(new_text)
+	new_bet_value = max(0, new_bet_value)
+	new_bet_value = min(102, new_bet_value)
+	
+	bet_value = new_bet_value
+	
+	%BetValueLine.text = str(bet_value)
+	
+"
+
+[node name="Civet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_l25qp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Avant de lancer vos dés, vous pouvez tenter un civet : 
+Pariez des points sur la combinaison à réaliser.
+"
+fit_content = true
+
+[node name="CombinaisonsOptionButton" type="OptionButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+item_count = 6
+popup/item_0/text = "Chouette"
+popup/item_0/id = 0
+popup/item_1/text = "Velute"
+popup/item_1/id = 1
+popup/item_2/text = "Chouette Velute"
+popup/item_2/id = 2
+popup/item_3/text = "Suite"
+popup/item_3/id = 3
+popup/item_4/text = "Cul de Chouette"
+popup/item_4/id = 4
+popup/item_5/text = "Cul de Chouette siroté"
+popup/item_5/id = 5
+
+[node name="BetValueLine" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+placeholder_text = "Nombre de points misés (max 102)"
+alignment = 1
+max_length = 3
+
+[node name="ValidateButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Parier !"
+
+[connection signal="item_selected" from="VBoxContainer/CombinaisonsOptionButton" to="." method="_on_combinaisons_option_button_item_selected"]
+[connection signal="text_changed" from="VBoxContainer/BetValueLine" to="." method="_on_bet_value_line_text_changed"]
+[connection signal="pressed" from="VBoxContainer/ValidateButton" to="." method="_on_validate_button_pressed"]

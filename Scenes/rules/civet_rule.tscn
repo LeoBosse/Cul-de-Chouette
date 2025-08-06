@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxthx016g7j8m"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_xty0a"]
+[ext_resource type="Script" uid="uid://bcwvq7b2rw3f0" path="res://Scenes/rules/civet_rule.gd" id="2_gpe17"]
+
+[node name="CivetRule" instance=ExtResource("1_xty0a")]
+script = ExtResource("2_gpe17")
+rule_name = "civet"
+short_description = "Pari sur la combinaison effectuée pour le lancer."
+short_score = "Le montant parié en positif ou négatif."
+
+[node name="ShortDescription" parent="." index="0"]
+text = "CIVET :
+Pari sur la combinaison effectuée pour le lancer.
+Score : Le montant parié en positif ou négatif."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="BetValueLine" type="LineEdit" parent="VBoxContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+placeholder_text = "Montant"
+
+[node name="CombinaisonsOptionButton" type="OptionButton" parent="VBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+selected = 0
+fit_to_longest_item = false
+item_count = 6
+popup/item_0/text = "Chouette"
+popup/item_0/id = 0
+popup/item_1/text = "Velute"
+popup/item_1/id = 1
+popup/item_2/text = "Chouette Velute"
+popup/item_2/id = 2
+popup/item_3/text = "Suite"
+popup/item_3/id = 3
+popup/item_4/text = "Cul de Chouette"
+popup/item_4/id = 4
+popup/item_5/text = "Cul de Chouette siroté"
+popup/item_5/id = 5
+
+[connection signal="text_changed" from="VBoxContainer/BetValueLine" to="." method="_on_bet_value_line_text_changed"]
+[connection signal="item_selected" from="VBoxContainer/CombinaisonsOptionButton" to="." method="_on_combinaisons_option_button_item_selected"]
