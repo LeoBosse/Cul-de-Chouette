@@ -26,7 +26,7 @@ signal validating_sirotage(succesfull:bool, sirotage_scores:Array, dice_values:A
 func Update(current_player:int, dices:Array):
 	dice_values = dices
 	chouette_value = CheckValidity(dices)
-	SetupInterface(chouette_value > 0)
+	SetupInterface()
 	
 	
 	sirotage_player = current_player
@@ -142,12 +142,15 @@ func _on_visibility_changed() -> void:
 	trying_sirotage.emit()
 
 
-func SetupInterface(valid:bool):
+func SetupInterface():
+	var valid = chouette_value > 0
+	
 	%Description.visible = true
 	%PlayerBetList.visible = valid
 	$VBoxContainer/ResultLineEdit.visible = valid
 	$VBoxContainer/ValidateButton.visible = valid
-	$VBoxContainer/HBoxContainer.visible = valid
+	
+	$VBoxContainer/HBoxContainer.visible = false
 	
 	if not valid:
 		%Description.text = invalid_text
@@ -171,3 +174,14 @@ func Clean():
 	%ErrorLabel.visible = false
 	for i in range(nb_players):
 		%PlayerBetList.get_child(i+1).get_node("OptionButton").selected = 0
+
+
+func _on_result_line_edit_text_changed(new_text: String) -> void:
+	if not new_text.is_valid_int():
+		$VBoxContainer/ResultLineEdit.text = ""
+		return
+	
+	var result:int = int(new_text)
+	$VBoxContainer/HBoxContainer.visible = result != chouette_value
+		
+	

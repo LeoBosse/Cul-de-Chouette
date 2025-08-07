@@ -280,12 +280,13 @@ func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, 
 	## Setup the sirotage rule. Change its text based on the success of the bet.
 	%Rules/Sirotage.Setup(true, successfull)
 	
-	## Setup the Contre-Sirop rule
-	if not successfull and contre_sirop_player >= 0:
-		%Rules/ContreSirop.in_use = true
-		%Rules/ContreSirop.SetPlayer(contre_sirop_player)
-	else:
-		%Rules/ContreSirop.in_use = false
+	%Rules/ContreSirop.Setup(successfull, contre_sirop_player)
+	### Setup the Contre-Sirop rule
+	#if not successfull and contre_sirop_player >= 0:
+		#%Rules/ContreSirop.in_use = true
+		#%Rules/ContreSirop.SetPlayer(contre_sirop_player)
+	#else:
+		#%Rules/ContreSirop.in_use = false
 	
 	## Give a Civet to the current player if it applies
 	if not successfull and dices.count(6) == 2:

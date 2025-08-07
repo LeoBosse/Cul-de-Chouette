@@ -160,11 +160,13 @@ overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant",
 [node name="ContreSirop" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("16_rajel")]
 visible = false
 layout_mode = 2
+short_description = "Lors d'un sirotage raté, le 1er joueur à lever le poing en criant \"J'apprécie les fruits au sirop !\"."
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="CivetSirote" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("17_8r6kd")]
 visible = false
 layout_mode = 2
+rule_name = "civet siroté"
 overrides = Array[String](["neant", "neant"])
 
 [node name="Civet" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("18_rajel")]

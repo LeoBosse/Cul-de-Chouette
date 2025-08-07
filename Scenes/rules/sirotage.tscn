@@ -65,6 +65,7 @@ popup/item_6/id = 6
 layout_mode = 2
 size_flags_horizontal = 4
 placeholder_text = "Résultat"
+max_length = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -93,4 +94,5 @@ text = "Vous devez rentrer un résultat valide !"
 horizontal_alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="text_changed" from="VBoxContainer/ResultLineEdit" to="." method="_on_result_line_edit_text_changed"]
 [connection signal="pressed" from="VBoxContainer/ValidateButton" to="." method="_on_validate_button_pressed"]
