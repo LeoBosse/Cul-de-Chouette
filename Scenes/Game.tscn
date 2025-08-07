@@ -148,7 +148,6 @@ overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant",
 [node name="SirotageSuccess" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("14_8r6kd")]
 visible = false
 layout_mode = 2
-rule_name = "sirotage succes"
 in_use = false
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 

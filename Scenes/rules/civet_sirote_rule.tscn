@@ -5,9 +5,6 @@
 
 [node name="CivetSiroteRule" instance=ExtResource("1_85g3u")]
 script = ExtResource("2_0pbos")
-overrides = Array[String]([])
-
-[node name="ShortDescription" parent="." index="0"]
-text = "CIVET SIROTÉ :
-Gagnez un Civet lorsque vous perdez un sirotage sur une chouette de 6.
-Score : Un civet."
+rule_name = "Civet Siroté"
+short_description = "Vous avez échoué un sirotage sur une Chouette de 6."
+short_score = "Un civet."

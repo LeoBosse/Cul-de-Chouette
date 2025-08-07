@@ -82,7 +82,7 @@ func ComputeScores(result:int) -> Array:
 	for i in range(nb_players):
 		if i == sirotage_player:
 			if chouette_value == result:
-				scores[i] += CulDeChouetteRule.new().ComputePoints([chouette_value, chouette_value, chouette_value])
+				scores[i] += 0 #CulDeChouetteRule.new().ComputePoints([chouette_value, chouette_value, chouette_value])
 			else:
 				scores[i] -= 2 * ChouetteRule.new().ComputePoints([chouette_value, chouette_value, result])
 		else:

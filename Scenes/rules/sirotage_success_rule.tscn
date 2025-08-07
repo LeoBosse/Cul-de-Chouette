@@ -5,4 +5,9 @@
 
 [node name="SirotageSuccessRule" instance=ExtResource("1_uuuku")]
 script = ExtResource("2_pttk8")
-rule_name = "Sirotage succes"
+rule_name = "sirotage succes"
+
+[node name="ShortDescription" parent="." index="0"]
+text = "SIROTAGE SUCCES :
+Short description
+Score : Short score description"

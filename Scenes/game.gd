@@ -272,30 +272,31 @@ func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, 
 	for i in range(nb_players):
 		players[i].sirotage_score += sirotage_scores[i]
 	
-	## Update dices with sirotage results
+	## Update dices with sirotage results and set them to non editable.
 	for i in range(3):
 		%DiceRolls.get_child(i).SelectDice(dices[i])
-	
 	SetDicesAccess(false)
 	
-	%Rules/Sirotage.Setup(true, successfull) 
+	## Setup the sirotage rule. Change its text based on the success of the bet.
+	%Rules/Sirotage.Setup(true, successfull)
 	
+	## Setup the Contre-Sirop rule
 	if not successfull and contre_sirop_player >= 0:
 		%Rules/ContreSirop.in_use = true
 		%Rules/ContreSirop.SetPlayer(contre_sirop_player)
 	else:
 		%Rules/ContreSirop.in_use = false
 	
+	## Give a Civet to the current player if it applies
 	if not successfull and dices.count(6) == 2:
+		%Rules/CivetSirote.ongoing_sirotage = true
 		players[current_player].has_civet = true
 	
+	## Return to the main game tab
 	$TabContainer.current_tab = 0
 	
+	## Update roll to view the rules applying with the sirotage roll
 	UpdateRoll()
-
-
-#func _on_civet_civet_bet(value: int, combinaisons: Array) -> void:
-	#pass # Replace with function body.
 
 
 func _on_civet_lose_civet() -> void:
