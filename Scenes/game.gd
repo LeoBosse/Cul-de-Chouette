@@ -202,16 +202,7 @@ func GetValidRules() -> Array:
 		if r.check_validity(dice_values.duplicate(), players, current_player) and r.in_use:
 			valid_rules.append(r)
 	
-	#if %Sirotage.successfull:
-		#valid_rules.append(%Rules/SirotageSuccess)
-	#elif not %Sirotage.successfull and %Sirotage.already_rolled:
-		#valid_rules.append(%Rules/SirotageFail)
-		#if %Rules/ContreSirop.in_use and %Sirotage.contre_sirop_player >= 0:
-			#valid_rules.append(%Rules/ContreSirop)
-		#if players[current_player].has_civet:
-			#valid_rules.append(%Rules/CivetSirote)
-	
-	prints("sirotage: ", %Sirotage.successfull, %Sirotage.already_rolled)
+	#prints("sirotage: ", %Sirotage.successfull, %Sirotage.already_rolled)
 	prints("valid rules: ", valid_rules)
 	
 	return RulesOverride(valid_rules)
@@ -280,13 +271,8 @@ func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, 
 	## Setup the sirotage rule. Change its text based on the success of the bet.
 	%Rules/Sirotage.Setup(true, successfull)
 	
-	%Rules/ContreSirop.Setup(successfull, contre_sirop_player)
 	### Setup the Contre-Sirop rule
-	#if not successfull and contre_sirop_player >= 0:
-		#%Rules/ContreSirop.in_use = true
-		#%Rules/ContreSirop.SetPlayer(contre_sirop_player)
-	#else:
-		#%Rules/ContreSirop.in_use = false
+	%Rules/ContreSirop.Setup(successfull, contre_sirop_player)
 	
 	## Give a Civet to the current player if it applies
 	if not successfull and dices.count(6) == 2:
