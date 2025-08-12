@@ -1,3 +1,4 @@
+@tool
 extends Rule
 class_name ContreSiropRule
 

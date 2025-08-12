@@ -31,10 +31,10 @@ func _ready() -> void:
 	
 	UpdateText(rule_name, short_description, short_score)
 
-func UpdateText(rule_name:String, short_description:String, short_score:String):
-	short_text.text = rule_name.to_upper() + " :\n"
-	short_text.text += short_description + "\n"
-	short_text.text += "Score : " + short_score
+func UpdateText(new_rule_name:String, new_short_description:String, new_short_score:String):
+	short_text.text = new_rule_name.to_upper() + " :\n"
+	short_text.text += new_short_description + "\n"
+	short_text.text += "Score : " + new_short_score
 
 func ComputePoints(_dice_values:Array) -> int:
 	return 0
@@ -49,9 +49,7 @@ func check_validity(dice_values:Array, _players:Array=[], _current_player:int=-1
 			
 		validities.append(rule.check_validity(dice_values))
 	
-	var valid:bool = len(validities) > 0 and validities.all(func check(x): x)
-	
-	return valid
+	return len(validities) > 0 and validities.all(func check(x): x)
 
 func GetPlayerScores(dice_values:Array[int]) -> Array[int]:
 	"""Compute and return the points given to each players."""

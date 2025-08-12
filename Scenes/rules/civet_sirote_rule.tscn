@@ -5,6 +5,11 @@
 
 [node name="CivetSiroteRule" instance=ExtResource("1_85g3u")]
 script = ExtResource("2_0pbos")
-rule_name = "Civet Siroté"
+rule_name = "civet siroté"
 short_description = "Vous avez échoué un sirotage sur une Chouette de 6."
 short_score = "Un civet."
+
+[node name="ShortDescription" parent="." index="0"]
+text = "CIVET SIROTÉ :
+Vous avez échoué un sirotage sur une Chouette de 6.
+Score : Un civet."

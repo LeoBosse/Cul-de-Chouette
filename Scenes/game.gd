@@ -27,7 +27,7 @@ signal game_is_won(winner_name, winner_score)
 
 @onready var current_round:int = 0:
 	get():
-		return int(current_player / nb_players) 
+		return floori(current_player / nb_players)
 
 @onready var rules_node:Node = %Rules
 

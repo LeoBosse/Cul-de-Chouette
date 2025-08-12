@@ -7,7 +7,18 @@ var bet_combinaison:int = 0:
 	get():
 		return %CombinaisonsOptionButton.selected
 		
-var cominaisons:Array = [[ChouetteRule], [VeluteRule], [ChouetteVeluteRule], [SuiteRule], [CulDeChouetteRule], [CulDeChouetteRule, SirotageSucessRule]]
+var combinaisons:Array = [	[ChouetteRule], 
+							[VeluteRule], 
+							[ChouetteVeluteRule], 
+							[SuiteRule], 
+							[CulDeChouetteRule], 
+							[CulDeChouetteRule, SirotageRule]]
+#var anti_combinaisons:Array = 	[[ChouetteVeluteRule, CulDeChouetteRule],
+								#[ChouetteVeluteRule],
+								#[],
+								#[],
+								#[SirotageRule],
+								#[]]
 
 var ongoing_bet:bool = false
 var success:bool = false
@@ -21,8 +32,11 @@ func ComputePoints(_dice_values:Array) -> int:
 
 func CheckSuccess(dice_values:Array, players:Array=[], current_player:int=-1):
 	var validity:bool = true
-	for r in cominaisons[%CombinaisonsOptionButton.selected]:
+	for r in combinaisons[%CombinaisonsOptionButton.selected]:
 		validity = validity and r.new().check_validity(dice_values, players, current_player)
+	#for r in anti_combinaisons[%CombinaisonsOptionButton.selected]:
+		#prints("validity" , r.new(), validity)
+		#validity = validity and not r.new().check_validity(dice_values, players, current_player)
 	return validity
 
 func check_validity(dice_values:Array, players:Array=[], current_player:int=-1) -> bool:
