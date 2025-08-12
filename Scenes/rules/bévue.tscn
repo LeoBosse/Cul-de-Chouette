@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4746c43lqkmd"]
+
+[ext_resource type="Script" uid="uid://hunwr2bkmotm" path="res://Scenes/rules/bévue.gd" id="1_eyn6w"]
+
+[node name="Bévue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eyn6w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -17.5
+offset_right = 65.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LockCheckButton" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "Verrouiller"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Joueur 0"
+
+[connection signal="toggled" from="VBoxContainer/LockCheckButton" to="." method="_on_lock_check_button_toggled"]

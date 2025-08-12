@@ -61,6 +61,7 @@ func Setup(new_player_names:Array, rules_dict:Dictionary):
 	%Stats.Setup(player_names)
 	prints("contre sirop", %Rules.get_node_or_null("ContreSirop"), null, %Rules.get_node_or_null("ContreSirop") != null)
 	%Sirotage.Setup(player_names, %Rules.get_node_or_null("ContreSirop") != null)
+	%Bévue.Setup(player_names)
 
 func SetupPlayers(new_player_names:Array) -> void:
 	nb_players = len(new_player_names)
@@ -288,3 +289,10 @@ func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, 
 
 func _on_civet_lose_civet() -> void:
 	players[current_player].has_civet = false
+
+
+func _on_bévue_bevue(player: int) -> void:
+	players[player].score -= 10
+	prints(players[player].score)
+	_on_rule_changed()
+	
