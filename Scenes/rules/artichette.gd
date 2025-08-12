@@ -13,5 +13,5 @@ func ComputePoints(_dice_values:Array) -> int:
 	return -16
 
 
-func _on_check_button_toggled(toggled_on: bool) -> void:
+func _on_check_button_toggled(_toggled_on: bool) -> void:
 	changed_rules.emit()
