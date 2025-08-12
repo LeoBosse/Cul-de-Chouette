@@ -47,6 +47,7 @@ text = "PLAYER_NAME"
 layout_mode = 2
 selected = 0
 item_count = 7
+popup/item_0/text = "Couche-Sirop"
 popup/item_0/id = 0
 popup/item_1/text = "Linotte"
 popup/item_1/id = 1
