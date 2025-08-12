@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://j830hr4vwgv5"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_45c5h"]
+[ext_resource type="Script" uid="uid://dfudaovrqki" path="res://Scenes/rules/artichette.gd" id="2_r2d4t"]
+
+[node name="Artichette" instance=ExtResource("1_45c5h")]
+script = ExtResource("2_r2d4t")
+rule_name = "artichette"
+short_description = "3-4-3"
+short_score = "16 pts si tu cri \"Raitournelle !\"
+-16 pts si qqun crie d'abord \"Artichette !\"."
+overrides = Array[String](["Chouette", ""])
+
+[node name="ShortDescription" parent="." index="0"]
+text = "ARTICHETTE :
+3-4-3
+Score : 16 pts si tu cri \"Raitournelle !\"
+-16 pts si qqun crie d'abord \"Artichette !\"."
+
+[node name="CheckButton" type="CheckButton" parent="." index="2"]
+layout_mode = 2
+button_pressed = true
+text = "Réussie"
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

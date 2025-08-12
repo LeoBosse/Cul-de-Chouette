@@ -53,7 +53,7 @@ func _ready() -> void:
 	
 	for r in rules_node.get_children():
 		r.SetUpPlayerOptions(player_names)
-		r.select_player.connect(_on_rule_player_changed)
+		r.changed_rules.connect(_on_rule_changed)
 
 func Setup(new_player_names:Array, rules_dict:Dictionary):
 	SetupRules(rules_dict)
@@ -90,7 +90,7 @@ func SetupRules(rules_dict:Dictionary):
 		%Rules/SirotageFail.in_use = false
 		%Rules/ContreSirop.in_use = false
 
-func _on_rule_player_changed() -> void:
+func _on_rule_changed() -> void:
 	UpdateRoll()
 
 func _on_dice_roll_pressed(dice:Node, roll_value:int) -> void:

@@ -16,7 +16,7 @@ class_name Rule
 @onready var short_text = $ShortDescription
 @onready var players_list_menu = $MenuButton
 
-signal select_player()
+signal changed_rules()
 
 func _ready() -> void:
 	rule_name = rule_name.to_lower()
@@ -76,7 +76,7 @@ func GetPlayer() -> int:
 
 
 func _on_menu_button_item_selected(_index: int) -> void:
-	select_player.emit()
+	changed_rules.emit()
 	
 func Clean():
 	pass

@@ -46,7 +46,7 @@ func SetPlayer(player_id:int) -> void:
 	$VBoxContainer/MenuButton2.select(player_id)
 	
 func _on_menu_button_item_selected(_index: int) -> void:
-	select_player.emit()
+	changed_rules.emit()
 
 func _on_result_item_selected(index: int) -> void:
 	if index == 0:
@@ -57,9 +57,9 @@ func _on_result_item_selected(index: int) -> void:
 		result = results.THIRD
 	elif index == 3:
 		result = results.LOST
-	select_player.emit()
+	changed_rules.emit()
 
 
 func _on_challenged_player_item_selected(index: int) -> void:
 	challenged_player = index
-	select_player.emit()
+	changed_rules.emit()

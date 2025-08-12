@@ -183,57 +183,10 @@ text = "Civet"
 alignment = 1
 icon_alignment = 1
 
-[node name="Grelottine" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+[node name="Artichette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
 layout_mode = 2
-text = "Grelottine"
-alignment = 1
-icon_alignment = 1
-
-[node name="Passe-Grelot" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-layout_mode = 2
-text = "Passe-Grelot"
-alignment = 1
-icon_alignment = 1
-
-[node name="Bleu-Rouge" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-layout_mode = 2
-text = "Bleu-Rouge"
-alignment = 1
-icon_alignment = 1
-
-[node name="Boucliette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-layout_mode = 2
-text = "Boucliette"
-alignment = 1
-icon_alignment = 1
-
-[node name="Bévue" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-layout_mode = 2
-text = "Bévue"
-alignment = 1
-icon_alignment = 1
-
-[node name="Achat de Dé" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-layout_mode = 2
-text = "Achat de Dé"
-alignment = 1
-icon_alignment = 1
-
-[node name="Doublette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-layout_mode = 2
-text = "Doublette"
-alignment = 1
-icon_alignment = 1
-
-[node name="Chante-Sloubi" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-layout_mode = 2
-text = "Chante-Sloubi "
-alignment = 1
-icon_alignment = 1
-
-[node name="Banque" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-layout_mode = 2
-text = "Banque"
+button_pressed = true
+text = "Artichette"
 alignment = 1
 icon_alignment = 1
 
