@@ -76,6 +76,7 @@ func SetupPlayers(new_player_names:Array) -> void:
 
 func SetupRules(rules_dict:Dictionary):
 	for r in %Rules.get_children():
+		r.visibility = false
 		if r.rule_name.to_lower() in rules_dict:
 			r.in_use = rules_dict[r.rule_name.to_lower()]
 		

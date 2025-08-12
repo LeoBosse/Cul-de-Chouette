@@ -162,6 +162,7 @@ visible = false
 layout_mode = 2
 
 [node name="Artichette" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("17_tfod6")]
+visible = false
 layout_mode = 2
 overrides = Array[String](["chouette", "", "neant"])
 

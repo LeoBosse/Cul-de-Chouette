@@ -5,12 +5,11 @@
 
 [node name="ContreSirop" instance=ExtResource("1_ld7mt")]
 script = ExtResource("2_chmnu")
-rule_name = "Contre Sirop"
+rule_name = "contre sirop"
 short_description = "Lors d'un sirotage raté, le premier joueur à lever le poing en criant \"J'apprécie les fruits au sirop !\""
 short_score = "1/5e des points du Cul de Chouette tenté."
-overrides = Array[String]([])
 
 [node name="ShortDescription" parent="." index="0"]
-text = "CONTRE-SIROP :
-En cas de sirotage perdu, le premier adversaire à crier \"J'aime les fruits au sirop !\" en levant son poing gagne des points.
-Score : Le double du dixième du cul de chouette tenté."
+text = "CONTRE SIROP :
+Lors d'un sirotage raté, le premier joueur à lever le poing en criant \"J'apprécie les fruits au sirop !\"
+Score : 1/5e des points du Cul de Chouette tenté."

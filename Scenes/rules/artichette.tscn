@@ -9,7 +9,7 @@ rule_name = "artichette"
 short_description = "3-4-3"
 short_score = "16 pts si tu cri \"Raitournelle !\"
 -16 pts si qqun crie d'abord \"Artichette !\"."
-overrides = Array[String](["Chouette", ""])
+overrides = Array[String](["chouette", "", "neant"])
 
 [node name="ShortDescription" parent="." index="0"]
 text = "ARTICHETTE :
