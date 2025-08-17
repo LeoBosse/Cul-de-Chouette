@@ -13,22 +13,32 @@ short_score = "Les points de la velute sont attribué au premier joueur qui cri 
 selectable_player = true
 overrides = Array[String](["chouette", "velute", "neant"])
 
-[node name="ShortDescription" parent="." index="0"]
+[node name="RuleInPlay" parent="." index="0"]
+visible = true
+
+[node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "CHOUETTE VELUTE :
 La somme de deux dés identiques vaut le troisième (chouette + velute)
 Score : Les points de la velute sont attribué au premier joueur qui cri \"Pas mou le caillou !\" en tapant dans ses mains."
 
+[node name="MenuButton" parent="RuleInPlay" index="1"]
+disabled = false
+
 [node name="VeluteRule" parent="." index="1" instance=ExtResource("2_808m8")]
 visible = false
 layout_mode = 2
+anchors_preset = 0
 size_flags_horizontal = 1
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="Chouette" parent="." index="2" instance=ExtResource("3_g6s1a")]
 visible = false
 layout_mode = 2
+anchors_preset = 0
 size_flags_horizontal = 1
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
+current_state = 0
 
-[node name="MenuButton" parent="." index="3"]
-disabled = false
+[node name="RuleInSetup" parent="." index="3"]
+visible = false
+text = "Chouette Velute"

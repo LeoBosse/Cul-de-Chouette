@@ -10,6 +10,7 @@ grow_vertical = 1
 script = ExtResource("2_83yab")
 rule_name = "sirotage"
 overrides = Array[String](["neant"])
+current_state = null
 
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "SIROTAGE :

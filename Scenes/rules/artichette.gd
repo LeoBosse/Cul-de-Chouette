@@ -8,7 +8,7 @@ func check_validity(dice_values:Array, _players:Array=[], _current_player:int=-1
 
 
 func ComputePoints(_dice_values:Array) -> int:
-	if $CheckButton.button_pressed:
+	if $RuleInPlay/CheckButton.button_pressed:
 		return 16
 	return -16
 

@@ -16,7 +16,11 @@ class_name Rule
 @onready var short_text = $RuleInPlay/ShortDescription
 @onready var players_list_menu = $RuleInPlay/MenuButton
 
-enum state{INGAME, SETUP}
+enum State{INGAME, SETUP}
+@export var current_state:State:
+	set(new_state):
+		SetState(new_state)
+		current_state = new_state
 
 signal changed_rules()
 
@@ -35,12 +39,18 @@ func _ready() -> void:
 	
 	$RuleInSetup.text = rule_name.capitalize()
 	
-func SetState(new_state:int):
+func SetState(new_state:State):
 	for c in get_children():
 		c.visible = false
-	get_child(new_state).visible = true
-		
-
+	
+	if new_state == State.INGAME:
+		$RuleInPlay.visible = true
+		modulate = Color(1, 1, 1)
+		size_flags_vertical = Control.SIZE_EXPAND_FILL
+	elif new_state == State.SETUP:
+		$RuleInSetup.visible = true
+		size_flags_vertical = Control.SIZE_EXPAND_FILL
+	
 func UpdateText(new_rule_name:String, new_short_description:String, new_short_score:String):
 	short_text.text = new_rule_name.to_upper() + " :\n"
 	short_text.text += new_short_description + "\n"
@@ -90,3 +100,7 @@ func _on_menu_button_item_selected(_index: int) -> void:
 	
 func Clean():
 	pass
+
+
+func _on_rule_in_setup_toggled(toggled_on: bool) -> void:
+	in_use = toggled_on

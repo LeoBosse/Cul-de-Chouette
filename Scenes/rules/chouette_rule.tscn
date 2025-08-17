@@ -9,6 +9,7 @@ rule_name = "chouette"
 short_description = "Deux dés identiques (la chouette)."
 short_score = "Le carré de la chouette"
 overrides = Array[String](["neant"])
+current_state = null
 
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "CHOUETTE :

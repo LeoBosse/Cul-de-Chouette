@@ -9,6 +9,7 @@ rule_name = "contre sirop"
 short_description = "Lors d'un sirotage raté, le premier joueur à lever le poing en criant \"J'apprécie les fruits au sirop !\""
 short_score = "1/5e des points du Cul de Chouette tenté."
 overrides = Array[String](["neant"])
+current_state = null
 
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "CONTRE SIROP :

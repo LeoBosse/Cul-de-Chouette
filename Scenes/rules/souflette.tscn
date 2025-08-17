@@ -18,6 +18,7 @@ Si le joueur défié réussit à faire 421 :
 - du troisième coup, il gagne 30 points et le défiant les perd.
 Si le joueur défié échoue, il perd 30 points et le défiant les gagne."
 overrides = Array[String](["neant"])
+current_state = null
 
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "SOUFLETTE :

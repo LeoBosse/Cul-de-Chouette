@@ -52,10 +52,10 @@ offset_right = 60.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-disabled = true
 button_pressed = true
 text = "Chouette"
 alignment = 1
 icon_alignment = 1
 
 [connection signal="item_selected" from="RuleInPlay/MenuButton" to="." method="_on_menu_button_item_selected"]
+[connection signal="toggled" from="RuleInSetup" to="." method="_on_rule_in_setup_toggled"]

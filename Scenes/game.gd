@@ -55,7 +55,7 @@ func _ready() -> void:
 		r.SetUpPlayerOptions(player_names)
 		r.changed_rules.connect(_on_rule_changed)
 
-func Setup(new_player_names:Array, rules_dict:Dictionary):
+func Setup(new_player_names:Array, rules_dict:Array):
 	SetupRules(rules_dict)
 	SetupPlayers(new_player_names)
 	%Stats.Setup(player_names)
@@ -74,22 +74,28 @@ func SetupPlayers(new_player_names:Array) -> void:
 		players.append(new_player)
 	UpdateCurrentPlayerLabel()
 
-func SetupRules(rules_dict:Dictionary):
+func SetupRules(rules_list:Array):
 	for r in %Rules.get_children():
-		r.SetState(r.state.INGAME)
-		if r.rule_name.to_lower() in rules_dict:
-			r.in_use = rules_dict[r.rule_name.to_lower()]
+		r.queue_free()
+	
+	for r in rules_list:
+		r.current_state = r.State.INGAME
+		r.visible = false
+		
+		#if r.rule_name.to_lower() in rules_dict:
+			#r.in_use = rules_dict[r.rule_name.to_lower()]
+		
+		%Rules.add_child(r)
 		
 		prints("Rules setup: ", r.rule_name, r.in_use)
-		#if not r.in_use:
-			#r.queue_free()
 	
-	if not rules_dict["sirotage"]:
-		%Sirotage.disabled = true
+	#%Rules.print_tree_pretty()
+	if not %Rules/SirotageRule.in_use:
+		#%Rules/SirotageRule.disabled = true
 		$TabContainer.set_tab_hidden(tabs_index["sirotage"], true)
-		%Rules/Sirotage.in_use = false
-		%Rules/SirotageSuccess.in_use = false
-		%Rules/SirotageFail.in_use = false
+		#%Rules/SirotageRule.in_use = false
+		#%Rules/sirotageSuccess.in_use = false
+		#%Rules/sirotageFail.in_use = false
 		%Rules/ContreSirop.in_use = false
 
 func _on_rule_changed() -> void:
@@ -271,7 +277,7 @@ func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, 
 	SetDicesAccess(false)
 	
 	## Setup the sirotage rule. Change its text based on the success of the bet.
-	%Rules/Sirotage.Setup(true, successfull)
+	%Rules/SirotageRule.Setup(true, successfull)
 	
 	### Setup the Contre-Sirop rule
 	%Rules/ContreSirop.Setup(successfull, contre_sirop_player)

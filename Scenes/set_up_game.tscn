@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://h5vm2iosihj1"]
+[gd_scene load_steps=14 format=3 uid="uid://h5vm2iosihj1"]
 
 [ext_resource type="Script" uid="uid://ot5xhvdcgln1" path="res://Scenes/set_up_game.gd" id="1_w5t50"]
 [ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="2_1hbbt"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dawwj05mksy3g" path="res://Scenes/rules/contre_sirop.tscn" id="10_4riew"]
 [ext_resource type="PackedScene" uid="uid://bvbl1t4kjacbe" path="res://Scenes/rules/civet_sirote_rule.tscn" id="11_0l87j"]
 [ext_resource type="PackedScene" uid="uid://bxthx016g7j8m" path="res://Scenes/rules/civet_rule.tscn" id="12_dsfxb"]
+[ext_resource type="PackedScene" uid="uid://dr176pc5p06or" path="res://Scenes/rules/neant.tscn" id="13_x33ao"]
 
 [node name="SetUpGame" type="Control"]
 layout_mode = 3
@@ -97,7 +98,6 @@ horizontal_scroll_mode = 0
 
 [node name="Rules" type="GridContainer" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer"]
 unique_name_in_owner = true
-visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -109,58 +109,63 @@ columns = 2
 [node name="Chouette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("2_1hbbt")]
 modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
 
 [node name="Velute" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("3_43qa1")]
 modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
 
 [node name="ChouetteVelute" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("4_5faca")]
 modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
 
 [node name="CulDeChouette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("5_fwqs0")]
 modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
 
 [node name="Artichette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("6_1schr")]
 modulate = Color(0.806368, 0.393277, 0, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
 
 [node name="Suite" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("7_x33ao")]
 modulate = Color(0.806368, 0.393277, 0, 1)
 layout_mode = 2
-size_flags_vertical = 6
 overrides = Array[String](["neant"])
+current_state = 1
 
 [node name="Souflette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("8_tktok")]
 modulate = Color(0.806368, 0.393277, 0, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
+
+[node name="Neant" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("13_x33ao")]
+modulate = Color(0.807843, 0.392157, 0, 1)
+layout_mode = 2
+current_state = 1
 
 [node name="SirotageRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("9_ur7xx")]
 modulate = Color(0.806368, 0.393277, 0, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
 
 [node name="ContreSirop" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("10_4riew")]
 modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
 
 [node name="CivetSiroteRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("11_0l87j")]
 modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
 
 [node name="CivetRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("12_dsfxb")]
 modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
-size_flags_vertical = 6
+current_state = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/Options"]
 custom_minimum_size = Vector2(0, 50)

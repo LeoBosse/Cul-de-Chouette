@@ -3,7 +3,7 @@ extends Node
 @onready var game_scene:PackedScene = load("res://Scenes/Game.tscn")
 
 
-func _on_set_up_game_launch_new_game(players: Array, rules: Dictionary) -> void:
+func _on_set_up_game_launch_new_game(players: Array, rules: Array) -> void:
 	"""Create a new game node from the options and sets it as main scene."""
 	
 	var new_game:Game = game_scene.instantiate()

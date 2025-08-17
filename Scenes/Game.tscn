@@ -1,24 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://drk4ise4rkyfg"]
+[gd_scene load_steps=11 format=3 uid="uid://drk4ise4rkyfg"]
 
 [ext_resource type="Script" uid="uid://c48sum0lcyi3l" path="res://Scenes/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_gl6un"]
 [ext_resource type="ButtonGroup" uid="uid://bcwtixhh3jrw2" path="res://Scenes/DiceSelect/row1_button_group.tres" id="3_b2bpf"]
 [ext_resource type="ButtonGroup" uid="uid://dsxjka17o73pj" path="res://Scenes/DiceSelect/row2_button_group.tres" id="4_7lihs"]
 [ext_resource type="ButtonGroup" uid="uid://c21340qp52gfj" path="res://Scenes/DiceSelect/row3_button_group.tres" id="5_fgofq"]
-[ext_resource type="PackedScene" uid="uid://d2ieq50tkebgy" path="res://Scenes/rules/chouette_velute_rule.tscn" id="6_bf53h"]
 [ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="7_71axn"]
-[ext_resource type="PackedScene" uid="uid://cq68mxcsve8o7" path="res://Scenes/rules/cul_de_chouette_rule.tscn" id="8_dahhg"]
-[ext_resource type="PackedScene" uid="uid://c04lj4ep0bth5" path="res://Scenes/rules/velute_rule.tscn" id="9_3so38"]
-[ext_resource type="PackedScene" uid="uid://dn0bwdhfrbya3" path="res://Scenes/rules/suite.tscn" id="10_71axn"]
-[ext_resource type="PackedScene" uid="uid://bv8b3dtp4xmgr" path="res://Scenes/rules/souflette.tscn" id="11_dahhg"]
-[ext_resource type="PackedScene" uid="uid://dr176pc5p06or" path="res://Scenes/rules/neant.tscn" id="12_3so38"]
 [ext_resource type="PackedScene" uid="uid://fpqqqll0ardo" path="res://Scenes/rules/sirotage.tscn" id="13_wxwew"]
-[ext_resource type="PackedScene" uid="uid://tgtcdnhiu3ry" path="res://Scenes/rules/sirotage_rule.tscn" id="13_x3xnh"]
 [ext_resource type="PackedScene" uid="uid://byveysu48hdxp" path="res://Scenes/game_stats.tscn" id="15_acvyw"]
-[ext_resource type="PackedScene" uid="uid://dawwj05mksy3g" path="res://Scenes/rules/contre_sirop.tscn" id="16_rajel"]
-[ext_resource type="PackedScene" uid="uid://bvbl1t4kjacbe" path="res://Scenes/rules/civet_sirote_rule.tscn" id="17_8r6kd"]
 [ext_resource type="PackedScene" uid="uid://j830hr4vwgv5" path="res://Scenes/rules/artichette.tscn" id="17_tfod6"]
-[ext_resource type="PackedScene" uid="uid://bxthx016g7j8m" path="res://Scenes/rules/civet_rule.tscn" id="18_rajel"]
 [ext_resource type="PackedScene" uid="uid://b4746c43lqkmd" path="res://Scenes/rules/bévue.tscn" id="20_tfod6"]
 
 [node name="Game" type="Control"]
@@ -98,84 +88,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Chouette" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("7_71axn")]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 1
-size_flags_vertical = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-
-[node name="Velute" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("9_3so38")]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 1
-size_flags_vertical = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-
-[node name="ChouetteVelute" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("6_bf53h")]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 1
-size_flags_vertical = 1
-overrides = Array[String](["chouette", "velute", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-
-[node name="CulDeChouette" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("8_dahhg")]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 1
-size_flags_vertical = 1
-overrides = Array[String](["chouette", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-
-[node name="Suite" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("10_71axn")]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 1
-size_flags_vertical = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-
-[node name="Souflette" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("11_dahhg")]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 1
-size_flags_vertical = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-
-[node name="Neant" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("12_3so38")]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 1
-size_flags_vertical = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-
-[node name="Sirotage" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("13_x3xnh")]
-visible = false
-layout_mode = 2
-size_flags_vertical = 1
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-
-[node name="ContreSirop" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("16_rajel")]
-visible = false
-layout_mode = 2
-size_flags_vertical = 1
-short_description = "Lors d'un sirotage raté, le 1er joueur à lever le poing en criant \"J'apprécie les fruits au sirop !\"."
-overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-
-[node name="CivetSirote" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("17_8r6kd")]
-visible = false
-layout_mode = 2
-size_flags_vertical = 1
-overrides = Array[String](["neant", "neant"])
-
-[node name="Civet" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("18_rajel")]
-visible = false
-layout_mode = 2
-size_flags_vertical = 1
-overrides = Array[String](["neant"])
-
 [node name="Artichette" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("17_tfod6")]
-visible = false
 layout_mode = 2
-size_flags_vertical = 1
+current_state = 0
+
+[node name="Chouette" parent="TabContainer/Lancé/ScrollContainer/Rules" instance=ExtResource("7_71axn")]
+layout_mode = 2
+current_state = 0
 
 [node name="Sirotage" parent="TabContainer" instance=ExtResource("13_wxwew")]
 unique_name_in_owner = true
@@ -196,7 +115,6 @@ layout_mode = 2
 metadata/_tab_index = 3
 
 [connection signal="pressed" from="TabContainer/Lancé/HBoxContainer/ValidateRollButton" to="." method="_on_validate_roll_button_pressed"]
-[connection signal="lose_civet" from="TabContainer/Lancé/ScrollContainer/Rules/Civet" to="." method="_on_civet_lose_civet"]
 [connection signal="trying_sirotage" from="TabContainer/Sirotage" to="." method="_on_sirotage_trying_sirotage"]
 [connection signal="validating_sirotage" from="TabContainer/Sirotage" to="." method="_on_sirotage_validating_sirotage"]
 [connection signal="bevue" from="TabContainer/Bévue" to="." method="_on_bévue_bevue"]

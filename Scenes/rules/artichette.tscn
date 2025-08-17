@@ -10,6 +10,7 @@ short_description = "3-4-3"
 short_score = "16 pts si tu cri \"Raitournelle !\"
 -16 pts si qqun crie d'abord \"Artichette !\"."
 overrides = Array[String](["chouette", "", "neant"])
+current_state = null
 
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "ARTICHETTE :

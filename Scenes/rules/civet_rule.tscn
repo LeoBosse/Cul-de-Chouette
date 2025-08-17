@@ -9,6 +9,7 @@ rule_name = "civet"
 short_description = "Pari sur la combinaison effectuée pour le lancer."
 short_score = "Le montant parié en positif ou négatif."
 overrides = Array[String](["neant"])
+current_state = null
 
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "CIVET :

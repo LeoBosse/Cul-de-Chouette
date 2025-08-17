@@ -6,7 +6,7 @@ signal launch_new_game(players:Array, rules:Dictionary)
 
 func _ready() -> void:
 	for r in %Rules.get_children():
-		r.SetState(r.state.SETUP)
+		r.current_state = r.State.SETUP
 
 func _on_nb_players_text_changed(new_text: String) -> void:
 	"""When entering or changing the number of players for the new game, setup the options and make them visible."""
@@ -44,13 +44,11 @@ func GetPlayers() -> Array:
 	return players
 
 
-func GetRules() -> Dictionary:
+func GetRules() -> Array:
 	"""Return a dictionary with the name of all rules and a bool ON/OFF"""
-	var rules:Dictionary = {}
-	var rule_name:String = ""
+	var rules:Array = []
 	for r in %Rules.get_children():
-		rule_name = r.text.to_lower()
-		rules[rule_name] = r.button_pressed
+		rules.append(r.duplicate())
 	return rules
 	
 func _on_create_game_button_pressed() -> void:
