@@ -7,6 +7,17 @@ signal launch_new_game(players:Array, rules:Dictionary)
 func _ready() -> void:
 	for r in %Rules.get_children():
 		r.current_state = r.State.SETUP
+		r.get_node("RuleInSetup").toggled.connect(_on_rule_toggled.bind(r.rule_name))
+
+func _on_rule_toggled(toggled_on:bool, rule_name:String):
+	for r in %Rules.get_children():
+		if r.rule_name == rule_name:
+			continue
+		
+		prints(rule_name, r.rule_name, r.prerequisites)
+		if r.prerequisites.has(rule_name.to_lower()):
+			r.in_use = toggled_on
+		
 
 func _on_nb_players_text_changed(new_text: String) -> void:
 	"""When entering or changing the number of players for the new game, setup the options and make them visible."""

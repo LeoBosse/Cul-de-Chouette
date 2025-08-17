@@ -119,6 +119,7 @@ current_state = 1
 [node name="ChouetteVelute" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("4_5faca")]
 modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
+prerequisites = Array[String]([])
 current_state = 1
 
 [node name="CulDeChouette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("5_fwqs0")]
@@ -155,6 +156,7 @@ current_state = 1
 [node name="ContreSirop" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("10_4riew")]
 modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
+prerequisites = Array[String](["sirotage"])
 current_state = 1
 
 [node name="CivetSiroteRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("11_0l87j")]

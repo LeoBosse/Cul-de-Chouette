@@ -9,9 +9,14 @@ class_name Rule
 @export_multiline var full_description:String = "Full description"
 
 
-@export var in_use:bool = true
+@export var in_use:bool = true:
+	set(new_value):
+		$RuleInSetup.set_pressed_no_signal(new_value)
+		in_use = new_value
+		
 @export var selectable_player:bool = false
 @export var overrides:Array[String] = []
+@export var prerequisites:Array[String] = []
 
 @onready var short_text = $RuleInPlay/ShortDescription
 @onready var players_list_menu = $RuleInPlay/MenuButton
@@ -32,6 +37,9 @@ func _ready() -> void:
 		overrides.append("neant")
 	for i in overrides.size():
 		overrides[i] = overrides[i].to_lower()
+	
+	for i in len(prerequisites):
+		prerequisites[i] = prerequisites[i].to_lower()
 	
 	players_list_menu.disabled = not selectable_player
 	
