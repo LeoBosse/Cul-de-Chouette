@@ -18,23 +18,24 @@ Si le joueur défié réussit à faire 421 :
 - du troisième coup, il gagne 30 points et le défiant les perd.
 Si le joueur défié échoue, il perd 30 points et le défiant les gagne."
 selectable_player = true
+overrides = Array[String](["neant"])
 
-[node name="ShortDescription" parent="." index="0"]
+[node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "SOUFLETTE :
 3 dés formant 4, 2 et 1.
 Score : 50, 40 ou 30 suivant le résultat du défi."
 
-[node name="MenuButton" parent="." index="1"]
+[node name="MenuButton" parent="RuleInPlay" index="1"]
 disabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RuleInPlay" index="2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="RuleInPlay/VBoxContainer" index="0"]
 layout_mode = 2
 text = "Défié :"
 
-[node name="MenuButton2" type="OptionButton" parent="VBoxContainer" index="1"]
+[node name="MenuButton2" type="OptionButton" parent="RuleInPlay/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_vertical = 4
 item_count = 2
@@ -43,15 +44,15 @@ popup/item_0/id = 0
 popup/item_1/text = "Player 2"
 popup/item_1/id = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." index="3"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="RuleInPlay" index="3"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer2" index="0"]
+[node name="Label" type="Label" parent="RuleInPlay/VBoxContainer2" index="0"]
 layout_mode = 2
 text = "Nombre 
 d'essais"
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer2" index="1"]
+[node name="OptionButton" type="OptionButton" parent="RuleInPlay/VBoxContainer2" index="1"]
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "1"
@@ -63,5 +64,8 @@ popup/item_2/id = 2
 popup/item_3/text = "Perdu"
 popup/item_3/id = 3
 
-[connection signal="item_selected" from="VBoxContainer/MenuButton2" to="." method="_on_challenged_player_item_selected"]
-[connection signal="item_selected" from="VBoxContainer2/OptionButton" to="." method="_on_result_item_selected"]
+[node name="RuleInSetup" parent="." index="1"]
+text = "Souflette"
+
+[connection signal="item_selected" from="RuleInPlay/VBoxContainer/MenuButton2" to="." method="_on_challenged_player_item_selected"]
+[connection signal="item_selected" from="RuleInPlay/VBoxContainer2/OptionButton" to="." method="_on_result_item_selected"]

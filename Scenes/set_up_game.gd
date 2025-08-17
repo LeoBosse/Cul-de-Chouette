@@ -4,6 +4,10 @@ extends Control
 
 signal launch_new_game(players:Array, rules:Dictionary)
 
+func _ready() -> void:
+	for r in %Rules.get_children():
+		r.SetState(r.state.SETUP)
+
 func _on_nb_players_text_changed(new_text: String) -> void:
 	"""When entering or changing the number of players for the new game, setup the options and make them visible."""
 	if new_text.is_valid_int():

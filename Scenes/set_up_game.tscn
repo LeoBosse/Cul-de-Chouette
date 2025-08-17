@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://h5vm2iosihj1"]
+[gd_scene load_steps=13 format=3 uid="uid://h5vm2iosihj1"]
 
 [ext_resource type="Script" uid="uid://ot5xhvdcgln1" path="res://Scenes/set_up_game.gd" id="1_w5t50"]
+[ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="2_1hbbt"]
+[ext_resource type="PackedScene" uid="uid://c04lj4ep0bth5" path="res://Scenes/rules/velute_rule.tscn" id="3_43qa1"]
+[ext_resource type="PackedScene" uid="uid://d2ieq50tkebgy" path="res://Scenes/rules/chouette_velute_rule.tscn" id="4_5faca"]
+[ext_resource type="PackedScene" uid="uid://cq68mxcsve8o7" path="res://Scenes/rules/cul_de_chouette_rule.tscn" id="5_fwqs0"]
+[ext_resource type="PackedScene" uid="uid://j830hr4vwgv5" path="res://Scenes/rules/artichette.tscn" id="6_1schr"]
+[ext_resource type="PackedScene" uid="uid://dn0bwdhfrbya3" path="res://Scenes/rules/suite.tscn" id="7_x33ao"]
+[ext_resource type="PackedScene" uid="uid://bv8b3dtp4xmgr" path="res://Scenes/rules/souflette.tscn" id="8_tktok"]
+[ext_resource type="PackedScene" uid="uid://tgtcdnhiu3ry" path="res://Scenes/rules/sirotage_rule.tscn" id="9_ur7xx"]
+[ext_resource type="PackedScene" uid="uid://dawwj05mksy3g" path="res://Scenes/rules/contre_sirop.tscn" id="10_4riew"]
+[ext_resource type="PackedScene" uid="uid://bvbl1t4kjacbe" path="res://Scenes/rules/civet_sirote_rule.tscn" id="11_0l87j"]
+[ext_resource type="PackedScene" uid="uid://bxthx016g7j8m" path="res://Scenes/rules/civet_rule.tscn" id="12_dsfxb"]
 
 [node name="SetUpGame" type="Control"]
 layout_mode = 3
@@ -84,111 +95,72 @@ custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="Rules" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer"]
+[node name="Rules" type="GridContainer" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer"]
 unique_name_in_owner = true
 visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
+size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
-alignment = 1
+columns = 2
 
-[node name="Chouette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-modulate = Color(1, 0, 0, 1)
+[node name="Chouette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("2_1hbbt")]
+modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
-disabled = true
-button_pressed = true
-text = "Chouette"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
-[node name="Velute" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-modulate = Color(1, 0, 0, 1)
+[node name="Velute" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("3_43qa1")]
+modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
-disabled = true
-button_pressed = true
-text = "Velute"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
-[node name="Chouette Velute" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-modulate = Color(1, 0, 0, 1)
+[node name="ChouetteVelute" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("4_5faca")]
+modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
-disabled = true
-button_pressed = true
-text = "Chouette Velute"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
-[node name="Cul de Chouette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-modulate = Color(1, 0, 0, 1)
+[node name="CulDeChouette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("5_fwqs0")]
+modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
-disabled = true
-button_pressed = true
-text = "Cul de Chouette"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
-[node name="Suite" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-modulate = Color(0, 1, 0, 1)
+[node name="Artichette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("6_1schr")]
+modulate = Color(0.806368, 0.393277, 0, 1)
 layout_mode = 2
-button_pressed = true
-text = "Suite"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
-[node name="Souflette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-modulate = Color(0, 1, 0, 1)
+[node name="Suite" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("7_x33ao")]
+modulate = Color(0.806368, 0.393277, 0, 1)
 layout_mode = 2
-button_pressed = true
-text = "Souflette"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
+overrides = Array[String](["neant"])
 
-[node name="Neant" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-modulate = Color(0, 1, 0, 1)
+[node name="Souflette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("8_tktok")]
+modulate = Color(0.806368, 0.393277, 0, 1)
 layout_mode = 2
-button_pressed = true
-text = "Neant"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
-[node name="Sirotage" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+[node name="SirotageRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("9_ur7xx")]
+modulate = Color(0.806368, 0.393277, 0, 1)
 layout_mode = 2
-button_pressed = true
-text = "Sirotage"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
-[node name="Contre-Sirop" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+[node name="ContreSirop" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("10_4riew")]
+modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
-button_pressed = true
-text = "Contre-Sirop"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
-[node name="Civet Siroté" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+[node name="CivetSiroteRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("11_0l87j")]
+modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
-button_pressed = true
-text = "Civet Siroté"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
-[node name="Civet" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
+[node name="CivetRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("12_dsfxb")]
+modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
-button_pressed = true
-text = "Civet"
-alignment = 1
-icon_alignment = 1
-
-[node name="Artichette" type="CheckButton" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules"]
-layout_mode = 2
-button_pressed = true
-text = "Artichette"
-alignment = 1
-icon_alignment = 1
+size_flags_vertical = 6
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/Options"]
 custom_minimum_size = Vector2(0, 50)

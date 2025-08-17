@@ -8,25 +8,26 @@ script = ExtResource("2_gpe17")
 rule_name = "civet"
 short_description = "Pari sur la combinaison effectuée pour le lancer."
 short_score = "Le montant parié en positif ou négatif."
+overrides = Array[String](["neant"])
 
-[node name="ShortDescription" parent="." index="0"]
+[node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "CIVET :
 Pari sur la combinaison effectuée pour le lancer.
 Score : Le montant parié en positif ou négatif."
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RuleInPlay" index="2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="BetValueLine" type="LineEdit" parent="VBoxContainer" index="0"]
+[node name="BetValueLine" type="LineEdit" parent="RuleInPlay/VBoxContainer" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 placeholder_text = "Montant"
 
-[node name="CombinaisonsOptionButton" type="OptionButton" parent="VBoxContainer" index="1"]
+[node name="CombinaisonsOptionButton" type="OptionButton" parent="RuleInPlay/VBoxContainer" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
@@ -46,5 +47,8 @@ popup/item_4/id = 4
 popup/item_5/text = "Cul de Chouette siroté"
 popup/item_5/id = 5
 
-[connection signal="text_changed" from="VBoxContainer/BetValueLine" to="." method="_on_bet_value_line_text_changed"]
-[connection signal="item_selected" from="VBoxContainer/CombinaisonsOptionButton" to="." method="_on_combinaisons_option_button_item_selected"]
+[node name="RuleInSetup" parent="." index="1"]
+text = "Civet"
+
+[connection signal="text_changed" from="RuleInPlay/VBoxContainer/BetValueLine" to="." method="_on_bet_value_line_text_changed"]
+[connection signal="item_selected" from="RuleInPlay/VBoxContainer/CombinaisonsOptionButton" to="." method="_on_combinaisons_option_button_item_selected"]

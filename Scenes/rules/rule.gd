@@ -1,5 +1,5 @@
 @tool
-extends HBoxContainer
+extends Control
 class_name Rule
 
 @export var rule_name:String = "rule name"
@@ -13,8 +13,10 @@ class_name Rule
 @export var selectable_player:bool = false
 @export var overrides:Array[String] = []
 
-@onready var short_text = $ShortDescription
-@onready var players_list_menu = $MenuButton
+@onready var short_text = $RuleInPlay/ShortDescription
+@onready var players_list_menu = $RuleInPlay/MenuButton
+
+enum state{INGAME, SETUP}
 
 signal changed_rules()
 
@@ -30,6 +32,14 @@ func _ready() -> void:
 	players_list_menu.disabled = not selectable_player
 	
 	UpdateText(rule_name, short_description, short_score)
+	
+	$RuleInSetup.text = rule_name.capitalize()
+	
+func SetState(new_state:int):
+	for c in get_children():
+		c.visible = false
+	get_child(new_state).visible = true
+		
 
 func UpdateText(new_rule_name:String, new_short_description:String, new_short_score:String):
 	short_text.text = new_rule_name.to_upper() + " :\n"

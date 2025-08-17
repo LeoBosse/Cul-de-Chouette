@@ -4,12 +4,19 @@
 [ext_resource type="Script" uid="uid://bht6ppq6tmh55" path="res://Scenes/rules/sirotage_rule.gd" id="2_83yab"]
 
 [node name="SirotageRule" instance=ExtResource("1_ajnmm")]
+anchors_preset = 10
+anchor_bottom = 0.0
+grow_vertical = 1
 script = ExtResource("2_83yab")
 rule_name = "sirotage"
-short_description = "Relance un dé pour transformer ta chouette en Cul de Chouette !"
-short_score = "Les pts du Cul de chouette si tu réussi. Moins les pts de la chouette si tu échoue."
+overrides = Array[String](["neant"])
 
-[node name="ShortDescription" parent="." index="0"]
+[node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "SIROTAGE :
-Relance un dé pour transformer ta chouette en Cul de Chouette !
-Score : Les pts du Cul de chouette si tu réussi. Moins les pts de la chouette si tu échoue."
+Short description
+Score : Short score description"
+
+[node name="RuleInSetup" parent="." index="1"]
+offset_left = -56.0
+offset_right = 56.0
+text = "Sirotage"

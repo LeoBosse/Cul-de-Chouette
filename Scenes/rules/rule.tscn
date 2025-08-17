@@ -2,15 +2,26 @@
 
 [ext_resource type="Script" uid="uid://dmehyfgfiv2md" path="res://Scenes/rules/rule.gd" id="1_yfg40"]
 
-[node name="Rule" type="HBoxContainer"]
+[node name="Rule" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_yfg40")
+
+[node name="RuleInPlay" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 size_flags_horizontal = 3
-script = ExtResource("1_yfg40")
-overrides = Array[String](["neant"])
 
-[node name="ShortDescription" type="RichTextLabel" parent="."]
+[node name="ShortDescription" type="RichTextLabel" parent="RuleInPlay"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "RULE NAME :
@@ -18,7 +29,7 @@ Short description
 Score : Short score description"
 fit_content = true
 
-[node name="MenuButton" type="OptionButton" parent="."]
+[node name="MenuButton" type="OptionButton" parent="RuleInPlay"]
 layout_mode = 2
 size_flags_vertical = 4
 disabled = true
@@ -28,4 +39,23 @@ popup/item_0/id = 0
 popup/item_1/text = "Player 2"
 popup/item_1/id = 1
 
-[connection signal="item_selected" from="MenuButton" to="." method="_on_menu_button_item_selected"]
+[node name="RuleInSetup" type="CheckButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -15.5
+offset_right = 60.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+button_pressed = true
+text = "Chouette"
+alignment = 1
+icon_alignment = 1
+
+[connection signal="item_selected" from="RuleInPlay/MenuButton" to="." method="_on_menu_button_item_selected"]
