@@ -18,8 +18,9 @@ func _on_set_up_game_launch_new_game(players: Array, rules: Array) -> void:
 	%SetUpGame.visible = false
 
 
-func _on_game_game_is_won(winner_name:String, winner_score:int) -> void:
-	%WinPanel.Launch(winner_name, winner_score)
+func _on_game_game_is_won(stats) -> void:
+	
+	%WinPanel.Launch(stats)
 	%WinPanel.visible = true
 	$Game.visible = false
 	get_tree().paused = true

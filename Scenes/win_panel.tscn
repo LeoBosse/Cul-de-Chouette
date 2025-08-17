@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpvduqq3he6cu"]
+[gd_scene load_steps=7 format=3 uid="uid://bpvduqq3he6cu"]
 
 [ext_resource type="Script" uid="uid://d0dh77cgu3lv1" path="res://Scenes/win_panel.gd" id="1_4t0ca"]
+[ext_resource type="PackedScene" uid="uid://byveysu48hdxp" path="res://Scenes/game_stats.tscn" id="3_3ap5d"]
 [ext_resource type="Texture2D" uid="uid://bhroee8fvn8x5" path="res://icon.svg" id="3_ky07w"]
 
 [sub_resource type="Animation" id="Animation_ky07w"]
@@ -216,9 +217,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -149.5
-offset_top = -152.0
+offset_top = -169.5
 offset_right = 149.5
-offset_bottom = 152.0
+offset_bottom = 169.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -244,7 +245,32 @@ expand_icon = true
 
 [node name="StatsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "Statistiques"
+
+[node name="StatsContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 53.0
+offset_right = -35.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseButton" type="Button" parent="StatsContainer"]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 14.0
+offset_right = 403.0
+offset_bottom = 76.0
+icon = ExtResource("3_ky07w")
+expand_icon = true
+
+[node name="GameStats" parent="StatsContainer" instance=ExtResource("3_3ap5d")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
-[connection signal="toggled" from="VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
-[connection signal="toggled" from="VBoxContainer/StatsButton" to="." method="_on_stats_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/StatsButton" to="." method="_on_stats_button_pressed"]
+[connection signal="pressed" from="StatsContainer/CloseButton" to="." method="_on_close_stats_button_pressed"]

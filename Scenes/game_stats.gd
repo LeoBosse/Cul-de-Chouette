@@ -1,10 +1,11 @@
 extends Control
+class_name Statistics
 
-@onready var nb_players:int
+var nb_players:int
 
-@onready var player_names:Array
+var player_names:Array
 
-@onready var player_scores:Array[Array]
+var player_scores:Array[Array]
 
 @export var graph_colors:Array = ['RED', 'GREEN', 'BLUE', 'CYAN', 'ORANGE', 'GOLD', 'TEAL', 'PURPLE']
 @export var graph_size:Vector2 = Vector2(343, 343)
@@ -14,7 +15,7 @@ func Setup(player_names_list:Array):
 	nb_players = len(player_names_list)
 	%ScoreTable.columns = nb_players
 	
-	player_names = player_names_list
+	player_names = player_names_list.duplicate()
 	player_scores.resize(nb_players)
 	for i in range(nb_players):
 		player_scores[i] = [0]
@@ -38,7 +39,30 @@ func UpdateScore(new_round:bool, new_scores:Array):
 		AddEntryToScoreGraph()
 			
 	print(player_scores)
+
+func SortPlayers() -> Array:
+	var sorted_player_list = range(nb_players)
+	sorted_player_list.sort_custom(func (a, b): return player_scores[a][-1] < player_scores[b][-1])
+	prints("sorted players", sorted_player_list)
+	return sorted_player_list
 	
+func GetExport() -> Dictionary:
+	return {"names":player_names,
+			"scores":player_scores}
+func Import(data:Dictionary):
+	Setup(data["names"])
+	var new_scores:Array = []
+	new_scores.resize(nb_players)
+	for i in len(data["scores"][0]):
+		for p in range(nb_players):
+			new_scores[p] = data["scores"][p][i]
+		UpdateScore(true, new_scores)
+
+func GetWinnerName() -> String:
+	print(player_names)
+	return player_names[SortPlayers()[-1]]
+func GetWinnerScore() -> int:
+	return player_scores[SortPlayers()[-1]][-1]
 
 func InitGraph():
 	

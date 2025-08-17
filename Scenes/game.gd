@@ -6,7 +6,7 @@ var player_scene:PackedScene = load("res://Scenes/player.tscn")
 var players:Array[Player]
 var nb_players:int
 
-signal game_is_won(winner_name, winner_score)
+signal game_is_won(Stats)
 
 @onready var dice_values:Array[int] = [0, 0, 0]
 
@@ -160,7 +160,8 @@ func PassTurn():
 	current_player_state = WinLoseCondition()
 	if current_player_state == WIN:
 		#prints(players[current_player].player_name, "won!")
-		game_is_won.emit(player_names[current_player], player_scores[current_player])
+		prints(%Stats, %Stats.player_names)
+		game_is_won.emit(%Stats.GetExport())
 		
 		
 	roll_scores.fill(0)
