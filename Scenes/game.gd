@@ -85,10 +85,13 @@ func SetupRules(rules_list:Array):
 		#if r.rule_name.to_lower() in rules_dict:
 			#r.in_use = rules_dict[r.rule_name.to_lower()]
 		
+		if r.rule_name.to_lower() == "civet":
+			r.lose_civet.connect(_on_civet_lose_civet)
+		
 		%Rules.add_child(r)
 		
 		#prints("Rules setup: ", r.rule_name, r.in_use)
-	
+		
 	#%Rules.print_tree_pretty()
 	if not %Rules/SirotageRule.in_use:
 		#%Rules/SirotageRule.disabled = true
@@ -254,10 +257,6 @@ func _on_validate_roll_button_pressed() -> void:
 	ValidateDices()
 
 
-#func _on_stats_button_pressed() -> void:
-	#%GameStats.visible = true
-
-
 func _on_sirotage_trying_sirotage() -> void:
 	%Sirotage.Update(current_player, dice_values)
 	
@@ -281,7 +280,7 @@ func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, 
 	
 	## Give a Civet to the current player if it applies
 	if not successfull and dices.count(6) == 2:
-		%Rules/CivetSirote.ongoing_sirotage = true
+		%Rules/CivetSiroteRule.ongoing_sirotage = true
 		players[current_player].has_civet = true
 	
 	## Return to the main game tab
