@@ -17,7 +17,6 @@ Si le joueur défié réussit à faire 421 :
 - du deuxième coup, il gagne 40 points et le défiant les perd.
 - du troisième coup, il gagne 30 points et le défiant les perd.
 Si le joueur défié échoue, il perd 30 points et le défiant les gagne."
-selectable_player = true
 overrides = Array[String](["neant"])
 
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
@@ -36,6 +35,7 @@ layout_mode = 2
 text = "Défié :"
 
 [node name="MenuButton2" type="OptionButton" parent="RuleInPlay/VBoxContainer" index="1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 item_count = 2
