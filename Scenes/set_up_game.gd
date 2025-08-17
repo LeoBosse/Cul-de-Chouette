@@ -10,11 +10,10 @@ func _ready() -> void:
 		r.get_node("RuleInSetup").toggled.connect(_on_rule_toggled.bind(r.rule_name))
 
 func _on_rule_toggled(toggled_on:bool, rule_name:String):
+	"""When toogling a rule ON/OFF, checks if there are any other rules dependent on it. In that case, switches all rules ON/OFF."""
 	for r in %Rules.get_children():
 		if r.rule_name == rule_name:
 			continue
-		
-		prints(rule_name, r.rule_name, r.prerequisites)
 		if r.prerequisites.has(rule_name.to_lower()):
 			r.in_use = toggled_on
 		
@@ -36,7 +35,7 @@ func UpdateSettings():
 		%PlayerNames.get_child(i).queue_free()
 		
 	for i in range(1, nb_players):
-		print("adding player")
+		#print("adding player")
 		var new_player = %PlayerNames/"Joueur 1".duplicate(8)
 		new_player.get_node("Label").text = "Joueur " + str(i+1)
 		new_player.get_node("TextEdit").placeholder_text = "Joueur " + str(i+1)
@@ -64,15 +63,5 @@ func GetRules() -> Array:
 	
 func _on_create_game_button_pressed() -> void:
 	"""Create a new game node from the options and sets it as main scene."""
-	
 	launch_new_game.emit(GetPlayers(), GetRules())
 	
-	#var new_game:Game = game_scene.instantiate()
-	#
-	#new_game.SetupPlayers(GetPlayers())
-	#new_game.SetupRules(GetRules())
-	#
-	#get_tree().root.add_child(new_game)
-	#self.visibility = false
-	#
-	##queue_free()

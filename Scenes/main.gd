@@ -23,9 +23,9 @@ func _on_game_game_is_won(winner_name:String, winner_score:int) -> void:
 	%WinPanel.visible = true
 	$Game.visible = false
 	get_tree().paused = true
-	prints(PROCESS_MODE_INHERIT, PROCESS_MODE_PAUSABLE, PROCESS_MODE_ALWAYS)
-	for c in get_children():
-		prints(c.process_mode)
+	#prints(PROCESS_MODE_INHERIT, PROCESS_MODE_PAUSABLE, PROCESS_MODE_ALWAYS)
+	#for c in get_children():
+		#prints(c.process_mode)
 
 func _on_win_panel_launch_new_game() -> void:
 	$Game.queue_free()

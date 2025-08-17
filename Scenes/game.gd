@@ -59,7 +59,7 @@ func Setup(new_player_names:Array, rules_dict:Array):
 	SetupRules(rules_dict)
 	SetupPlayers(new_player_names)
 	%Stats.Setup(player_names)
-	prints("contre sirop", %Rules.get_node_or_null("ContreSirop"), null, %Rules.get_node_or_null("ContreSirop") != null)
+	#prints("contre sirop", %Rules.get_node_or_null("ContreSirop"), null, %Rules.get_node_or_null("ContreSirop") != null)
 	%Sirotage.Setup(player_names, %Rules.get_node_or_null("ContreSirop") != null)
 	%Bévue.Setup(player_names)
 
@@ -87,7 +87,7 @@ func SetupRules(rules_list:Array):
 		
 		%Rules.add_child(r)
 		
-		prints("Rules setup: ", r.rule_name, r.in_use)
+		#prints("Rules setup: ", r.rule_name, r.in_use)
 	
 	#%Rules.print_tree_pretty()
 	if not %Rules/SirotageRule.in_use:
@@ -105,8 +105,6 @@ func _on_dice_roll_pressed(dice:Node, roll_value:int) -> void:
 	"""Called when you click on a dice. 
 	dice:[Node] """
 	
-	prints("DICE ROLL PRESSED", dice, roll_value)
-	
 	if dice.button_pressed:
 		dice_values[roll_value] = dice.value
 	else:
@@ -122,14 +120,14 @@ func UpdateRoll(reset_player:bool=false):
 		if rule in valid_rules:
 			rule.visible = true
 			if reset_player:
-				print("reseting to current" + str(current_player))
+				#print("reseting to current" + str(current_player))
 				rule.SetPlayer(current_player)
 	
 	#SetupSirotageRules(%Sirotage.successfull, %Sirotage.contre_sirop_player)
 	roll_scores = ComputePoints(valid_rules)
 	UpdateRollScoreLabel()
 	
-	print(dice_values, " ", valid_rules, " ", roll_scores)
+	#print(dice_values, " ", valid_rules, " ", roll_scores)
 
 func ValidateDices():
 	
@@ -159,7 +157,7 @@ func PassTurn():
 	
 	current_player_state = WinLoseCondition()
 	if current_player_state == WIN:
-		prints(players[current_player].player_name, "won!")
+		#prints(players[current_player].player_name, "won!")
 		game_is_won.emit(player_names[current_player], player_scores[current_player])
 		
 		
@@ -211,7 +209,7 @@ func GetValidRules() -> Array:
 			valid_rules.append(r)
 	
 	#prints("sirotage: ", %Sirotage.successfull, %Sirotage.already_rolled)
-	prints("valid rules: ", valid_rules)
+	#prints("valid rules: ", valid_rules)
 	
 	return RulesOverride(valid_rules)
 
@@ -228,7 +226,7 @@ func RulesOverride(valid_rules:Array) -> Array:
 		if not overridden_rules.has(r.rule_name):
 			winning_rules.append(r)
 	
-	print(valid_rules, " ", overridden_rules, " ", winning_rules)
+	#print(valid_rules, " ", overridden_rules, " ", winning_rules)
 	return winning_rules
 
 func SetDicesAccess(enabled:bool):
@@ -242,7 +240,6 @@ func ComputePoints(valid_rules) -> Array[int]:
 	scores.fill(0)
 		
 	for r in valid_rules:
-		print(r)
 		var rule_scores:Array[int] = r.GetPlayerScores(dice_values)
 		for i in range(nb_players):
 			scores[i] += rule_scores[i]
@@ -257,8 +254,8 @@ func _on_validate_roll_button_pressed() -> void:
 	ValidateDices()
 
 
-func _on_stats_button_pressed() -> void:
-	%GameStats.visible = true
+#func _on_stats_button_pressed() -> void:
+	#%GameStats.visible = true
 
 
 func _on_sirotage_trying_sirotage() -> void:
@@ -300,6 +297,6 @@ func _on_civet_lose_civet() -> void:
 
 func _on_bévue_bevue(player: int) -> void:
 	players[player].score -= 10
-	prints(players[player].score)
+	#prints(players[player].score)
 	_on_rule_changed()
 	
