@@ -82,9 +82,6 @@ func SetupRules(rules_list:Array):
 		r.current_state = r.State.INGAME
 		r.visible = false
 		
-		#if r.rule_name.to_lower() in rules_dict:
-			#r.in_use = rules_dict[r.rule_name.to_lower()]
-		
 		if r.rule_name.to_lower() == "civet":
 			r.lose_civet.connect(_on_civet_lose_civet)
 		
@@ -139,6 +136,8 @@ func ValidateDices():
 	
 	for i in range(nb_players):
 		players[i].score += roll_scores[i]
+		if i != current_player and players[i].score > 343:
+			players[i].score = 332
 	
 	PassTurn()
 	SetDicesAccess(true)

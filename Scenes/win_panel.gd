@@ -20,5 +20,5 @@ func _on_replay_button_pressed() -> void:
 	launch_new_game.emit()
 
 
-func _on_stats_button_toggled(toggled_on: bool) -> void:
+func _on_stats_button_toggled(_toggled_on: bool) -> void:
 	pass # Replace with function body.
