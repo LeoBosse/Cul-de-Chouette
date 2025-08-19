@@ -25,25 +25,13 @@ func Setup(player_names_list:Array):
 	
 	InitGraph()
 	
-func UpdateScore(new_round:bool, new_scores:Array):
+func UpdateScore(new_scores:Array):
 	
 	for i in range(nb_players):
 		player_scores[i].append(new_scores[i])
 		AddEntryToScoreTable(player_scores[i][-1])
 		UpdateEntryToScoreGraph(i, new_scores[i])
 	AddEntryToScoreGraph()
-	
-	#for i in range(nb_players):
-			#player_scores[i][-1] = new_scores[i]
-			#UpdateEntryToScoreTable(i, len(player_scores[i]), str(new_scores[i]))
-			#UpdateEntryToScoreGraph(i, new_scores[i])
-			#
-	#if new_round:
-		#print("NEW ROUND")
-		#for i in range(nb_players):
-			#player_scores[i].append(player_scores[i][-1])
-			#AddEntryToScoreTable(str(player_scores[i][-1]))
-		#AddEntryToScoreGraph()
 			
 	print(player_scores)
 
@@ -63,7 +51,7 @@ func Import(data:Dictionary):
 	for i in len(data["scores"][0]):
 		for p in range(nb_players):
 			new_scores[p] = data["scores"][p][i]
-		UpdateScore(true, new_scores)
+		UpdateScore(new_scores)
 
 func GetWinnerName() -> String:
 	print(player_names)
