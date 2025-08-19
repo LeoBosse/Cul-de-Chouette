@@ -21,22 +21,29 @@ func Setup(player_names_list:Array):
 		player_scores[i] = [0]
 		AddEntryToScoreTable(player_names[i])
 	for i in range(nb_players):
-		AddEntryToScoreTable(str(player_scores[i][0]))
+		AddEntryToScoreTable(player_scores[i][0])
 	
 	InitGraph()
 	
 func UpdateScore(new_round:bool, new_scores:Array):
+	
 	for i in range(nb_players):
-			player_scores[i][-1] = new_scores[i]
-			UpdateEntryToScoreTable(i, len(player_scores[i]), str(new_scores[i]))
-			UpdateEntryToScoreGraph(i, new_scores[i])
-			
-	if new_round:
-		print("NEW ROUND")
-		for i in range(nb_players):
-			player_scores[i].append(player_scores[i][-1])
-			AddEntryToScoreTable(str(player_scores[i][-1]))
-		AddEntryToScoreGraph()
+		player_scores[i].append(new_scores[i])
+		AddEntryToScoreTable(player_scores[i][-1])
+		UpdateEntryToScoreGraph(i, new_scores[i])
+	AddEntryToScoreGraph()
+	
+	#for i in range(nb_players):
+			#player_scores[i][-1] = new_scores[i]
+			#UpdateEntryToScoreTable(i, len(player_scores[i]), str(new_scores[i]))
+			#UpdateEntryToScoreGraph(i, new_scores[i])
+			#
+	#if new_round:
+		#print("NEW ROUND")
+		#for i in range(nb_players):
+			#player_scores[i].append(player_scores[i][-1])
+			#AddEntryToScoreTable(str(player_scores[i][-1]))
+		#AddEntryToScoreGraph()
 			
 	print(player_scores)
 
@@ -109,11 +116,11 @@ func UpdateEntryToScoreTable(col:int, row:int, new_text:String):
 	#prints(col, row, id)
 	%ScoreTable.get_child(id).text = new_text
 
-func AddEntryToScoreTable(entry_text:String):
+func AddEntryToScoreTable(entry_text):
 	var entry = Label.new()
 	entry.set_anchors_preset(Control.PRESET_CENTER)
 	entry.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	entry.text = entry_text
+	entry.text = str(entry_text)
 	%ScoreTable.add_child(entry)
 
 

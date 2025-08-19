@@ -134,13 +134,18 @@ func ValidateDices():
 	if dice_values.has(0):
 		return 
 	
-	for i in range(nb_players):
-		players[i].score += roll_scores[i]
-		if i != current_player and players[i].score > 343:
-			players[i].score = 332
+	SetScores(roll_scores)
 	
 	PassTurn()
 	SetDicesAccess(true)
+
+func SetScores(points_list:Array):
+	for i in range(nb_players):
+		players[i].score += points_list[i]
+		if i != current_player and players[i].score > 343:
+			players[i].score = 332
+	
+	%Stats.UpdateScore(false, player_scores)
 
 func WinLoseCondition():
 	if player_scores[current_player] >= 343:
@@ -154,8 +159,6 @@ func NewRound() -> bool:
 	return current_player == nb_players - 1
 	
 func PassTurn():
-	
-	%Stats.UpdateScore(NewRound(), player_scores)
 	
 	current_player_state = WinLoseCondition()
 	if current_player_state == WIN:
@@ -295,7 +298,11 @@ func _on_civet_lose_civet() -> void:
 
 
 func _on_bévue_bevue(player: int) -> void:
-	players[player].score -= 10
+	var new_scores:Array = range(nb_players)
+	new_scores.fill(0)
+	new_scores[player] = -10
+	SetScores(new_scores)
+	#players[player].score -= 10
 	#prints(players[player].score)
 	_on_rule_changed()
 	
