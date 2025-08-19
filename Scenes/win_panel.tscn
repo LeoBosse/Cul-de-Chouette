@@ -248,6 +248,7 @@ layout_mode = 2
 text = "Statistiques"
 
 [node name="StatsContainer" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

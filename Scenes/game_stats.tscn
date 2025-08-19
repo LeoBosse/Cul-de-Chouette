@@ -23,7 +23,7 @@ script = ExtResource("1_ex7ht")
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 0.286275)
+modulate = Color(0, 0, 0, 0.882353)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,10 +78,9 @@ metadata/_tab_index = 1
 
 [node name="Xaxis" type="Line2D" parent="TabContainer/GraphScore"]
 width = 3.0
-default_color = Color(0, 1, 1, 0.411765)
 
 [node name="Yaxis" type="Line2D" parent="TabContainer/GraphScore"]
 width = 3.0
-default_color = Color(1, 0, 1, 0.439216)
+texture_mode = 1
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
