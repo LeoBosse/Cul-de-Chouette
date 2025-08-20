@@ -139,13 +139,15 @@ func ValidateDices():
 	PassTurn()
 	SetDicesAccess(true)
 
-func SetScores(points_list:Array):
+func SetScores(points_list:Array, update_stats:bool = true):
+	"""Add the given points to the player scores."""
 	for i in range(nb_players):
 		players[i].score += points_list[i]
 		if i != current_player and players[i].score > 343:
 			players[i].score = 332
 	
-	%Stats.AddScores(player_scores)
+	if update_stats:
+		%Stats.AddScores(player_scores, current_player)
 
 func WinLoseCondition():
 	if player_scores[current_player] >= 343:
@@ -305,4 +307,13 @@ func _on_bévue_bevue(player: int) -> void:
 	#players[player].score -= 10
 	#prints(players[player].score)
 	_on_rule_changed()
+	
+
+
+func _on_stats_undoing_turn(point_correction:Array, old_player:int) -> void:
+	prints("undoing", current_player, old_player)
+	SetScores(point_correction, false)
+	current_player = old_player
+	UpdateCurrentPlayerLabel()
+	UpdateRollScoreLabel()
 	

@@ -90,6 +90,8 @@ func ChangePointFromLine(line:int, new_position:Vector2, point_id:int = -1, adap
 
 func RemovePointFromLine(line:int, point_id:int = -1, adapt_scaling:bool = true):
 	CheckLineExists(line)
+	if point_id < 0:
+		point_id += %Lines.get_child(line).get_point_count()
 	%Lines.get_child(line).remove_point(point_id)
 	if adapt_scaling:
 		AdaptScalingToLines()
@@ -131,7 +133,7 @@ func GetLineLimits(line_id:int) -> Array:
 	var max_x = GetLineXCoords(line_id).max()
 	var min_y = GetLineYCoords(line_id).min()
 	var max_y = GetLineYCoords(line_id).max()
-	prints("line_limits", line_id, Vector2(min_x, min_y), Vector2(max_x, max_y))
+	#prints("line_limits", line_id, Vector2(min_x, min_y), Vector2(max_x, max_y))
 	return [Vector2(min_x, min_y), Vector2(max_x, max_y)]
 
 func GetGraphLimits() -> Array:
@@ -144,19 +146,19 @@ func GetGraphLimits() -> Array:
 	var graph_min_y = limits.map(func(v): return v[0].y).min()
 	var graph_max_y = limits.map(func(v): return v[1].y).max()
 	
-	prints("graph_limits", Vector2(graph_min_x, graph_min_y), Vector2(graph_max_x, graph_max_y))
+	#prints("graph_limits", Vector2(graph_min_x, graph_min_y), Vector2(graph_max_x, graph_max_y))
 	return [Vector2(graph_min_x, graph_min_y), Vector2(graph_max_x, graph_max_y)]
 
 func AdaptScalingToLines(adapt_x_axis:bool = true, adapt_y_axis:bool = true):
 	var bounding_limits:Array = GetGraphLimits()
-	prints("bounding_limits", bounding_limits)
+	#prints("bounding_limits", bounding_limits)
 	var bounding_size:Vector2 = Vector2(bounding_limits[1].x - bounding_limits[0].x, bounding_limits[1].y - bounding_limits[0].y)
-	prints("bounding_size", bounding_size)
+	#prints("bounding_size", bounding_size)
 	
 	var new_scaling:Vector2 = Vector2.ONE
 	
 	new_scaling = graph_size / bounding_size
-	prints("new_scaling", new_scaling)
+	#prints("new_scaling", new_scaling)
 	
 	if adapt_x_axis:
 		axes_scaling.x = new_scaling.x

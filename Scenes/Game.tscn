@@ -116,3 +116,4 @@ metadata/_tab_index = 3
 [connection signal="trying_sirotage" from="TabContainer/Sirotage" to="." method="_on_sirotage_trying_sirotage"]
 [connection signal="validating_sirotage" from="TabContainer/Sirotage" to="." method="_on_sirotage_validating_sirotage"]
 [connection signal="bevue" from="TabContainer/Bévue" to="." method="_on_bévue_bevue"]
+[connection signal="undoing_turn" from="TabContainer/Stats" to="." method="_on_stats_undoing_turn"]
