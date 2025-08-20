@@ -17,16 +17,14 @@ Si le joueur défié réussit à faire 421 :
 - du deuxième coup, il gagne 40 points et le défiant les perd.
 - du troisième coup, il gagne 30 points et le défiant les perd.
 Si le joueur défié échoue, il perd 30 points et le défiant les gagne."
-overrides = Array[String](["neant"])
-current_state = null
+
+[node name="RuleInPlay" parent="." index="0"]
+visible = true
 
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "SOUFLETTE :
 3 dés formant 4, 2 et 1.
 Score : 50, 40 ou 30 suivant le résultat du défi."
-
-[node name="MenuButton" parent="RuleInPlay" index="1"]
-disabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RuleInPlay" index="2"]
 layout_mode = 2
@@ -66,6 +64,7 @@ popup/item_3/text = "Perdu"
 popup/item_3/id = 3
 
 [node name="RuleInSetup" parent="." index="1"]
+visible = false
 text = "Souflette"
 
 [connection signal="item_selected" from="RuleInPlay/VBoxContainer/MenuButton2" to="." method="_on_challenged_player_item_selected"]

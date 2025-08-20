@@ -109,8 +109,6 @@ columns = 2
 [node name="Chouette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("2_1hbbt")]
 modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
-size_flags_vertical = 1
-current_state = 0
 
 [node name="Velute" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("3_43qa1")]
 modulate = Color(0, 0.752941, 0, 1)
@@ -129,10 +127,8 @@ layout_mode = 2
 size_flags_vertical = 1
 
 [node name="Artichette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("6_1schr")]
-modulate = Color(0.806368, 0.393277, 0, 1)
+modulate = Color(0.807843, 0.392157, 0, 1)
 layout_mode = 2
-size_flags_vertical = 1
-current_state = 0
 
 [node name="Suite" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("7_x33ao")]
 modulate = Color(0.806368, 0.393277, 0, 1)
@@ -140,10 +136,8 @@ layout_mode = 2
 size_flags_vertical = 1
 
 [node name="Souflette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("8_tktok")]
-modulate = Color(0.806368, 0.393277, 0, 1)
+modulate = Color(0.807843, 0.392157, 0, 1)
 layout_mode = 2
-size_flags_vertical = 1
-current_state = 0
 
 [node name="Neant" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("13_x33ao")]
 modulate = Color(0.807843, 0.392157, 0, 1)
@@ -151,10 +145,8 @@ layout_mode = 2
 size_flags_vertical = 1
 
 [node name="SirotageRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("9_ur7xx")]
-modulate = Color(0.806368, 0.393277, 0, 1)
+modulate = Color(0.807843, 0.392157, 0, 1)
 layout_mode = 2
-size_flags_vertical = 1
-current_state = 0
 
 [node name="ContreSirop" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("10_4riew")]
 modulate = Color(0.976471, 0.152941, 0.12549, 1)

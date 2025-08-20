@@ -8,8 +8,9 @@ script = ExtResource("2_71yht")
 rule_name = "chouette"
 short_description = "Deux dés identiques (la chouette)."
 short_score = "Le carré de la chouette"
-overrides = Array[String](["neant"])
-current_state = null
+
+[node name="RuleInPlay" parent="." index="0"]
+visible = true
 
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "CHOUETTE :
@@ -17,9 +18,5 @@ Deux dés identiques (la chouette).
 Score : Le carré de la chouette"
 
 [node name="RuleInSetup" parent="." index="1"]
-anchors_preset = 8
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_bottom = 15.5
-grow_vertical = 2
+visible = false
+text = "Chouette"
