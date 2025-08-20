@@ -311,7 +311,7 @@ func _on_bévue_bevue(player: int) -> void:
 
 
 func _on_stats_undoing_turn(point_correction:Array, old_player:int) -> void:
-	prints("undoing", current_player, old_player)
+	#prints("undoing", current_player, old_player)
 	SetScores(point_correction, false)
 	current_player = old_player
 	UpdateCurrentPlayerLabel()

@@ -155,15 +155,10 @@ func AdaptScalingToLines(adapt_x_axis:bool = true, adapt_y_axis:bool = true):
 	var bounding_size:Vector2 = Vector2(bounding_limits[1].x - bounding_limits[0].x, bounding_limits[1].y - bounding_limits[0].y)
 	#prints("bounding_size", bounding_size)
 	
-	var new_scaling:Vector2 = Vector2.ONE
-	
-	new_scaling = graph_size / bounding_size
-	#prints("new_scaling", new_scaling)
-	
-	if adapt_x_axis:
-		axes_scaling.x = new_scaling.x
-	if adapt_y_axis:
-		axes_scaling.y = new_scaling.y
+	if adapt_x_axis and bounding_size.x != 0:
+		axes_scaling.x = graph_size.x / bounding_size.x
+	if adapt_y_axis and bounding_size.y != 0:
+		axes_scaling.y = graph_size.y / bounding_size.y
 		
 		
 func _SetScaling(new_scaling:Vector2):
