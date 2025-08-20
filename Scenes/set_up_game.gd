@@ -8,6 +8,8 @@ func _ready() -> void:
 	for r in %Rules.get_children():
 		r.current_state = r.State.SETUP
 		r.get_node("RuleInSetup").toggled.connect(_on_rule_toggled.bind(r.rule_name))
+	
+	_on_nb_players_text_changed($VBoxContainer/ScrollContainer/Options/NbPlayers/TextEdit.text)
 
 func _on_rule_toggled(toggled_on:bool, rule_name:String):
 	"""When toogling a rule ON/OFF, checks if there are any other rules dependent on it. In that case, switches all rules ON/OFF."""

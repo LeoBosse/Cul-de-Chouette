@@ -145,7 +145,7 @@ func SetScores(points_list:Array):
 		if i != current_player and players[i].score > 343:
 			players[i].score = 332
 	
-	%Stats.UpdateScore(player_scores)
+	%Stats.AddScores(player_scores)
 
 func WinLoseCondition():
 	if player_scores[current_player] >= 343:

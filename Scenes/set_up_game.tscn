@@ -61,6 +61,7 @@ text = "Nombre de joueurs :"
 [node name="TextEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/Options/NbPlayers"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "3"
 placeholder_text = "Nombre de joueurs :"
 max_length = 2
 emoji_menu_enabled = false

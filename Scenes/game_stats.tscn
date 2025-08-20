@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://byveysu48hdxp"]
+[gd_scene load_steps=5 format=3 uid="uid://byveysu48hdxp"]
 
 [ext_resource type="Script" uid="uid://dac6du21be3l3" path="res://Scenes/game_stats.gd" id="1_ex7ht"]
 [ext_resource type="Texture2D" uid="uid://bhroee8fvn8x5" path="res://icon.svg" id="2_qe60g"]
+[ext_resource type="PackedScene" uid="uid://ddykwkghj261c" path="res://Scenes/graph2D.tscn" id="3_gc528"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qe60g"]
 font_size = 45
@@ -69,18 +70,9 @@ unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="GraphScore" type="Control" parent="TabContainer"]
+[node name="GraphScore" parent="TabContainer" instance=ExtResource("3_gc528")]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(343, 343)
 layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="Xaxis" type="Line2D" parent="TabContainer/GraphScore"]
-width = 3.0
-
-[node name="Yaxis" type="Line2D" parent="TabContainer/GraphScore"]
-width = 3.0
-texture_mode = 1
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
