@@ -39,3 +39,10 @@ Toute suggestion constructive d'amélioration est la bienvenue.
 - Contre Sirop
 - Civet Siroté
 - Civet
+
+## Sources des règles (non exaustif):
+- [https://culdechouette.julien-besin.fr/wp-content/uploads/2020/02/cul-de-chouette.pdf](url)
+- [https://plus.wikimonde.com/wiki/Cul_de_chouette#Le_Sirotage](url)
+- [https://fr.wikibooks.org/wiki/Bo%C3%AEte_%C3%A0_jeux/Le_cul_de_chouette](url)
+- [https://montreal.fichier-pdf.fr/telecharger.php?hash=3N3334nmhzWi7ktMSZbqYqtrOLkxgWJcnY9Z6x4y7i920JYBlw7aUe1P1cCHUv0B6UNydNRg7cyx7ah3A59GvPeM4974x0lVgU2x3e5ojQqSzNJ5YIpw4gaxD3omgqkf&key=877facdeb6b7c6bed1d78ef0b42ea27c&fsize=377311](url)
+
