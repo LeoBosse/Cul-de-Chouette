@@ -21,7 +21,7 @@ class_name Rule
 @onready var short_text = $RuleInPlay/ShortDescription
 @onready var players_list_menu = $RuleInPlay/MenuButton
 
-enum State{INGAME, SETUP}
+enum State{INGAME, SETUP, DOCUMENTATION}
 @export var current_state:State:
 	set(new_state):
 		SetState(new_state)
@@ -47,6 +47,10 @@ func _ready() -> void:
 	
 	$RuleInSetup.text = rule_name.capitalize()
 	
+	$RuleInDocumentation/VBoxContainer/CheckButton.text = rule_name.capitalize()
+	#$RuleInDocumentation/VBoxContainer/RichTextLabel.text = full_description
+	
+	
 func SetState(new_state:State):
 	for c in get_children():
 		c.visible = false
@@ -55,9 +59,14 @@ func SetState(new_state:State):
 		$RuleInPlay.visible = true
 		modulate = Color(1, 1, 1)
 		size_flags_vertical = Control.SIZE_EXPAND_FILL
+	
 	elif new_state == State.SETUP:
 		$RuleInSetup.visible = true
 		size_flags_vertical = Control.SIZE_EXPAND_FILL
+	
+	elif new_state == State.DOCUMENTATION:
+		%RuleInDocumentation.visible = true
+		%RuleInDocumentation/VBoxContainer/CheckButton.button_pressed = false
 	
 func UpdateText(new_rule_name:String, new_short_description:String, new_short_score:String):
 	short_text.text = new_rule_name.to_upper() + " :\n"
@@ -109,6 +118,17 @@ func _on_menu_button_item_selected(_index: int) -> void:
 func Clean():
 	pass
 
-
 func _on_rule_in_setup_toggled(toggled_on: bool) -> void:
 	in_use = toggled_on
+
+
+func _on_documentation_check_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		var label:RichTextLabel = RichTextLabel.new()
+		label.text = full_description
+		label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		label.scroll_active = false
+		label.fit_content = true
+		$RuleInDocumentation/VBoxContainer.add_child(label)
+	else:
+		$RuleInDocumentation/VBoxContainer.get_child(1).queue_free()

@@ -10,7 +10,16 @@ short_description = "Trois dés identiques."
 short_score = "40 + 10 * (1 dé)"
 overrides = Array[String](["chouette", "neant"])
 
-[node name="ShortDescription" parent="." index="0"]
+[node name="RuleInPlay" parent="." index="0"]
+visible = true
+
+[node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "CUL DE CHOUETTE :
 Trois dés identiques.
 Score : 40 + 10 * (1 dé)"
+
+[node name="RuleInSetup" parent="." index="1"]
+text = "Cul De Chouette"
+
+[node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
+text = "Cul De Chouette"

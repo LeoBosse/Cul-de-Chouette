@@ -8,7 +8,6 @@ script = ExtResource("2_gpe17")
 rule_name = "civet"
 short_description = "Pari sur la combinaison effectuée pour le lancer."
 short_score = "Le montant parié en positif ou négatif."
-overrides = Array[String](["neant"])
 prerequisites = Array[String](["sirotage", "civet siroté"])
 
 [node name="RuleInPlay" parent="." index="0"]
@@ -52,7 +51,9 @@ popup/item_5/text = "Cul de Chouette siroté"
 popup/item_5/id = 5
 
 [node name="RuleInSetup" parent="." index="1"]
-visible = false
+text = "Civet"
+
+[node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Civet"
 
 [connection signal="text_changed" from="RuleInPlay/VBoxContainer/BetValueLine" to="." method="_on_bet_value_line_text_changed"]

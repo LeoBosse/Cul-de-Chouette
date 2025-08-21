@@ -8,7 +8,6 @@ script = ExtResource("2_0pbos")
 rule_name = "civet siroté"
 short_description = "Vous avez échoué un sirotage sur une Chouette de 6."
 short_score = "Un civet."
-overrides = Array[String](["neant"])
 prerequisites = Array[String](["sirotage", "civet"])
 
 [node name="RuleInPlay" parent="." index="0"]
@@ -20,7 +19,9 @@ Vous avez échoué un sirotage sur une Chouette de 6.
 Score : Un civet."
 
 [node name="RuleInSetup" parent="." index="1"]
-visible = false
 offset_left = -68.5
 offset_right = 68.5
+text = "Civet Siroté"
+
+[node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Civet Siroté"

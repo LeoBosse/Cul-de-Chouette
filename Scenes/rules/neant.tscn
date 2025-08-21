@@ -9,7 +9,16 @@ rule_name = "neant"
 short_description = "Aucune autre combinaison valable."
 short_score = "Rien"
 
-[node name="ShortDescription" parent="." index="0"]
+[node name="RuleInPlay" parent="." index="0"]
+visible = true
+
+[node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "NEANT :
 Aucune autre combinaison valable.
 Score : Rien"
+
+[node name="RuleInSetup" parent="." index="1"]
+text = "Neant"
+
+[node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
+text = "Neant"

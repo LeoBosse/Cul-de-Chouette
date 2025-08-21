@@ -26,9 +26,11 @@ button_pressed = true
 text = "Réussie"
 
 [node name="RuleInSetup" parent="." index="1"]
-visible = false
 offset_left = -63.0
 offset_right = 63.0
+text = "Artichette"
+
+[node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Artichette"
 
 [connection signal="toggled" from="RuleInPlay/CheckButton" to="." method="_on_check_button_toggled"]

@@ -8,7 +8,6 @@ script = ExtResource("2_skngs")
 rule_name = "velute"
 short_description = "La somme de deux dés vaut le troisième (la velute)."
 short_score = "le double du carré de la velute. "
-overrides = Array[String](["neant"])
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true
@@ -19,7 +18,9 @@ La somme de deux dés vaut le troisième (la velute).
 Score : le double du carré de la velute. "
 
 [node name="RuleInSetup" parent="." index="1"]
-visible = false
 offset_left = -49.0
 offset_right = 49.0
+text = "Velute"
+
+[node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Velute"

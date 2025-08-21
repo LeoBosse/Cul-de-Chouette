@@ -13,7 +13,7 @@ Toute suggestion constructive d'amélioration est la bienvenue.
 - Télécharger le repo
 - Télécharger Godot 4.4.1
 - Ouvrir le projet avec Godot et amusez-vous à le modifier.
-	
+
 ## Utilisation :
 - Ouvrir l'appli en commençant une partie.
 - Choisir le nombre de joueur et leurs noms
@@ -45,4 +45,3 @@ Toute suggestion constructive d'amélioration est la bienvenue.
 - [https://plus.wikimonde.com/wiki/Cul_de_chouette#Le_Sirotage](url)
 - [https://fr.wikibooks.org/wiki/Bo%C3%AEte_%C3%A0_jeux/Le_cul_de_chouette](url)
 - [https://montreal.fichier-pdf.fr/telecharger.php?hash=3N3334nmhzWi7ktMSZbqYqtrOLkxgWJcnY9Z6x4y7i920JYBlw7aUe1P1cCHUv0B6UNydNRg7cyx7ah3A59GvPeM4974x0lVgU2x3e5ojQqSzNJ5YIpw4gaxD3omgqkf&key=877facdeb6b7c6bed1d78ef0b42ea27c&fsize=377311](url)
-

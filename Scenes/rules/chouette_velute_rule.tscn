@@ -10,9 +10,12 @@ script = ExtResource("2_g6s1a")
 rule_name = "chouette velute"
 short_description = "La somme de deux dés identiques vaut le troisième (chouette + velute)"
 short_score = "Les points de la velute sont attribué au premier joueur qui cri \"Pas mou le caillou !\" en tapant dans ses mains."
+full_description = "* La Velute : la somme de 2 dés = le 3e dé
+La Velute a pour valeur le chiffre du 3e dé.
+Le joueur qui a lancé les dés gagne les points correspondant au double du carré de la Velute :
+Velute de 2 = 8 pts, de 3 = 18 pts, de 4 = 32 pts, de 5 = 50 pts, de 6 = 72 pts."
 selectable_player = true
 overrides = Array[String](["chouette", "velute", "neant"])
-prerequisites = null
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true
@@ -31,7 +34,6 @@ layout_mode = 2
 anchors_preset = 0
 size_flags_horizontal = 1
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-prerequisites = null
 
 [node name="Chouette" parent="." index="2" instance=ExtResource("3_g6s1a")]
 visible = false
@@ -39,9 +41,15 @@ layout_mode = 2
 anchors_preset = 0
 size_flags_horizontal = 1
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
-prerequisites = null
-current_state = 0
 
 [node name="RuleInSetup" parent="." index="3"]
-visible = false
 text = "Chouette Velute"
+
+[node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
+text = "Chouette Velute"
+
+[node name="RichTextLabel" parent="RuleInDocumentation/VBoxContainer" index="1"]
+text = "* La Velute : la somme de 2 dés = le 3e dé
+La Velute a pour valeur le chiffre du 3e dé.
+Le joueur qui a lancé les dés gagne les points correspondant au double du carré de la Velute :
+Velute de 2 = 8 pts, de 3 = 18 pts, de 4 = 32 pts, de 5 = 50 pts, de 6 = 72 pts."

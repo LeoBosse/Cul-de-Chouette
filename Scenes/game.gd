@@ -29,7 +29,7 @@ signal game_is_won(Stats)
 	get():
 		return floori(current_player / nb_players)
 
-@onready var rules_node:Node = %Rules
+@onready var rules_node:Node = %RulesList
 
 enum {PLAY, WIN, LOSE, DISQUALIFIED}
 @onready var current_player_state:int = PLAY
@@ -51,17 +51,14 @@ func _ready() -> void:
 		roll.button_group.pressed.connect(_on_dice_roll_pressed.bind(i))
 		i += 1
 	
-	for r in rules_node.get_children():
-		r.SetUpPlayerOptions(player_names)
-		r.changed_rules.connect(_on_rule_changed)
-
 func Setup(new_player_names:Array, rules_dict:Array):
 	SetupRules(rules_dict)
 	SetupPlayers(new_player_names)
 	%Stats.Setup(player_names)
-	#prints("contre sirop", %Rules.get_node_or_null("ContreSirop"), null, %Rules.get_node_or_null("ContreSirop") != null)
-	%Sirotage.Setup(player_names, %Rules.get_node_or_null("ContreSirop") != null)
+	#prints("contre sirop", %RulesList.get_node_or_null("ContreSirop"), null, %RulesList.get_node_or_null("ContreSirop") != null)
+	%Sirotage.Setup(player_names, %RulesList.get_node_or_null("ContreSirop") != null)
 	%Bévue.Setup(player_names)
+	%Rules.Setup(rules_dict.map(func(r):return r.duplicate()))
 
 func SetupPlayers(new_player_names:Array) -> void:
 	nb_players = len(new_player_names)
@@ -75,7 +72,7 @@ func SetupPlayers(new_player_names:Array) -> void:
 	UpdateCurrentPlayerLabel()
 
 func SetupRules(rules_list:Array):
-	for r in %Rules.get_children():
+	for r in %RulesList.get_children():
 		r.queue_free()
 	
 	for r in rules_list:
@@ -85,18 +82,20 @@ func SetupRules(rules_list:Array):
 		if r.rule_name.to_lower() == "civet":
 			r.lose_civet.connect(_on_civet_lose_civet)
 		
-		%Rules.add_child(r)
+		%RulesList.add_child(r)
+	
+	for r in %RulesList.get_children():
+		r.SetUpPlayerOptions(player_names)
+		r.changed_rules.connect(_on_rule_changed)
 		
-		#prints("Rules setup: ", r.rule_name, r.in_use)
-		
-	#%Rules.print_tree_pretty()
-	if not %Rules/SirotageRule.in_use:
-		#%Rules/SirotageRule.disabled = true
+	#%RulesList.print_tree_pretty()
+	if not %RulesList/SirotageRule.in_use:
+		#%RulesList/SirotageRule.disabled = true
 		$TabContainer.set_tab_hidden(tabs_index["sirotage"], true)
-		#%Rules/SirotageRule.in_use = false
-		#%Rules/sirotageSuccess.in_use = false
-		#%Rules/sirotageFail.in_use = false
-		%Rules/ContreSirop.in_use = false
+		#%RulesList/SirotageRule.in_use = false
+		#%RulesList/sirotageSuccess.in_use = false
+		#%RulesList/sirotageFail.in_use = false
+		%RulesList/ContreSirop.in_use = false
 
 func _on_rule_changed() -> void:
 	UpdateRoll()
@@ -115,7 +114,7 @@ func _on_dice_roll_pressed(dice:Node, roll_value:int) -> void:
 func UpdateRoll(reset_player:bool=false):
 	var valid_rules:Array = GetValidRules()
 	
-	for rule in rules_node.get_children():
+	for rule in %RulesList.get_children():
 		rule.visible = false
 		if rule in valid_rules:
 			rule.visible = true
@@ -176,7 +175,7 @@ func PassTurn():
 	for i in range(nb_players):
 		players[i].sirotage_score = 0
 	
-	for rule in rules_node.get_children():
+	for rule in %RulesList.get_children():
 		rule.Clean()
 		rule.visible = false
 	
@@ -212,7 +211,7 @@ func UpdateRollScoreLabel():
 func GetValidRules() -> Array:
 	var valid_rules:Array[Rule] = []
 		
-	for r in rules_node.get_children():
+	for r in %RulesList.get_children():
 		if r.check_validity(dice_values.duplicate(), players, current_player) and r.in_use:
 			valid_rules.append(r)
 	
@@ -278,14 +277,14 @@ func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, 
 	SetDicesAccess(false)
 	
 	## Setup the sirotage rule. Change its text based on the success of the bet.
-	%Rules/SirotageRule.Setup(true, successfull)
+	%RulesList/SirotageRule.Setup(true, successfull)
 	
 	### Setup the Contre-Sirop rule
-	%Rules/ContreSirop.Setup(successfull, contre_sirop_player)
+	%RulesList/ContreSirop.Setup(successfull, contre_sirop_player)
 	
 	## Give a Civet to the current player if it applies
 	if not successfull and dices.count(6) == 2:
-		%Rules/CivetSiroteRule.ongoing_sirotage = true
+		%RulesList/CivetSiroteRule.ongoing_sirotage = true
 		players[current_player].has_civet = true
 	
 	## Return to the main game tab

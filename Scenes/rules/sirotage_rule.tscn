@@ -19,7 +19,9 @@ Short description
 Score : Short score description"
 
 [node name="RuleInSetup" parent="." index="1"]
-visible = false
 offset_left = -56.0
 offset_right = 56.0
+text = "Sirotage"
+
+[node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Sirotage"

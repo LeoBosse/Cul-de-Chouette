@@ -41,6 +41,7 @@ popup/item_1/text = "Player 2"
 popup/item_1/id = 1
 
 [node name="RuleInSetup" type="CheckButton" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,5 +59,28 @@ text = "Rule Name"
 alignment = 1
 icon_alignment = 1
 
+[node name="RuleInDocumentation" type="Control" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 37.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RuleInDocumentation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckButton" type="CheckButton" parent="RuleInDocumentation/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Rule Name"
+
 [connection signal="item_selected" from="RuleInPlay/MenuButton" to="." method="_on_menu_button_item_selected"]
 [connection signal="toggled" from="RuleInSetup" to="." method="_on_rule_in_setup_toggled"]
+[connection signal="toggled" from="RuleInDocumentation/VBoxContainer/CheckButton" to="." method="_on_documentation_check_button_toggled"]
