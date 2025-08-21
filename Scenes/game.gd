@@ -147,7 +147,7 @@ func SetScores(points_list:Array, update_stats:bool = true):
 			players[i].score = 332
 	
 	if update_stats:
-		%Stats.AddScores(player_scores, current_player)
+		%Stats.RegisterNewState(players, current_player)
 
 func WinLoseCondition():
 	if player_scores[current_player] >= 343:
@@ -310,10 +310,12 @@ func _on_bévue_bevue(player: int) -> void:
 	
 
 
-func _on_stats_undoing_turn(point_correction:Array, old_player:int) -> void:
+func _on_stats_undoing_turn(point_correction:Array, old_player:int, civets:Array) -> void:
 	#prints("undoing", current_player, old_player)
 	SetScores(point_correction, false)
 	current_player = old_player
+	for i in nb_players:
+		players[i].has_civet = civets[i]
 	UpdateCurrentPlayerLabel()
 	UpdateRollScoreLabel()
 	

@@ -7,12 +7,14 @@ var player_names:Array
 
 var player_scores:Array[Array]
 var current_player_list:Array = [0]
+var civet_history:Array = []
+
 
 @export var graph_colors:Array = ['RED', 'GREEN', 'BLUE', 'CYAN', 'ORANGE', 'GOLD', 'TEAL', 'PURPLE']
 @export var graph_size:Vector2 = Vector2(343, 343)
 @export var graph_origin:Vector2 = Vector2(0, graph_size.y)
 
-signal undoing_turn(point_correction:Array)
+signal undoing_turn(point_correction:Array, current_player:int, civets:Array)
 
 func Setup(player_names_list:Array):
 	nb_players = len(player_names_list)
@@ -20,20 +22,24 @@ func Setup(player_names_list:Array):
 	
 	player_names = player_names_list.duplicate()
 	player_scores.resize(nb_players)
+	civet_history.resize(nb_players)
 	for i in range(nb_players):
 		player_scores[i] = [0]
+		civet_history[i] = [false]
 		AddEntryToScoreTable(player_names[i])
 	for i in range(nb_players):
 		AddEntryToScoreTable(player_scores[i][0])
 	
 	InitGraph()
 	
-func AddScores(new_scores:Array, current_player:int):
+func RegisterNewState(players:Array, current_player:int):
 	current_player_list.append(current_player)
 	for i in range(nb_players):
-		player_scores[i].append(new_scores[i])
-		AddEntryToScoreTable(new_scores[i])
-		AddScoreToGraph(i, new_scores[i])
+		player_scores[i].append(players[i].score)
+		civet_history[i].append(players[i].has_civet)
+		
+		AddEntryToScoreTable(players[i].score)
+		AddScoreToGraph(i, players[i].score)
 	%GraphScore.AdaptScalingToLines(true, false)
 	
 	#print(player_scores)
@@ -47,7 +53,9 @@ func SortPlayers() -> Array:
 func GetExport() -> Dictionary:
 	return {"names":player_names,
 			"scores":player_scores,
-			"current_player_list":current_player_list}
+			"current_player_list":current_player_list,
+			"civet_history":civet_history}
+			
 func Import(data:Dictionary):
 	Setup(data["names"])
 	current_player_list = []
@@ -55,8 +63,10 @@ func Import(data:Dictionary):
 	new_scores.resize(nb_players)
 	for i in len(data["scores"][0]):
 		for p in range(nb_players):
-			new_scores[p] = data["scores"][p][i]
-		AddScores(new_scores, data["current_player_list"][i])
+			new_scores[p] = Player.new()
+			new_scores[p].score = data["scores"][p][i]
+			new_scores[p].has_civet = data["civet_history"][p][i]
+		RegisterNewState(new_scores, data["current_player_list"][i])
 
 func GetWinnerName() -> String:
 	print(player_names)
@@ -93,15 +103,16 @@ func UndoTurn():
 		return
 	
 	var correction:Array = []
-	
+	print(civet_history)
 	for i in range(nb_players):
 		correction.append(player_scores[i][-2] - player_scores[i][-1])
 		player_scores[i].pop_back()
+		civet_history[i].pop_back()
 		%ScoreTableGrid.get_child(%ScoreTableGrid.get_child_count() - i - 1).queue_free()
 		%GraphScore.RemovePointFromLine(i, -1, false)
 	%GraphScore.AdaptScalingToLines(true, false)
-	
-	undoing_turn.emit(correction, current_player_list[-1])
+	print(civet_history)
+	undoing_turn.emit(correction, current_player_list[-1], civet_history.map(func(x):return x[-1]))
 	
 	current_player_list.pop_back()
 
