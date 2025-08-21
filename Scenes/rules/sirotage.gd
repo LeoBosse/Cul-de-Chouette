@@ -87,9 +87,10 @@ func ComputeScores(result:int) -> Array:
 				scores[i] -= 2 * ChouetteRule.new().ComputePoints([chouette_value, chouette_value, result])
 		else:
 			if player_bets[i] != 0:
-				scores[i] -= 5
-			if player_bets[i] == result:
-				scores[i] += 25
+				if player_bets[i] == result:
+					scores[i] += 25
+				else:
+					scores[i] -= 5
 
 	if %ContreSiropWinnerButton.selected > 0 and chouette_value != result:
 		scores[%ContreSiropWinnerButton.selected - 1] += int(.2 * CulDeChouetteRule.new().ComputePoints([chouette_value, chouette_value, chouette_value]))
