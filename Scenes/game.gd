@@ -5,7 +5,11 @@ class_name Game
 var player_scene:PackedScene = load("res://Scenes/player.tscn")
 var players:Array[Player]
 var nb_players:int
-
+var use_teams:bool = false
+var nb_teams:int = 0
+var team_names:Array = []
+var team_scores:Array = []
+var team_roll_scores:Array = []
 signal game_is_won(Stats)
 
 @onready var dice_values:Array[int] = [0, 0, 0]
@@ -46,8 +50,8 @@ func _ready() -> void:
 		roll.button_group.pressed.connect(_on_dice_roll_pressed.bind(i))
 		i += 1
 	
-func Setup(new_player_names:Array, rules_dict:Array):
-	SetupPlayers(new_player_names)
+func Setup(new_player_names:Array, rules_dict:Array, teams:int):
+	SetupPlayers(new_player_names, teams)
 	SetupRules(rules_dict)
 	%Stats.Setup(player_names)
 	#prints("contre sirop", %RulesList.get_node_or_null("ContreSirop"), null, %RulesList.get_node_or_null("ContreSirop") != null)
@@ -55,18 +59,34 @@ func Setup(new_player_names:Array, rules_dict:Array):
 	%Bévue.Setup(player_names)
 	%Rules.Setup(rules_dict.map(func(r):return r.duplicate()))
 
-func SetupPlayers(new_player_names:Array) -> void:
+func SetupPlayers(new_player_names:Array, teams:int) -> void:
 	nb_players = len(new_player_names)
+	use_teams = teams > 0
+	
+	if use_teams:
+		nb_teams = teams
+		team_scores = range(nb_teams)
+		team_scores.fill(0)
+		team_names = range(nb_teams)
+		team_roll_scores.resize(nb_teams)
+		team_roll_scores.fill(0)
+		
+		for i in range(nb_teams):
+			team_names[i] = "Equipe " + str(i + 1)
 	
 	roll_scores.resize(nb_players)
 	roll_scores.fill(0)
 	
 	players = []
-	for n in new_player_names:
+	for i in range(len(new_player_names)):
 		var new_player:Player = player_scene.instantiate()
-		new_player.player_name = n
+		new_player.player_name = new_player_names[i]
 		new_player.index = len(players)
 		new_player.state = PLAY
+		if use_teams:
+			new_player.team = i % teams
+			prints(teams, i % teams)
+		new_player.state
 		players.append(new_player)
 	UpdateCurrentPlayerLabel()
 
@@ -123,6 +143,7 @@ func UpdateRoll(reset_player:bool=false):
 	
 	#SetupSirotageRules(%Sirotage.successfull, %Sirotage.contre_sirop_player)
 	roll_scores = ComputePoints(valid_rules)
+	team_roll_scores = ComputeTeamsPoints(roll_scores)
 	UpdateRollScoreLabel()
 	
 	#print(dice_values, " ", valid_rules, " ", roll_scores)
@@ -132,26 +153,46 @@ func ValidateDices():
 	if dice_values.has(0):
 		return 
 	
-	SetScores(roll_scores)
+	SetPlayerScores(roll_scores)
+	SetTeamScores(team_roll_scores)
 	
 	PassTurn()
 	SetDicesAccess(true)
 
 func SetScores(points_list:Array, update_stats:bool = true):
+	SetPlayerScores(points_list)
+	if use_teams:
+		SetTeamScores(ComputeTeamsPoints(points_list))
+	
+	if update_stats:
+		%Stats.RegisterNewState(players, current_player)
+
+func SetTeamScores(points_list:Array):
+	"""Add the given points to the teams scores."""
+	for i in range(nb_teams):
+		team_scores[i] += points_list[i]
+		if i != players[current_player].team and team_scores[i] > 343:
+			team_scores[i] = 332
+
+func SetPlayerScores(points_list:Array):
 	"""Add the given points to the player scores."""
 	for i in range(nb_players):
 		players[i].score += points_list[i]
 		if i != current_player and players[i].score > 343:
 			players[i].score = 332
-	
-	if update_stats:
-		%Stats.RegisterNewState(players, current_player)
+		
 
 func WinLoseCondition():
-	if player_scores[current_player] >= 343:
-		return WIN
-	elif player_scores[current_player] <= -343:
-		return DISQUALIFIED
+	if not use_teams:
+		if player_scores[current_player] >= 343:
+			return WIN
+		elif player_scores[current_player] <= -343:
+			return DISQUALIFIED
+	else:
+		if team_scores[players[current_player].team] >= 343:
+			return WIN
+		elif team_scores[players[current_player].team] <= -343:
+			return DISQUALIFIED
 	
 	return PLAY
 
@@ -168,6 +209,7 @@ func PassTurn():
 		
 		
 	roll_scores.fill(0)
+	team_roll_scores.fill(0)
 	UpdateRollScoreLabel()
 	
 	%Sirotage.Clean()
@@ -191,22 +233,30 @@ func UpdateCurrentPlayerLabel():
 	%CurrentPlayerLabel.text = "Au tour de : " + player_names[current_player]
 	
 func UpdateRollScoreLabel():
-	%RollScoreLabel.text = ""
+	SetScoreLabelText(%PlayerRollScoreLabel, player_names, player_scores, roll_scores)
+	if use_teams:
+		SetScoreLabelText(%TeamRollScoreLabel, team_names, team_scores, team_roll_scores)
+	
+	
+
+func SetScoreLabelText(label_node:RichTextLabel, entry_names:Array, current_scores:Array, roll_score:Array):
+	label_node.text = ""
 	var unchanged_score_string:String = "%s :\t%d\t"
 	var greater_score_string:String = "\t +%d\t\t (%d)\t"
 	var lower_score_string:String = "\t %d\t\t (%d)\t"
 	
-	for i in range(nb_players):
-		%RollScoreLabel.text += unchanged_score_string % [player_names[i], player_scores[i]]
-		if roll_scores[i] > 0:
-			%RollScoreLabel.text += greater_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
-		elif roll_scores[i] < 0:
-			%RollScoreLabel.text += lower_score_string % [roll_scores[i], player_scores[i] + roll_scores[i]]
+	for i in range(len(entry_names)):
+		label_node.text += unchanged_score_string % [entry_names[i], current_scores[i]]
+		if roll_score[i] > 0:
+			label_node.text += greater_score_string % [roll_score[i], current_scores[i] + roll_score[i]]
+		elif roll_score[i] < 0:
+			label_node.text += lower_score_string % [roll_score[i], current_scores[i] + roll_score[i]]
 		
 		if players[i].has_civet:
-			%RollScoreLabel.text += " \tC"
-		%RollScoreLabel.text += "\n"
+			label_node.text += " \tC"
+		label_node.text += "\n"
 	
+
 func GetValidRules() -> Array:
 	var valid_rules:Array[Rule] = []
 		
@@ -239,7 +289,19 @@ func SetDicesAccess(enabled:bool):
 	for r in %DiceRolls.get_children():
 		r.SetAccess(enabled)
 	
-
+func ComputeTeamsPoints(player_score:Array) -> Array[int]:
+	var scores:Array[int] = []
+	scores.resize(nb_teams)
+	scores.fill(0)
+	
+	print(player_score)
+	for i in range(len(player_score)):
+		prints(i, players[i].player_name, players[i].team, player_score[i])
+		scores[players[i].team] += player_score[i]
+		print(scores)
+	
+	return scores
+	
 func ComputePoints(valid_rules) -> Array[int]:
 	var scores:Array[int] = []
 	scores.resize(nb_players)

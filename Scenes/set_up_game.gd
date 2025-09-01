@@ -50,7 +50,11 @@ func UpdateSettings():
 			new_player.get_node("TextEdit").text = ""
 			%PlayerNames.add_child(new_player)
 
-	
+	%NbTeamsOptionButton.clear()
+	%NbTeamsOptionButton.add_item(" ", -1)
+	for i in range(2, nb_players):
+		if nb_players % i == 0:
+			%NbTeamsOptionButton.add_item(str(i), i)
 
 func GetPlayers() -> Array:
 	"""Return an array with the name of all players named in the options"""
@@ -74,5 +78,5 @@ func GetRules() -> Array:
 	
 func _on_create_game_button_pressed() -> void:
 	"""Create a new game node from the options and sets it as main scene."""
-	launch_new_game.emit(GetPlayers(), GetRules())
+	launch_new_game.emit(GetPlayers(), GetRules(), %NbTeamsOptionButton.get_selected_id())
 	

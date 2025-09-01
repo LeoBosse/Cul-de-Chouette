@@ -3,7 +3,7 @@ extends Node
 @onready var game_scene:PackedScene = load("res://Scenes/Game.tscn")
 
 
-func _on_set_up_game_launch_new_game(players: Array, rules: Array) -> void:
+func _on_set_up_game_launch_new_game(players: Array, rules: Array, teams:int) -> void:
 	"""Create a new game node from the options and sets it as main scene."""
 	
 	var new_game:Game = game_scene.instantiate()
@@ -12,7 +12,7 @@ func _on_set_up_game_launch_new_game(players: Array, rules: Array) -> void:
 	new_game.z_index = 0
 	add_child(new_game)
 	
-	$Game.Setup(players, rules)
+	$Game.Setup(players, rules, teams)
 	
 	$Game.game_is_won.connect(_on_game_game_is_won)
 	

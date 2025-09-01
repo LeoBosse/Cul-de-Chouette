@@ -61,11 +61,46 @@ button_group = ExtResource("5_fgofq")
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Lancé"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Lancé/HBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="TabContainer/Lancé/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+current_tab = 1
 
-[node name="RollScoreLabel" type="RichTextLabel" parent="TabContainer/Lancé/HBoxContainer/ScrollContainer"]
+[node name="Scores par joueurs" type="Control" parent="TabContainer/Lancé/HBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Lancé/HBoxContainer/TabContainer/Scores par joueurs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="PlayerRollScoreLabel" type="RichTextLabel" parent="TabContainer/Lancé/HBoxContainer/TabContainer/Scores par joueurs/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+fit_content = true
+vertical_alignment = 1
+
+[node name="Scores par équipes" type="Control" parent="TabContainer/Lancé/HBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="TabContainer/Lancé/HBoxContainer/TabContainer/Scores par équipes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="TeamRollScoreLabel" type="RichTextLabel" parent="TabContainer/Lancé/HBoxContainer/TabContainer/Scores par équipes/ScrollContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
