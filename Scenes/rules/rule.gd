@@ -86,7 +86,9 @@ func check_validity(dice_values:Array, _players:Array=[], _current_player:int=-1
 			
 		validities.append(rule.check_validity(dice_values))
 	
-	return len(validities) > 0 and validities.all(func check(x): x)
+	var is_valid:bool = len(validities) > 0 and validities.all(func check(x): return x)
+	
+	return is_valid
 
 func GetPlayerScores(dice_values:Array[int]) -> Array[int]:
 	"""Compute and return the points given to each players."""

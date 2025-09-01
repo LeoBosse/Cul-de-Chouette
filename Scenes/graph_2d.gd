@@ -40,7 +40,7 @@ func Initialize(lines:Array = [], legend:Array=[]):
 	GetGraphLimits()
 
 
-func AddLine(points:Array, legend:String="", width:int = 2, color:Color=Color(0,0,0,0)):
+func AddLine(points:Array, _legend:String="", width:int = 2, color:Color=Color(0,0,0,0)):
 	
 	var new_line:Line2D = Line2D.new()
 	new_line.width = width

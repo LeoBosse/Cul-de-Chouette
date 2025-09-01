@@ -31,7 +31,7 @@ signal game_is_won(Stats)
 
 @onready var current_round:int = 0:
 	get():
-		return floori(current_player / nb_players)
+		return floori(current_player / float(nb_players))
 
 @onready var rules_node:Node = %RulesList
 
@@ -88,7 +88,6 @@ func SetupPlayers(new_player_names:Array, teams:int) -> void:
 		if use_teams:
 			new_player.team = i % teams
 			prints(teams, i % teams)
-		new_player.state
 		players.append(new_player)
 	UpdateCurrentPlayerLabel()
 
