@@ -64,10 +64,9 @@ layout_mode = 2
 [node name="TabContainer" type="TabContainer" parent="TabContainer/Lancé/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 1
+current_tab = 0
 
 [node name="Scores par joueurs" type="Control" parent="TabContainer/Lancé/HBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -88,6 +87,7 @@ fit_content = true
 vertical_alignment = 1
 
 [node name="Scores par équipes" type="Control" parent="TabContainer/Lancé/HBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -109,7 +109,7 @@ vertical_alignment = 1
 
 [node name="ValidateRollButton" type="Button" parent="TabContainer/Lancé/HBoxContainer"]
 modulate = Color(0.0313726, 1, 0.0509804, 1)
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 text = "Validate"
 

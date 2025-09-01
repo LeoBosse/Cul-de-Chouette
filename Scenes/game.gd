@@ -70,6 +70,8 @@ func SetupPlayers(new_player_names:Array, teams:int) -> void:
 		team_names = range(nb_teams)
 		team_roll_scores.resize(nb_teams)
 		team_roll_scores.fill(0)
+	else:
+		$"TabContainer/Lancé/HBoxContainer/TabContainer".set_tab_hidden(1, true)
 		
 		for i in range(nb_teams):
 			team_names[i] = "Equipe " + str(i + 1)
