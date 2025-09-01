@@ -22,4 +22,4 @@ func SetAccess(accessible:bool):
 	for b in button_group.get_buttons():
 		b.SetDisabled(not accessible)
 
-		prints(b.disabled, b.button_pressed)
+		#prints(b.disabled, b.button_pressed)

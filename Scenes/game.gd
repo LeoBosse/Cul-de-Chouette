@@ -153,8 +153,7 @@ func ValidateDices():
 	if dice_values.has(0):
 		return 
 	
-	SetPlayerScores(roll_scores)
-	SetTeamScores(team_roll_scores)
+	SetScores(roll_scores)
 	
 	PassTurn()
 	SetDicesAccess(true)
@@ -293,6 +292,9 @@ func ComputeTeamsPoints(player_score:Array) -> Array[int]:
 	var scores:Array[int] = []
 	scores.resize(nb_teams)
 	scores.fill(0)
+	
+	if not use_teams:
+		return scores
 	
 	print(player_score)
 	for i in range(len(player_score)):
