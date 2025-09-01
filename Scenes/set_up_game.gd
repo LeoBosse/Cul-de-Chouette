@@ -22,7 +22,7 @@ func _on_rule_toggled(toggled_on:bool, rule_name:String):
 
 func _on_nb_players_text_changed(new_text: String) -> void:
 	"""When entering or changing the number of players for the new game, setup the options and make them visible."""
-	if new_text.is_valid_int():
+	if new_text.is_valid_int() and int(new_text) > 0:
 		nb_players = int(new_text)
 		UpdateSettings()
 		
@@ -33,15 +33,24 @@ func _on_nb_players_text_changed(new_text: String) -> void:
 
 func UpdateSettings():
 	"""Duplicate the first node of player names to match number of players"""
-	for i in range(1, %PlayerNames.get_child_count()):
-		%PlayerNames.get_child(i).queue_free()
-		
-	for i in range(1, nb_players):
-		#print("adding player")
-		var new_player = %PlayerNames/"Joueur 1".duplicate(8)
-		new_player.get_node("Label").text = "Joueur " + str(i+1)
-		new_player.get_node("TextEdit").placeholder_text = "Joueur " + str(i+1)
-		%PlayerNames.add_child(new_player)
+	
+	var old_nb_players:int = %PlayerNames.get_child_count()
+	var new_nb_players:int = nb_players
+	
+	if old_nb_players > new_nb_players: ## Remove players in the list
+		for i in range(new_nb_players, old_nb_players): ## Clean the player list
+			%PlayerNames.get_child(i).queue_free()
+	
+	elif old_nb_players < new_nb_players: ## Add players in the list
+		for i in range(new_nb_players - old_nb_players): ## Create new players
+			#print("adding player")
+			var new_player = %PlayerNames/"Joueur 1".duplicate(8)
+			new_player.get_node("Label").text = "Joueur " + str(i + 1 + old_nb_players)
+			new_player.get_node("TextEdit").placeholder_text = "Joueur " + str(i + 1 + old_nb_players)
+			new_player.get_node("TextEdit").text = ""
+			%PlayerNames.add_child(new_player)
+
+	
 
 func GetPlayers() -> Array:
 	"""Return an array with the name of all players named in the options"""
