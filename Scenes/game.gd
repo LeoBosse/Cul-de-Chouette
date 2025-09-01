@@ -37,11 +37,6 @@ enum {PLAY, WIN, LOSE, DISQUALIFIED}
 var tabs_index:Dictionary = {"lancé": 0, "sirotage": 1, "stats": 2}
 
 func _ready() -> void:
-	if not nb_players:
-		SetupPlayers(["Alice", "Bob", "Charlie", "Denise"])
-	
-	roll_scores.resize(nb_players)
-	roll_scores.fill(0)
 	
 	#UpdateCurrentPlayerLabel()
 	
@@ -52,8 +47,8 @@ func _ready() -> void:
 		i += 1
 	
 func Setup(new_player_names:Array, rules_dict:Array):
-	SetupRules(rules_dict)
 	SetupPlayers(new_player_names)
+	SetupRules(rules_dict)
 	%Stats.Setup(player_names)
 	#prints("contre sirop", %RulesList.get_node_or_null("ContreSirop"), null, %RulesList.get_node_or_null("ContreSirop") != null)
 	%Sirotage.Setup(player_names, %RulesList.get_node_or_null("ContreSirop") != null)
@@ -62,6 +57,10 @@ func Setup(new_player_names:Array, rules_dict:Array):
 
 func SetupPlayers(new_player_names:Array) -> void:
 	nb_players = len(new_player_names)
+	
+	roll_scores.resize(nb_players)
+	roll_scores.fill(0)
+	
 	players = []
 	for n in new_player_names:
 		var new_player:Player = player_scene.instantiate()

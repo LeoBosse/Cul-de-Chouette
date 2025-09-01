@@ -45,11 +45,8 @@ overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant",
 [node name="RuleInSetup" parent="." index="3"]
 text = "Chouette Velute"
 
+[node name="RuleInDocumentation" parent="." index="4"]
+visible = false
+
 [node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Chouette Velute"
-
-[node name="RichTextLabel" parent="RuleInDocumentation/VBoxContainer" index="1"]
-text = "* La Velute : la somme de 2 dés = le 3e dé
-La Velute a pour valeur le chiffre du 3e dé.
-Le joueur qui a lancé les dés gagne les points correspondant au double du carré de la Velute :
-Velute de 2 = 8 pts, de 3 = 18 pts, de 4 = 32 pts, de 5 = 50 pts, de 6 = 72 pts."

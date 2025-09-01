@@ -18,6 +18,9 @@ fait le plus petit score, ils recommencent pour se départager, mais cette fois 
 Velute, c’est-à-dire que le joueur qui a lancé les dés gagne 18 pts."
 selectable_player = true
 
+[node name="RuleInPlay" parent="." index="0"]
+visible = true
+
 [node name="ShortDescription" parent="RuleInPlay" index="0"]
 text = "SUITE :
 Trois dés différents qui se suivent.
@@ -29,15 +32,8 @@ disabled = false
 [node name="RuleInSetup" parent="." index="1"]
 text = "Suite"
 
+[node name="RuleInDocumentation" parent="." index="2"]
+visible = false
+
 [node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Suite"
-
-[node name="RichTextLabel" parent="RuleInDocumentation/VBoxContainer" index="1"]
-text = "Tous les joueurs doivent taper du poing sur la table en criant : \"Grelotte ça picote !\".
-Le dernier joueur à le faire perd 10 points.
-En cas d'égalité, les joueurs concernés se départagent en criant : \"Sans fin est la moisissure des
-bières bretonnes !\". S'il y a toujours égalité, les joueurs concernés se départagent en lançant chacun un
-dé, c’est celui qui aura fait le plus petit score qui perdra les 10 points. S’il y a plusieurs joueurs qui ont
-fait le plus petit score, ils recommencent pour se départager, mais cette fois pour perdre 20 points
-(puis 30 points, etc).Attention : si un joueur réalise la suite 1-2-3, en plus de la règle de la Suite s’applique la règle de la
-Velute, c’est-à-dire que le joueur qui a lancé les dés gagne 18 pts."

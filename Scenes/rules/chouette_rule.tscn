@@ -23,10 +23,8 @@ Score : Le carré de la chouette"
 [node name="RuleInSetup" parent="." index="1"]
 text = "Chouette"
 
+[node name="RuleInDocumentation" parent="." index="2"]
+visible = false
+
 [node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Chouette"
-
-[node name="RichTextLabel" parent="RuleInDocumentation/VBoxContainer" index="1"]
-text = "* La Chouette : 2 dés identiques
-La Chouette a pour valeur le chiffre des deux dés identiques.
-Le joueur qui a lancé les dés gagne les points correspondant au carré de la Chouette :Chouette de 1 = 1 pt, de 2 = 4 pts, de 3 = 9 pts, de 4 = 16 pts, de 5 = 25 pts, de 6 = 36 pts."

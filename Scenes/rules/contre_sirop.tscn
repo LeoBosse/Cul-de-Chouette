@@ -23,5 +23,8 @@ offset_left = -72.5
 offset_right = 72.5
 text = "Contre Sirop"
 
+[node name="RuleInDocumentation" parent="." index="2"]
+visible = false
+
 [node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Contre Sirop"

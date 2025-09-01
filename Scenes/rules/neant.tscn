@@ -20,5 +20,8 @@ Score : Rien"
 [node name="RuleInSetup" parent="." index="1"]
 text = "Neant"
 
+[node name="RuleInDocumentation" parent="." index="2"]
+visible = false
+
 [node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Neant"

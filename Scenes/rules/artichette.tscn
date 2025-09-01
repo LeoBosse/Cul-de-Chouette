@@ -30,6 +30,9 @@ offset_left = -63.0
 offset_right = 63.0
 text = "Artichette"
 
+[node name="RuleInDocumentation" parent="." index="2"]
+visible = false
+
 [node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Artichette"
 

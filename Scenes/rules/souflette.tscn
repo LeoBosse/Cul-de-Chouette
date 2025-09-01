@@ -66,19 +66,11 @@ popup/item_3/id = 3
 [node name="RuleInSetup" parent="." index="1"]
 text = "Souflette"
 
+[node name="RuleInDocumentation" parent="." index="2"]
+visible = false
+
 [node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
 text = "Souflette"
-
-[node name="RichTextLabel" parent="RuleInDocumentation/VBoxContainer" index="1"]
-text = "Le joueur peut défier un autre joueur de son choix en le pointant du doigt et en criant \"En garde ma mignonne !\". Ce joueur a alors trois jets de dés pour réaliser lui
-aussi un 421. Les éventuels points données par d'éventuelles combinaisons réalisées lors de ces
-éventuels jets ne sont pas comptés. Les joueurs peuvent conserver les dés ayant donné 4, 2 ou 1 entre
-chaque lancer, pour ainsi éviter de les relancer et avoir plus de chances de réussir le défi.
-Si le joueur défié réussit à faire 421 :
-- du premier coup, il gagne 50 points et le défiant les perd.
-- du deuxième coup, il gagne 40 points et le défiant les perd.
-- du troisième coup, il gagne 30 points et le défiant les perd.
-Si le joueur défié échoue, il perd 30 points et le défiant les gagne."
 
 [connection signal="item_selected" from="RuleInPlay/VBoxContainer/MenuButton2" to="." method="_on_challenged_player_item_selected"]
 [connection signal="item_selected" from="RuleInPlay/VBoxContainer2/OptionButton" to="." method="_on_result_item_selected"]
