@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqrnbril0pg3f"]
+[gd_scene load_steps=10 format=3 uid="uid://cqrnbril0pg3f"]
 
 [ext_resource type="Script" uid="uid://firuypda67dm" path="res://Scenes/rules_tab.gd" id="1_wcsli"]
 [ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="2_por0w"]
 [ext_resource type="PackedScene" uid="uid://dn0bwdhfrbya3" path="res://Scenes/rules/suite.tscn" id="2_tmvnj"]
 [ext_resource type="PackedScene" uid="uid://c04lj4ep0bth5" path="res://Scenes/rules/velute_rule.tscn" id="4_xmbam"]
+[ext_resource type="PackedScene" uid="uid://j830hr4vwgv5" path="res://Scenes/rules/artichette.tscn" id="5_1jhqx"]
+[ext_resource type="PackedScene" uid="uid://d2ieq50tkebgy" path="res://Scenes/rules/chouette_velute_rule.tscn" id="6_nnjx5"]
+[ext_resource type="PackedScene" uid="uid://bxthx016g7j8m" path="res://Scenes/rules/civet_rule.tscn" id="7_1eo2e"]
+[ext_resource type="PackedScene" uid="uid://dawwj05mksy3g" path="res://Scenes/rules/contre_sirop.tscn" id="8_nnjx5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dahhg"]
 font_size = 30
@@ -34,25 +38,49 @@ label_settings = SubResource("LabelSettings_dahhg")
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-clip_contents = false
-custom_minimum_size = Vector2(0, 600)
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_vertical = 2
 vertical_scroll_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Chouette2" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_por0w")]
 layout_mode = 2
+size_flags_vertical = 3
 current_state = 2
 
 [node name="Suite" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_tmvnj")]
 layout_mode = 2
+size_flags_vertical = 3
 current_state = 2
 
 [node name="Velute" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_xmbam")]
 layout_mode = 2
+size_flags_vertical = 3
+current_state = 2
+
+[node name="Artichette" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_1jhqx")]
+layout_mode = 2
+size_flags_vertical = 3
+current_state = 2
+
+[node name="ChouetteVelute" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_nnjx5")]
+layout_mode = 2
+size_flags_vertical = 3
+current_state = 2
+
+[node name="CivetRule" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("7_1eo2e")]
+layout_mode = 2
+size_flags_vertical = 3
+current_state = 2
+
+[node name="ContreSirop" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_nnjx5")]
+layout_mode = 2
+size_flags_vertical = 3
 current_state = 2

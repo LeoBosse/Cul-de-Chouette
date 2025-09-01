@@ -33,6 +33,7 @@ visible = false
 layout_mode = 2
 anchors_preset = 0
 size_flags_horizontal = 1
+size_flags_vertical = 3
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="Chouette" parent="." index="2" instance=ExtResource("3_g6s1a")]
@@ -40,6 +41,7 @@ visible = false
 layout_mode = 2
 anchors_preset = 0
 size_flags_horizontal = 1
+size_flags_vertical = 3
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant"])
 
 [node name="RuleInSetup" parent="." index="3"]
