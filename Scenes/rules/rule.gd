@@ -45,20 +45,19 @@ func _ready() -> void:
 	
 	UpdateText(rule_name, short_description, short_score)
 	
-	$RuleInSetup.text = rule_name.capitalize()
 	
-	$RuleInDocumentation/VBoxContainer/CheckButton.text = rule_name.capitalize()
-	#$RuleInDocumentation/VBoxContainer/RichTextLabel.text = full_description
 	
 	
 func SetState(new_state:State):
 	for c in get_children():
 		c.visible = false
-	
+	prints("set state ", rule_name, new_state)
 	if new_state == State.INGAME:
 		$RuleInPlay.visible = true
 		modulate = Color(1, 1, 1)
 		size_flags_vertical = Control.SIZE_EXPAND_FILL
+		
+		#prints("rule min size: INGAME", rule_name, $RuleInPlay.get_combined_minimum_size().y, $RuleInPlay.get_minimum_size().y)
 	
 	elif new_state == State.SETUP:
 		$RuleInSetup.visible = true
@@ -66,12 +65,29 @@ func SetState(new_state:State):
 	
 	elif new_state == State.DOCUMENTATION:
 		%RuleInDocumentation.visible = true
-		%RuleInDocumentation/VBoxContainer/CheckButton.button_pressed = false
+		%RuleInDocumentation/CheckButton.button_pressed = true
+		
+		size_flags_vertical = Control.SIZE_EXPAND_FILL
+		
+		custom_minimum_size.y = %RuleInDocumentation.get_minimum_size().y
+		
+		#prints("rule min size: ", rule_name, get_combined_minimum_size().y, get_minimum_size().y)
+		#prints("rule min size: RuleInDocumentation", rule_name, %RuleInDocumentation.get_combined_minimum_size().y, %RuleInDocumentation.get_minimum_size().y)
+		#prints("rule min size: CheckButton", rule_name, %RuleInDocumentation/CheckButton.get_combined_minimum_size().y, %RuleInDocumentation/CheckButton.get_minimum_size().y)
+		#print(%RuleInDocumentation/RichTextLabel.text)
+		#prints("rule min size: RichTextLabel", rule_name, %RuleInDocumentation/RichTextLabel.get_combined_minimum_size().y, %RuleInDocumentation/RichTextLabel.get_minimum_size().y)
 	
 func UpdateText(new_rule_name:String, new_short_description:String, new_short_score:String):
 	short_text.text = new_rule_name.to_upper() + " :\n"
 	short_text.text += new_short_description + "\n"
 	short_text.text += "Score : " + new_short_score
+	
+	$RuleInSetup.text = rule_name.capitalize()
+	
+	%RuleInDocumentation/CheckButton.text = rule_name.capitalize()
+	#$RuleInDocumentation/RichTextLabel.clear()
+	#$RuleInDocumentation/RichTextLabel.append_text(full_description)
+	$RuleInDocumentation/RichTextLabel.text = full_description
 
 func ComputePoints(_dice_values:Array) -> int:
 	return 0
@@ -125,12 +141,4 @@ func _on_rule_in_setup_toggled(toggled_on: bool) -> void:
 
 
 func _on_documentation_check_button_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		var label:RichTextLabel = RichTextLabel.new()
-		label.text = full_description
-		label.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		label.scroll_active = false
-		label.fit_content = true
-		$RuleInDocumentation/VBoxContainer.add_child(label)
-	else:
-		$RuleInDocumentation/VBoxContainer.get_child(1).queue_free()
+	$RuleInDocumentation/RichTextLabel.visible = toggled_on

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://drk4ise4rkyfg"]
+[gd_scene load_steps=13 format=3 uid="uid://drk4ise4rkyfg"]
 
+[ext_resource type="Theme" uid="uid://c1u5lm5r2f3ub" path="res://default_theme.tres" id="1_3so38"]
 [ext_resource type="Script" uid="uid://c48sum0lcyi3l" path="res://Scenes/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_gl6un"]
 [ext_resource type="ButtonGroup" uid="uid://bcwtixhh3jrw2" path="res://Scenes/DiceSelect/row1_button_group.tres" id="3_b2bpf"]
@@ -21,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_3so38")
 script = ExtResource("1_iukft")
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -125,11 +127,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Artichette" parent="TabContainer/Lancé/ScrollContainer/RulesList" instance=ExtResource("17_tfod6")]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Chouette" parent="TabContainer/Lancé/ScrollContainer/RulesList" instance=ExtResource("7_71axn")]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Sirotage" parent="TabContainer" instance=ExtResource("13_wxwew")]

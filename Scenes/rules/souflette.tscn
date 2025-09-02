@@ -69,7 +69,7 @@ text = "Souflette"
 [node name="RuleInDocumentation" parent="." index="2"]
 visible = false
 
-[node name="CheckButton" parent="RuleInDocumentation/VBoxContainer" index="0"]
+[node name="CheckButton" parent="RuleInDocumentation" index="0"]
 text = "Souflette"
 
 [connection signal="item_selected" from="RuleInPlay/VBoxContainer/MenuButton2" to="." method="_on_challenged_player_item_selected"]
