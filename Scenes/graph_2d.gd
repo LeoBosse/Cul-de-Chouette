@@ -27,7 +27,7 @@ class_name Graph2D
 var default_line_colors:Array[Color] = ['RED', 'GREEN', 'BLUE', 'CYAN', 'ORANGE', 'GOLD', 'TEAL', 'PURPLE']
 var nb_lines:int = 0
 
-func Initialize(lines:Array = [], legend:Array=[]):
+func Initialize(lines:Array = [], legend:Array=[], x_min=null, x_max=null, y_min=null, y_max=null):
 	%Xaxis.add_point(Vector2(0, graph_origin.y))
 	#%Xaxis.add_point(CoordsToPosition(Vector2(graph_size.x, 0)))
 	%Xaxis.add_point(Vector2(graph_size.x, graph_origin.y))
@@ -35,6 +35,9 @@ func Initialize(lines:Array = [], legend:Array=[]):
 	%Yaxis.add_point(Vector2(graph_origin.x, 0))
 	#%Yaxis.add_point(CoordsToPosition(Vector2(0, graph_size.y)))
 	%Yaxis.add_point(Vector2(graph_origin.x, graph_size.y))
+	
+	
+	SetAxisLimits(x_min, x_max, y_min, y_max)
 	
 	#AddAxisTicks("x")
 	AddAxisTicks("y")
@@ -54,6 +57,7 @@ func Initialize(lines:Array = [], legend:Array=[]):
 		AddLine(lines[i], legend[i])
 	
 	GetGraphLimits()
+
 
 func EraseTicks():
 	for c in $Axes/XaxisTicks.get_children():
@@ -201,9 +205,16 @@ func GetGraphLimits() -> Array:
 	#prints("graph_limits", Vector2(graph_min_x, graph_min_y), Vector2(graph_max_x, graph_max_y))
 	return [Vector2(graph_min_x, graph_min_y), Vector2(graph_max_x, graph_max_y)]
 
-func AdaptScalingToLines(adapt_x_axis:bool = true, adapt_y_axis:bool = true):
-	var bounding_limits:Array = GetGraphLimits() # In graph corrdinates
-	#prints("bounding_limits", bounding_limits)
+func SetAxisLimits(x_min=null, x_max=null, y_min=null, y_max=null):
+	if x_min == null: x_min = PositionToCoords(Vector2(0, 0)).x
+	if x_max == null: x_max = PositionToCoords(Vector2(graph_size.x, 0)).x
+	if y_min == null: y_min = PositionToCoords(Vector2(0, 0)).y
+	if y_max == null: y_max = PositionToCoords(Vector2(0, graph_size.y)).y
+	
+	SetScalingFromLimits([Vector2(x_min, y_min), Vector2(x_max, y_max)])
+	
+func SetScalingFromLimits(bounding_limits:Array, adapt_x_axis:bool = true, adapt_y_axis:bool = true):
+	
 	var bounding_size:Vector2 = Vector2(bounding_limits[1].x - bounding_limits[0].x, bounding_limits[1].y - bounding_limits[0].y)
 	#prints("bounding_size", bounding_size)
 	
@@ -213,6 +224,11 @@ func AdaptScalingToLines(adapt_x_axis:bool = true, adapt_y_axis:bool = true):
 	if adapt_y_axis and bounding_size.y != 0:
 		axes_scaling.y = (graph_size.y) / bounding_size.y
 		prints("adapting bounding size y", axes_scaling.y)
+
+func AdaptScalingToLines(adapt_x_axis:bool = true, adapt_y_axis:bool = true):
+	var bounding_limits:Array = GetGraphLimits() # In graph corrdinates
+	#prints("bounding_limits", bounding_limits)
+	SetScalingFromLimits(bounding_limits, adapt_x_axis, adapt_y_axis)
 		
 		
 func _SetScaling(old_scaling:Vector2, new_scaling:Vector2):

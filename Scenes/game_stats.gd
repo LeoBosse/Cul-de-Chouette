@@ -79,7 +79,7 @@ func InitGraph():
 	for i in range(nb_players):
 		line_points.append([Vector2.ZERO])
 		
-	%GraphScore.Initialize(line_points, player_names)
+	%GraphScore.Initialize(line_points, player_names, 0, 1, 0, 343)
 
 func AddScoreToGraph(player_id:int, new_score:int):
 	%GraphScore.AddPointToLine(player_id, Vector2(len(player_scores[player_id]) - 1, new_score), false)
