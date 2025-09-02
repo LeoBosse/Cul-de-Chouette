@@ -23,6 +23,12 @@ unique_name_in_owner = true
 width = 3.0
 texture_mode = 1
 
+[node name="XaxisTicks" type="Control" parent="Axes"]
+anchors_preset = 0
+
+[node name="YaxisTicks" type="Control" parent="Axes"]
+anchors_preset = 0
+
 [node name="Lines" type="Control" parent="."]
 unique_name_in_owner = true
 anchors_preset = 0

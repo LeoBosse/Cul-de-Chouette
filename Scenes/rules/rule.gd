@@ -51,7 +51,7 @@ func _ready() -> void:
 func SetState(new_state:State):
 	for c in get_children():
 		c.visible = false
-	prints("set state ", rule_name, new_state)
+	#prints("set state ", rule_name, new_state)
 	if new_state == State.INGAME:
 		$RuleInPlay.visible = true
 		modulate = Color(1, 1, 1)

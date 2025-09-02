@@ -82,7 +82,7 @@ func InitGraph():
 	%GraphScore.Initialize(line_points, player_names)
 
 func AddScoreToGraph(player_id:int, new_score:int):
-	%GraphScore.AddPointToLine(player_id, Vector2(len(player_scores[player_id])-1, new_score), false)
+	%GraphScore.AddPointToLine(player_id, Vector2(len(player_scores[player_id]) - 1, new_score), false)
 
 
 func UpdateEntryToScoreTable(col:int, row:int, new_text:String):
