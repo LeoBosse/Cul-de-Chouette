@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://fpqqqll0ardo"]
+[gd_scene load_steps=4 format=3 uid="uid://fpqqqll0ardo"]
 
 [ext_resource type="Script" uid="uid://b38twdx0w6rx3" path="res://Scenes/rules/sirotage.gd" id="2_aenqw"]
+[ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_u0gwx"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_aenqw"]
 
 [node name="Sirotage" type="Control"]
 layout_mode = 3
@@ -62,11 +65,10 @@ popup/item_5/id = 5
 popup/item_6/text = "Chouette"
 popup/item_6/id = 6
 
-[node name="ResultLineEdit" type="LineEdit" parent="VBoxContainer"]
+[node name="ResultDiceRoll" parent="VBoxContainer" instance=ExtResource("2_u0gwx")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-placeholder_text = "Résultat"
-max_length = 1
+button_group = SubResource("ButtonGroup_aenqw")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -95,5 +97,5 @@ text = "Vous devez rentrer un résultat valide !"
 horizontal_alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="text_changed" from="VBoxContainer/ResultLineEdit" to="." method="_on_result_line_edit_text_changed"]
+[connection signal="dice_selected" from="VBoxContainer/ResultDiceRoll" to="." method="_on_result_dice_roll_dice_selected"]
 [connection signal="pressed" from="VBoxContainer/ValidateButton" to="." method="_on_validate_button_pressed"]

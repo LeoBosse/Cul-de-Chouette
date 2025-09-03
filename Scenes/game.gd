@@ -58,7 +58,7 @@ func _ready() -> void:
 	## Connect every dices used for choosing the 3 dice rolls to a function that stores the choice
 	var i:int = 0
 	for roll in %DiceRolls.get_children():
-		roll.button_group.pressed.connect(_on_dice_roll_pressed.bind(i))
+		roll.dice_selected.connect(_on_dice_roll_pressed.bind(i))
 		i += 1
 		
 	grelottine_access = false
@@ -135,10 +135,9 @@ func SetupRules(rules_list:Array):
 func _on_rule_changed() -> void:
 	UpdateRoll()
 
-func _on_dice_roll_pressed(dice:Node, roll_value:int) -> void:
+func _on_dice_roll_pressed(dice:DiceButton, roll_value:int) -> void:
 	"""Called when you click on a dice. 
 	dice:[Node] """
-	
 	if dice.button_pressed:
 		dice_values[roll_value] = dice.value
 	else:

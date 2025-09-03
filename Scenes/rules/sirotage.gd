@@ -101,16 +101,7 @@ func _on_player_bet_selected(index:int, player_id:int):
 	player_bets[player_id] = index
 
 func _on_validate_button_pressed() -> void:
-	var string_result:String = $VBoxContainer/ResultLineEdit.text
-	if not string_result.is_valid_int():
-		%ErrorLabel.visible = true
-		return 
-	var result:int = int(string_result)
-	if result < 1 or result > 6:
-		%ErrorLabel.visible = true
-		return
-	
-	%ErrorLabel.visible = false
+	var result = $VBoxContainer/ResultDiceRoll.GetSelected().value
 	
 	for i in range(3):
 		if dice_values[i] != chouette_value:
@@ -130,7 +121,7 @@ func _on_validate_button_pressed() -> void:
 
 func SetInterfaceResponsive(enabled:bool):
 	$VBoxContainer/ValidateButton.disabled = not enabled
-	$VBoxContainer/ResultLineEdit.editable = enabled
+	%ResultDiceRoll.SetAccess(enabled)
 	for i in range(nb_players):
 		%PlayerBetList.get_child(i+1).get_node("OptionButton").disabled = not enabled
 	
@@ -148,7 +139,7 @@ func SetupInterface():
 	
 	%Description.visible = true
 	%PlayerBetList.visible = valid
-	$VBoxContainer/ResultLineEdit.visible = valid
+	%ResultDiceRoll.visible = valid
 	$VBoxContainer/ValidateButton.visible = valid
 	
 	$VBoxContainer/HBoxContainer.visible = false
@@ -168,7 +159,6 @@ func Clean():
 	chouette_value = 0
 	successfull = false
 	contre_sirop_player = -1
-	$VBoxContainer/ResultLineEdit.text = ""
 	already_rolled = false
 	SetInterfaceResponsive(true)
 	%ContreSiropWinnerButton.select(0)
@@ -177,12 +167,7 @@ func Clean():
 		%PlayerBetList.get_child(i+1).get_node("OptionButton").selected = 0
 
 
-func _on_result_line_edit_text_changed(new_text: String) -> void:
-	if not new_text.is_valid_int():
-		$VBoxContainer/ResultLineEdit.text = ""
-		return
-	
-	var result:int = int(new_text)
+
+func _on_result_dice_roll_dice_selected(dice: DiceButton) -> void:
+	var result:int = dice.value
 	$VBoxContainer/HBoxContainer.visible = result != chouette_value
-		
-	
