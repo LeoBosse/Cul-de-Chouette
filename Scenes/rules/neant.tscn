@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://c8odgtwt48n6b" path="res://Scenes/rules/neant.gd" id="2_wv0oa"]
 
 [node name="Neant" instance=ExtResource("1_ra7m5")]
+size_flags_vertical = 3
 script = ExtResource("2_wv0oa")
 rule_name = "neant"
 short_description = "Aucune autre combinaison valable."
 short_score = "Rien"
+overrides = Array[String]([])
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true

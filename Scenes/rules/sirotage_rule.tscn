@@ -5,8 +5,9 @@
 
 [node name="SirotageRule" instance=ExtResource("1_ajnmm")]
 anchors_preset = 10
-anchor_bottom = 0.0
-grow_vertical = 1
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_vertical = 3
 script = ExtResource("2_83yab")
 rule_name = "sirotage"
 

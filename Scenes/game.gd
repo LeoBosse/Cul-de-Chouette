@@ -10,7 +10,18 @@ var nb_teams:int = 0
 var team_names:Array = []
 var team_scores:Array = []
 var team_roll_scores:Array = []
+
 signal game_is_won(Stats)
+
+@onready var grelottine_access:bool:
+	set(new_value):
+		grelottine_access = new_value
+		$TabContainer.set_tab_hidden(%Grelottine.get_index(), not grelottine_access)
+		
+@onready var sirotage_access:bool:
+	set(new_value):
+		sirotage_access = new_value
+		$TabContainer.set_tab_hidden(%Sirotage.get_index(), not sirotage_access)
 
 @onready var dice_values:Array[int] = [0, 0, 0]
 
@@ -49,6 +60,9 @@ func _ready() -> void:
 	for roll in %DiceRolls.get_children():
 		roll.button_group.pressed.connect(_on_dice_roll_pressed.bind(i))
 		i += 1
+		
+	grelottine_access = false
+	sirotage_access = false
 	
 func Setup(new_player_names:Array, rules_dict:Array, teams:int):
 	SetupPlayers(new_player_names, teams)
@@ -56,6 +70,7 @@ func Setup(new_player_names:Array, rules_dict:Array, teams:int):
 	%Stats.Setup(player_names)
 	#prints("contre sirop", %RulesList.get_node_or_null("ContreSirop"), null, %RulesList.get_node_or_null("ContreSirop") != null)
 	%Sirotage.Setup(player_names, %RulesList.get_node_or_null("ContreSirop") != null)
+	%Grelottine.Setup(player_names)
 	%Bévue.Setup(player_names)
 	%Rules.Setup(rules_dict.map(func(r):return r.duplicate()))
 
@@ -129,7 +144,7 @@ func _on_dice_roll_pressed(dice:Node, roll_value:int) -> void:
 	else:
 		dice_values[roll_value] = 0
 	UpdateRoll(true)
-	
+
 
 func UpdateRoll(reset_player:bool=false):
 	var valid_rules:Array = GetValidRules()
@@ -147,6 +162,11 @@ func UpdateRoll(reset_player:bool=false):
 	team_roll_scores = ComputeTeamsPoints(roll_scores)
 	UpdateRollScoreLabel()
 	
+	print(valid_rules.map(func(x):return x.rule_name))
+	var val_rules_names:Array = valid_rules.map(func(x):return x.rule_name)
+	grelottine_access = "grelottine" in val_rules_names
+	sirotage_access = "chouette" in val_rules_names or "artichette" in val_rules_names
+
 	#print(dice_values, " ", valid_rules, " ", roll_scores)
 
 func ValidateDices():
@@ -212,9 +232,10 @@ func PassTurn():
 	team_roll_scores.fill(0)
 	UpdateRollScoreLabel()
 	
+	%Grelottine.Clean()
 	%Sirotage.Clean()
-	for i in range(nb_players):
-		players[i].sirotage_score = 0
+	#for i in range(nb_players):
+		#players[i].sirotage_score = 0
 	
 	for rule in %RulesList.get_children():
 		rule.Clean()
@@ -254,6 +275,8 @@ func SetScoreLabelText(label_node:RichTextLabel, entry_names:Array, current_scor
 		
 		if players[i].has_civet:
 			label_node.text += " \tC"
+		if players[i].has_grelottine:
+			label_node.text += " \tG"
 		label_node.text += "\n"
 	
 
@@ -317,7 +340,7 @@ func ComputePoints(valid_rules) -> Array[int]:
 	
 	for i in range(nb_players):
 		scores[i] += %Sirotage.scores[i]
-	
+		scores[i] += int(%Grelottine.final_scores[i])
 	return scores
 
 
@@ -381,4 +404,25 @@ func _on_stats_undoing_turn(point_correction:Array, old_player:int, civets:Array
 		players[i].has_civet = civets[i]
 	UpdateCurrentPlayerLabel()
 	UpdateRollScoreLabel()
+
+
+func _on_grellotine_grellotine_challenge() -> void:
 	
+	if not %Grelottine.ongoing_challenge:
+		%Grelottine.Update(players, current_player)
+
+func _on_grellotine_validating_grelottine(challengee:int, challenger: int) -> void:
+	
+	print("_on_grellotine_validating_grelottine...")
+	
+	SetDicesAccess(false)
+	
+	## Remove grelottine from both players
+	players[challengee].has_grelottine = false
+	players[challenger].has_grelottine = false
+	
+	## Return to the main game tab
+	$TabContainer.current_tab = 0
+	
+	## Update roll to view the rules applying with the sirotage roll
+	UpdateRoll()

@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://dnxepqd7o65my" path="res://Scenes/rules/civet_sirote_rule.gd" id="2_0pbos"]
 
 [node name="CivetSiroteRule" instance=ExtResource("1_85g3u")]
+size_flags_vertical = 3
 script = ExtResource("2_0pbos")
 rule_name = "civet siroté"
 short_description = "Vous avez échoué un sirotage sur une Chouette de 6."
 short_score = "Un civet."
+overrides = Array[String](["neant", "grellotine"])
 prerequisites = Array[String](["sirotage", "civet"])
 
 [node name="RuleInPlay" parent="." index="0"]

@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=3 uid="uid://pkyg46bcb8bt"]
+
+[ext_resource type="Script" uid="uid://l2hrsdyvq0nr" path="res://Scenes/rules/grellotine_tab.gd" id="1_8hm4c"]
+[ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_5p2td"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_5p2td"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_00kpu"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_c0r6u"]
+
+[node name="GrelottineTab" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8hm4c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Défi Grellotine !
+
+
+
+
+"
+fit_content = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Défié par : "
+
+[node name="DefiantPlayerOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+item_count = 1
+popup/item_0/id = 0
+
+[node name="Description2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Vous avez deux lancés pour réaliser la combinaison suivante : "
+
+[node name="CombinaisonOptionButton" type="OptionButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+item_count = 1
+popup/item_0/id = 0
+
+[node name="MiseLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mise : "
+
+[node name="PlayerBetList" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ExamplePlayerBet" type="HBoxContainer" parent="VBoxContainer/PlayerBetList"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PlayerBetList/ExamplePlayerBet"]
+layout_mode = 2
+text = "PLAYER_NAME"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/PlayerBetList/ExamplePlayerBet"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/id = 2
+popup/item_1/text = "Réussi"
+popup/item_1/id = 0
+popup/item_2/text = "Perdu"
+popup/item_2/id = 1
+
+[node name="DiceRollsContainer" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DiceRoll" parent="VBoxContainer/DiceRollsContainer" instance=ExtResource("2_5p2td")]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = SubResource("ButtonGroup_5p2td")
+
+[node name="DiceRoll2" parent="VBoxContainer/DiceRollsContainer" instance=ExtResource("2_5p2td")]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = SubResource("ButtonGroup_00kpu")
+
+[node name="DiceRoll3" parent="VBoxContainer/DiceRollsContainer" instance=ExtResource("2_5p2td")]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = SubResource("ButtonGroup_c0r6u")
+
+[node name="ValidateButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Valider
+"
+
+[node name="ErrorLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Défi Grelottine n'est pas disponible pour le moment ! "
+horizontal_alignment = 1
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer2/DefiantPlayerOptionButton" to="." method="_on_defiant_player_option_button_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/CombinaisonOptionButton" to="." method="_on_combinaison_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/ValidateButton" to="." method="_on_validate_button_pressed"]

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bcwvq7b2rw3f0" path="res://Scenes/rules/civet_rule.gd" id="2_gpe17"]
 
 [node name="CivetRule" instance=ExtResource("1_xty0a")]
+size_flags_vertical = 3
 script = ExtResource("2_gpe17")
 rule_name = "civet"
 short_description = "Pari sur la combinaison effectuée pour le lancer."

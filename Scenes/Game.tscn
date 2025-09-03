@@ -1,17 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://drk4ise4rkyfg"]
+[gd_scene load_steps=14 format=3 uid="uid://drk4ise4rkyfg"]
 
 [ext_resource type="Theme" uid="uid://c1u5lm5r2f3ub" path="res://default_theme.tres" id="1_3so38"]
 [ext_resource type="Script" uid="uid://c48sum0lcyi3l" path="res://Scenes/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_gl6un"]
-[ext_resource type="ButtonGroup" uid="uid://bcwtixhh3jrw2" path="res://Scenes/DiceSelect/row1_button_group.tres" id="3_b2bpf"]
-[ext_resource type="ButtonGroup" uid="uid://dsxjka17o73pj" path="res://Scenes/DiceSelect/row2_button_group.tres" id="4_7lihs"]
-[ext_resource type="ButtonGroup" uid="uid://c21340qp52gfj" path="res://Scenes/DiceSelect/row3_button_group.tres" id="5_fgofq"]
 [ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="7_71axn"]
 [ext_resource type="PackedScene" uid="uid://cqrnbril0pg3f" path="res://Scenes/rules_tab.tscn" id="11_dahhg"]
+[ext_resource type="PackedScene" uid="uid://pkyg46bcb8bt" path="res://Scenes/rules/grellotine_tab.tscn" id="13_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://fpqqqll0ardo" path="res://Scenes/rules/sirotage.tscn" id="13_wxwew"]
 [ext_resource type="PackedScene" uid="uid://byveysu48hdxp" path="res://Scenes/game_stats.tscn" id="15_acvyw"]
 [ext_resource type="PackedScene" uid="uid://j830hr4vwgv5" path="res://Scenes/rules/artichette.tscn" id="17_tfod6"]
 [ext_resource type="PackedScene" uid="uid://b4746c43lqkmd" path="res://Scenes/rules/bévue.tscn" id="20_tfod6"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_71axn"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_dahhg"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_3so38"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -50,15 +54,15 @@ layout_mode = 2
 
 [node name="DiceRoll1" parent="TabContainer/Lancé/DiceRolls" instance=ExtResource("2_gl6un")]
 layout_mode = 2
-button_group = ExtResource("3_b2bpf")
+button_group = SubResource("ButtonGroup_71axn")
 
 [node name="DiceRoll2" parent="TabContainer/Lancé/DiceRolls" instance=ExtResource("2_gl6un")]
 layout_mode = 2
-button_group = ExtResource("4_7lihs")
+button_group = SubResource("ButtonGroup_dahhg")
 
 [node name="DiceRoll3" parent="TabContainer/Lancé/DiceRolls" instance=ExtResource("2_gl6un")]
 layout_mode = 2
-button_group = ExtResource("5_fgofq")
+button_group = SubResource("ButtonGroup_3so38")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Lancé"]
 layout_mode = 2
@@ -130,13 +134,13 @@ size_flags_vertical = 3
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+overrides = Array[String](["chouette", "", "neant", "grellotine", "grelottine"])
 
 [node name="Chouette" parent="TabContainer/Lancé/ScrollContainer/RulesList" instance=ExtResource("7_71axn")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="Sirotage" parent="TabContainer" instance=ExtResource("13_wxwew")]
 unique_name_in_owner = true
@@ -144,27 +148,34 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Bévue" parent="TabContainer" instance=ExtResource("20_tfod6")]
+[node name="Grelottine" parent="TabContainer" instance=ExtResource("13_3cx6b")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="Stats" parent="TabContainer" instance=ExtResource("15_acvyw")]
+[node name="Bévue" parent="TabContainer" instance=ExtResource("20_tfod6")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
+[node name="Stats" parent="TabContainer" instance=ExtResource("15_acvyw")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
 [node name="Rules" parent="TabContainer" instance=ExtResource("11_dahhg")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 5
 
 [node name="Credits" type="Control" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 5
+metadata/_tab_index = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Credits"]
 layout_mode = 0
@@ -185,5 +196,7 @@ J'espère qu'elle vous aide à apprendre le jeu :)"
 [connection signal="pressed" from="TabContainer/Lancé/HBoxContainer/ValidateRollButton" to="." method="_on_validate_roll_button_pressed"]
 [connection signal="trying_sirotage" from="TabContainer/Sirotage" to="." method="_on_sirotage_trying_sirotage"]
 [connection signal="validating_sirotage" from="TabContainer/Sirotage" to="." method="_on_sirotage_validating_sirotage"]
+[connection signal="grellotine_challenge" from="TabContainer/Grelottine" to="." method="_on_grellotine_grellotine_challenge"]
+[connection signal="validating_grelottine" from="TabContainer/Grelottine" to="." method="_on_grellotine_validating_grelottine"]
 [connection signal="bevue" from="TabContainer/Bévue" to="." method="_on_bévue_bevue"]
 [connection signal="undoing_turn" from="TabContainer/Stats" to="." method="_on_stats_undoing_turn"]

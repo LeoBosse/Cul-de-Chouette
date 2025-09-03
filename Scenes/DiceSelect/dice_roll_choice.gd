@@ -6,6 +6,9 @@ extends HBoxContainer
 
 
 func _ready() -> void:
+	if not button_group:
+		button_group = ButtonGroup.new()
+	
 	for d in get_children():
 		d.button_group = button_group
 

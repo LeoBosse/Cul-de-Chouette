@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://dfudaovrqki" path="res://Scenes/rules/artichette.gd" id="2_r2d4t"]
 
 [node name="Artichette" instance=ExtResource("1_45c5h")]
+size_flags_vertical = 3
 script = ExtResource("2_r2d4t")
 rule_name = "artichette"
 short_description = "3-4-3"
 short_score = "16 pts si tu cri \"Raitournelle !\"
 -16 pts si qqun crie d'abord \"Artichette !\"."
-overrides = Array[String](["chouette", "", "neant"])
+overrides = Array[String](["chouette", "", "neant", "grellotine"])
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true

@@ -6,7 +6,7 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_yfg40")
-overrides = Array[String](["neant"])
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="RuleInPlay" type="HBoxContainer" parent="."]
 visible = false
@@ -72,6 +72,7 @@ text = "Rule Name"
 custom_minimum_size = Vector2(480, 0)
 layout_mode = 2
 size_flags_vertical = 3
+text = "Full description"
 autowrap_mode = 3
 
 [connection signal="item_selected" from="RuleInPlay/MenuButton" to="." method="_on_menu_button_item_selected"]

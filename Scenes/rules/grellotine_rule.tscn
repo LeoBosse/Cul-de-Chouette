@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhth3hgqc2nn8"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_v5bpc"]
+[ext_resource type="Script" uid="uid://ejyuoqlji4ck" path="res://Scenes/rules/grellotine_rule.gd" id="2_pwpbp"]
+
+[node name="GrellotineRule" instance=ExtResource("1_v5bpc")]
+size_flags_vertical = 3
+script = ExtResource("2_pwpbp")
+rule_name = "Grelottine"
+short_description = "Lors d'un Néant, un joueur ayant une Grelottine peut vous défier en criant \"Grelottine !\". Si plusieurs joueurs crient \"Grelottine !\" simultanément, le plus petit score est prioritaire."
+short_score = "Une grellotine"
+full_description = ""
+overrides = Array[String]([])
+
+[node name="RuleInPlay" parent="." index="0"]
+visible = true
+
+[node name="ShortDescription" parent="RuleInPlay" index="0"]
+text = "GRELLOTINE :
+Lors d'un Néant, un joueur ayant une Grelottine peut vous défier en criant \"Grelottine !\". Si plusieurs joueurs crient \"Grelottine !\" simultanément, le plus petit score est prioritaire.
+Score : Une grellotine"
+
+[node name="RuleInSetup" parent="." index="1"]
+text = "Grellotine"
+
+[node name="RuleInDocumentation" parent="." index="2"]
+visible = false
+
+[node name="CheckButton" parent="RuleInDocumentation" index="0"]
+text = "Grellotine"
+
+[node name="RichTextLabel" parent="RuleInDocumentation" index="1"]
+text = ""

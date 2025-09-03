@@ -68,11 +68,11 @@ func EraseTicks():
 func AddAxisTicks(axis_name:String, nb_ticks:int=10, tick_size:int = 10):
 	var axis:Line2D = %Xaxis
 	var ticks_node:Control = $Axes/XaxisTicks
-	var axis_size:int = graph_size.x
+	var axis_size:int = int(graph_size.x)
 	if axis_name[0].to_lower() == "y":
 		axis = %Yaxis
 		ticks_node = $Axes/YaxisTicks
-		axis_size = graph_size.y
+		axis_size = int(graph_size.y)
 	
 	var axis_direction:Vector2 = (PositionToCoords(axis.get_point_position(1)) - PositionToCoords(axis.get_point_position(0))).normalized()
 	var axis_perp:Vector2 = axis_direction.rotated(PI/2).normalized()
@@ -98,7 +98,7 @@ func AddLine(points:Array, _legend:String="", width:int = 2, color:Color=Color(0
 		line_colors.append(color)
 	for p in points:
 		new_line.add_point(CoordsToPosition(p))
-		prints("adding line ", p, CoordsToPosition(p))
+		#prints("adding line ", p, CoordsToPosition(p))
 	%Lines.add_child(new_line)
 	nb_lines += 1
 
@@ -129,13 +129,13 @@ func CheckLineExists(line_id:int) -> bool:
 	return false
 
 func AddPointToLine(line:int, point:Vector2, adapt_scaling:bool = true):
-	prints("adding point at coords ", point)
+	#prints("adding point at coords ", point)
 	CheckLineExists(line)
-	print("line exists")
+	#print("line exists")
 	%Lines.get_child(line).add_point(CoordsToPosition(point))
-	print(CoordsToPosition(point))
+	#print(CoordsToPosition(point))
 	if adapt_scaling:
-		print("adapting scaling")
+		#print("adapting scaling")
 		AdaptScalingToLines()
 
 func ChangePointFromLine(line:int, new_position:Vector2, point_id:int = -1, adapt_scaling:bool = true):
@@ -220,10 +220,10 @@ func SetScalingFromLimits(bounding_limits:Array, adapt_x_axis:bool = true, adapt
 	
 	if adapt_x_axis and bounding_size.x != 0:
 		axes_scaling.x = (graph_size.x) / bounding_size.x
-		prints("adapting bounding size X", axes_scaling.x)
+		#prints("adapting bounding size X", axes_scaling.x)
 	if adapt_y_axis and bounding_size.y != 0:
 		axes_scaling.y = (graph_size.y) / bounding_size.y
-		prints("adapting bounding size y", axes_scaling.y)
+		#prints("adapting bounding size y", axes_scaling.y)
 
 func AdaptScalingToLines(adapt_x_axis:bool = true, adapt_y_axis:bool = true):
 	var bounding_limits:Array = GetGraphLimits() # In graph corrdinates

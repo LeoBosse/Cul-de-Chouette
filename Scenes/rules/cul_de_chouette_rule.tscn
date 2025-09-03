@@ -4,11 +4,12 @@
 [ext_resource type="Script" uid="uid://dn4yksxdxdljq" path="res://Scenes/rules/cul_de_chouette_rule.gd" id="2_0qpyv"]
 
 [node name="CulDeChouette" instance=ExtResource("1_kaxp1")]
+size_flags_vertical = 3
 script = ExtResource("2_0qpyv")
 rule_name = "cul de chouette"
 short_description = "Trois dés identiques."
 short_score = "40 + 10 * (1 dé)"
-overrides = Array[String](["chouette", "neant"])
+overrides = Array[String](["chouette", "neant", "grellotine"])
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true

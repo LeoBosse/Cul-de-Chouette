@@ -4,7 +4,7 @@ class_name ChouetteVeluteRule
 
 
 func ComputePoints(dice_values:Array) -> int:
-	return $VeluteRule.ComputePoints(dice_values)
+	return VeluteRule.new().ComputePoints(dice_values)
 
 
 func check_validity(dice_values:Array, _players:Array=[], _current_player:int=-1) -> bool:
