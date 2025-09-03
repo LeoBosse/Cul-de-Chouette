@@ -27,7 +27,7 @@ var choosen_combinaison:int = -1
 
 
 signal grellotine_challenge
-signal validating_grelottine(challengee, challenger)
+signal validating_grelottine(challengee, challenger, dice_values)
 	
 func Update(player_list:Array, current_player:int):
 	
@@ -78,9 +78,14 @@ func CheckValidChallenger(players, chalenger):
 
 func CheckValidity(players, chalengee, _chalenger=null) -> bool:
 	
-	if not players[chalengee].has_grelottine:
-		return false
+	#if not players[chalengee].has_grelottine:
+		#return false
 	if players[chalengee].score < 30:
+		print("GRELOTTINE invalid : challengee score < 30")
+		return false
+	
+	if not range(nb_players).any(func(x):return CheckValidChallenger(players, x)):
+		print("GRELOTTINE invalid : no challengers")
 		return false
 	
 	return true
@@ -136,9 +141,6 @@ func ComputePoints():
 		else:
 			scores[i] -= 5
 	
-	## Challenged player gain final combinaison points
-	scores[challengee] += int(combinaisons[choosen_combinaison].new().ComputePoints(dice_values))
-	
 	## Challenger and challengee gain/lose the challenge points based on its success
 	scores[challengee] += int(challenge_point * pow(-1, int(not successfull)))
 	scores[challenger] += int(challenge_point * pow(-1, int(successfull)))
@@ -163,8 +165,11 @@ func _on_player_bet_selected(index:int, player_id:int):
 
 
 func _on_defiant_player_option_button_item_selected(index: int) -> void:
-	challenger = index - 1
+	if challenger != -1:
+		%PlayerBetList.get_child(challenger + 1).visible = true
+	%PlayerBetList.get_child(index).visible = false
 	
+	challenger = index - 1
 	challenge_point = GetChallengeScore(challengee, challenger, choosen_combinaison)
 
 
@@ -201,5 +206,5 @@ func _on_validate_button_pressed() -> void:
 	final_scores = ComputePoints()
 	
 	prints("valid grelottine: ", successfull, final_scores)
-	validating_grelottine.emit(challengee, challenger)
+	validating_grelottine.emit(challengee, challenger, dice_values)
 	

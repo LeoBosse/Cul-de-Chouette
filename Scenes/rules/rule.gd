@@ -33,13 +33,13 @@ func _ready() -> void:
 	rule_name = rule_name.to_lower()
 	
 	if not self is NeantRule and not self is GrelottineRule:
-		prints(self.rule_name, self)
+		#prints(self.rule_name, self)
 		if not overrides.has("neant"):
 			overrides.append("neant")
 		if not overrides.has("grelottine"):
 			overrides.append("grelottine")
 	
-	prints(self.rule_name, overrides)
+	#prints(self.rule_name, overrides)
 	
 	for i in overrides.size():
 		overrides[i] = overrides[i].to_lower()

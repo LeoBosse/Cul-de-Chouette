@@ -102,7 +102,7 @@ func SetupPlayers(new_player_names:Array, teams:int) -> void:
 		new_player.state = PLAY
 		if use_teams:
 			new_player.team = i % teams
-			prints(teams, i % teams)
+			#prints(teams, i % teams)
 		players.append(new_player)
 	UpdateCurrentPlayerLabel()
 
@@ -159,13 +159,16 @@ func UpdateRoll(reset_player:bool=false):
 	#SetupSirotageRules(%Sirotage.successfull, %Sirotage.contre_sirop_player)
 	roll_scores = ComputePoints(valid_rules)
 	team_roll_scores = ComputeTeamsPoints(roll_scores)
-	UpdateRollScoreLabel()
 	
-	print(valid_rules.map(func(x):return x.rule_name))
+	#print(valid_rules.map(func(x):return x.rule_name))
 	var val_rules_names:Array = valid_rules.map(func(x):return x.rule_name)
 	grelottine_access = "grelottine" in val_rules_names
+	if not players[current_player].has_grelottine:
+		players[current_player].has_grelottine = "grelottine" in val_rules_names
+	
 	sirotage_access = "chouette" in val_rules_names or "artichette" in val_rules_names
 
+	UpdateRollScoreLabel()
 	#print(dice_values, " ", valid_rules, " ", roll_scores)
 
 func ValidateDices():
@@ -223,9 +226,8 @@ func PassTurn():
 	current_player_state = WinLoseCondition()
 	if current_player_state == WIN:
 		#prints(players[current_player].player_name, "won!")
-		prints(%Stats, %Stats.player_names)
+		#prints(%Stats, %Stats.player_names)
 		game_is_won.emit(%Stats.GetExport())
-		
 		
 	roll_scores.fill(0)
 	team_roll_scores.fill(0)
@@ -279,11 +281,14 @@ func SetScoreLabelText(label_node:RichTextLabel, entry_names:Array, current_scor
 		label_node.text += "\n"
 	
 
-func GetValidRules() -> Array:
+func GetValidRules(dices=null) -> Array:
 	var valid_rules:Array[Rule] = []
+	
+	if dices == null:
+		dices = dice_values
 		
 	for r in %RulesList.get_children():
-		if r.check_validity(dice_values.duplicate(), players, current_player) and r.in_use:
+		if r.check_validity(dices.duplicate(), players, current_player) and r.in_use:
 			valid_rules.append(r)
 	
 	#prints("sirotage: ", %Sirotage.successfull, %Sirotage.already_rolled)
@@ -319,11 +324,11 @@ func ComputeTeamsPoints(player_score:Array) -> Array[int]:
 	if not use_teams:
 		return scores
 	
-	print(player_score)
+	#print(player_score)
 	for i in range(len(player_score)):
-		prints(i, players[i].player_name, players[i].team, player_score[i])
+		#prints(i, players[i].player_name, players[i].team, player_score[i])
 		scores[players[i].team] += player_score[i]
-		print(scores)
+		#print(scores)
 	
 	return scores
 	
@@ -410,14 +415,16 @@ func _on_grellotine_grellotine_challenge() -> void:
 	if not %Grelottine.ongoing_challenge:
 		%Grelottine.Update(players, current_player)
 
-func _on_grellotine_validating_grelottine(challengee:int, challenger: int) -> void:
+func _on_grellotine_validating_grelottine(challengee:int, challenger: int, challenge_dice_values:Array) -> void:
 	
-	print("_on_grellotine_validating_grelottine...")
+	#print("_on_grellotine_validating_grelottine...")
 	
 	SetDicesAccess(false)
 	
+	
+	
 	## Remove grelottine from both players
-	players[challengee].has_grelottine = false
+	#players[challengee].has_grelottine = false
 	players[challenger].has_grelottine = false
 	
 	## Return to the main game tab
@@ -425,3 +432,11 @@ func _on_grellotine_validating_grelottine(challengee:int, challenger: int) -> vo
 	
 	## Update roll to view the rules applying with the sirotage roll
 	UpdateRoll()
+
+
+	var val_rules:Array = GetValidRules(challenge_dice_values)
+	var comb_points:int = ComputePoints(val_rules)[current_player]
+	print(val_rules, comb_points)
+	if comb_points > 0:
+		roll_scores[current_player] += comb_points
+		UpdateRollScoreLabel()
