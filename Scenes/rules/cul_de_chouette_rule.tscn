@@ -10,6 +10,7 @@ rule_name = "cul de chouette"
 short_description = "Trois dés identiques."
 short_score = "40 + 10 * (1 dé)"
 overrides = Array[String](["chouette", "neant", "grellotine", "grelottine"])
+rule_type = null
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true

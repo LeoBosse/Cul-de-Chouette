@@ -7,6 +7,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_yfg40")
 overrides = Array[String](["neant", "grelottine"])
+rule_type = null
 
 [node name="RuleInPlay" type="HBoxContainer" parent="."]
 visible = false

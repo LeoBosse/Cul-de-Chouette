@@ -7,6 +7,7 @@
 size_flags_vertical = 3
 script = ExtResource("2_pwpbp")
 rule_name = "grelottine"
+rule_type = 2
 short_description = "Lors d'un Néant, un joueur ayant une Grelottine peut vous défier en criant \"Grelottine !\". Si plusieurs joueurs crient \"Grelottine !\" simultanément, le plus petit score est prioritaire."
 short_score = "Une grellotine"
 full_description = ""

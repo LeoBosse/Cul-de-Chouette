@@ -10,6 +10,7 @@ grow_horizontal = 2
 size_flags_vertical = 3
 script = ExtResource("2_83yab")
 rule_name = "sirotage"
+rule_type = 2
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true

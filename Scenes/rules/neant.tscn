@@ -10,6 +10,7 @@ rule_name = "neant"
 short_description = "Aucune autre combinaison valable."
 short_score = "Rien"
 overrides = Array[String]([])
+rule_type = null
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true

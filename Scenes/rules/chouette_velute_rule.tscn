@@ -9,6 +9,7 @@
 size_flags_vertical = 3
 script = ExtResource("2_g6s1a")
 rule_name = "chouette velute"
+rule_type = 1
 short_description = "La somme de deux dés identiques vaut le troisième (chouette + velute)"
 short_score = "Les points de la velute sont attribué au premier joueur qui cri \"Pas mou le caillou !\" en tapant dans ses mains."
 full_description = "* La Velute : la somme de 2 dés = le 3e dé
@@ -36,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+rule_type = 0
 overrides = Array[String](["neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "neant", "grellotine", "grelottine"])
 
 [node name="Chouette" parent="." index="2" instance=ExtResource("3_g6s1a")]

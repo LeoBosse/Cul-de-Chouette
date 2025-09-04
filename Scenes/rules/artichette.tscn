@@ -7,6 +7,7 @@
 size_flags_vertical = 3
 script = ExtResource("2_r2d4t")
 rule_name = "artichette"
+rule_type = 1
 short_description = "3-4-3"
 short_score = "16 pts si tu cri \"Raitournelle !\"
 -16 pts si qqun crie d'abord \"Artichette !\"."

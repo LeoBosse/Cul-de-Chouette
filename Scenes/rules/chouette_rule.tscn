@@ -7,6 +7,7 @@
 size_flags_vertical = 3
 script = ExtResource("2_71yht")
 rule_name = "chouette"
+rule_type = 0
 short_description = "Deux dés identiques (la chouette)."
 short_score = "Le carré de la chouette"
 full_description = "* La Chouette : 2 dés identiques

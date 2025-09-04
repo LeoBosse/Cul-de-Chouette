@@ -7,6 +7,7 @@
 size_flags_vertical = 3
 script = ExtResource("2_1kd0b")
 rule_name = "souflette"
+rule_type = 2
 short_description = "3 dés formant 4, 2 et 1."
 short_score = "50, 40 ou 30 suivant le résultat du défi."
 full_description = "Le joueur peut défier un autre joueur de son choix en le pointant du doigt et en criant \"En garde ma mignonne !\". Ce joueur a alors trois jets de dés pour réaliser lui

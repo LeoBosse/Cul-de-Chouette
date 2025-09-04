@@ -7,6 +7,7 @@
 size_flags_vertical = 3
 script = ExtResource("2_trw1p")
 rule_name = "suite"
+rule_type = 1
 short_description = "Trois dés différents qui se suivent."
 short_score = "Le dernier joueur à taper du poing sur la table en criant : \"Grelotte ça picote !\" perd 10 points."
 full_description = "Tous les joueurs doivent taper du poing sur la table en criant : \"Grelotte ça picote !\".
