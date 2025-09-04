@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddykwkghj261c"]
+[gd_scene load_steps=4 format=3 uid="uid://ddykwkghj261c"]
 
 [ext_resource type="Script" uid="uid://cy0d40pv4va27" path="res://Scenes/graph_2d.gd" id="1_6r002"]
+[ext_resource type="PackedScene" uid="uid://406o1r7igt6g" path="res://Scenes/axis.tscn" id="2_5du7y"]
+[ext_resource type="Texture2D" uid="uid://bhroee8fvn8x5" path="res://icon.svg" id="3_kn7c3"]
 
 [node name="Graph2D" type="Control"]
 custom_minimum_size = Vector2(343, 343)
@@ -10,24 +12,37 @@ script = ExtResource("1_6r002")
 metadata/_tab_index = 1
 
 [node name="Axes" type="Control" parent="."]
+unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Xaxis" type="Line2D" parent="Axes"]
-unique_name_in_owner = true
+visible = false
 width = 3.0
 
 [node name="Yaxis" type="Line2D" parent="Axes"]
-unique_name_in_owner = true
+visible = false
 width = 3.0
 texture_mode = 1
 
 [node name="XaxisTicks" type="Control" parent="Axes"]
+visible = false
 anchors_preset = 0
 
 [node name="YaxisTicks" type="Control" parent="Axes"]
+visible = false
 anchors_preset = 0
+
+[node name="XAxis" parent="Axes" instance=ExtResource("2_5du7y")]
+unique_name_in_owner = true
+
+[node name="YAxis" parent="Axes" instance=ExtResource("2_5du7y")]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Axes"]
+scale = Vector2(0.140625, 0.15625)
+texture = ExtResource("3_kn7c3")
 
 [node name="Lines" type="Control" parent="."]
 unique_name_in_owner = true

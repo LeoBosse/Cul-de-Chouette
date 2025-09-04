@@ -28,19 +28,26 @@ var default_line_colors:Array[Color] = ['RED', 'GREEN', 'BLUE', 'CYAN', 'ORANGE'
 var nb_lines:int = 0
 
 func Initialize(lines:Array = [], legend:Array=[], x_min=null, x_max=null, y_min=null, y_max=null):
-	%Xaxis.add_point(Vector2(0, graph_origin.y))
-	#%Xaxis.add_point(CoordsToPosition(Vector2(graph_size.x, 0)))
-	%Xaxis.add_point(Vector2(graph_size.x, graph_origin.y))
-	#%Yaxis.add_point(CoordsToPosition(Vector2.ZERO))
-	%Yaxis.add_point(Vector2(graph_origin.x, 0))
-	#%Yaxis.add_point(CoordsToPosition(Vector2(0, graph_size.y)))
-	%Yaxis.add_point(Vector2(graph_origin.x, graph_size.y))
+	#%Xaxis.add_point(Vector2(0, graph_origin.y))
+	##%Xaxis.add_point(CoordsToPosition(Vector2(graph_size.x, 0)))
+	#%Xaxis.add_point(Vector2(graph_size.x, graph_origin.y))
+	##%Yaxis.add_point(CoordsToPosition(Vector2.ZERO))
+	#%Yaxis.add_point(Vector2(graph_origin.x, 0))
+	##%Yaxis.add_point(CoordsToPosition(Vector2(0, graph_size.y)))
+	#%Yaxis.add_point(Vector2(graph_origin.x, graph_size.y))
+	
+	%Axes.position = graph_origin
+	
+	%XAxis.Setup(Vector2.RIGHT, graph_origin.x, -20, 343, graph_size.x)
+	%YAxis.Setup(Vector2.UP,    graph_size.y - graph_origin.y, -20, 343, graph_size.y)
+	%XAxis.SetupTicks(10, 10)
+	%YAxis.SetupTicks(10, 10)
 	
 	
 	SetAxisLimits(x_min, x_max, y_min, y_max)
 	
 	#AddAxisTicks("x")
-	AddAxisTicks("y")
+	#AddAxisTicks("y")
 	
 	#print(%Xaxis.points)
 	#print(%Yaxis.points)
