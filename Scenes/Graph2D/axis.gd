@@ -15,7 +15,7 @@ var origin_pos:float = 0
 var limits:Array = [0, 1]
 var pos_limits:Array = [0, 100]
 
-var range:float:
+var value_range:float:
 	get():
 		return limits[1] - limits[0]
 		
@@ -34,21 +34,24 @@ func Setup(dir:Vector2, origin:float, min_value:int, max_value:int, graph_size:i
 	origin_pos = origin
 	
 	limits = [min_value, max_value]
-	pos_limits = [0, graph_size]
 	
-	pix_to_unit = float(limits[1] - limits[0]) / (pos_limits[1] - pos_limits[0])
+	pix_to_unit = float(limits[1] - limits[0]) / (graph_size)
+	
+	pos_limits = [GetPointPosition(limits[0]), GetPointPosition(limits[1])]
+	
+	prints("limits", pix_to_unit, limits, pos_limits)
 	
 	width = 2
 	default_color = Color(1, 1, 1)
 	
 	clear_points()
-	add_point(direction * (pos_limits[0] - origin))
-	add_point(direction * (pos_limits[1] - origin))
+	add_point(pos_limits[0])
+	add_point(pos_limits[1])
 
 func AutoTicks(order:int = 0, multiplier:float = 10, tick_length:int = 10):
-	var ticks_power:int = int(log(range) / log(multiplier) - order)
+	var ticks_power:int = int(log(value_range) / log(multiplier) - order)
 	var min_tick_value:float = multiplier**ticks_power * int(limits[0] / multiplier**ticks_power)
-	var nb_ticks:int = range / multiplier**ticks_power
+	var nb_ticks:int = int(value_range / multiplier**ticks_power)
 	#var max_tick_value:float = floor(limits[1] / 10**main_ticks)
 	
 	var tick_values:Array = range(nb_ticks + 1).map(func(x):return min_tick_value + x * multiplier**ticks_power)
@@ -60,7 +63,7 @@ func _SetupTicks(tick_values:Array, order:int, tick_length:int = 10):
 	if order > 0:
 		tick_node = %SecondTicks
 	
-	var axis_length:float = (get_point_position(1) - get_point_position(0)).length()
+	#var axis_length:float = (get_point_position(1) - get_point_position(0)).length()
 	
 	var axis_perp:Vector2 = direction.rotated(PI/2).normalized()
 	
@@ -70,6 +73,7 @@ func _SetupTicks(tick_values:Array, order:int, tick_length:int = 10):
 		new_tick.default_color = default_color
 		new_tick.add_point(GetPointPosition(tick_values[i]) + axis_perp * tick_length/2.)
 		new_tick.add_point(GetPointPosition(tick_values[i]) - axis_perp * tick_length/2.)
+		prints("ticks", order, tick_values[i], GetPointPosition(tick_values[i]))
 		tick_node.add_child(new_tick)
 
 func GetPointCoords(pos:Vector2) -> float:
@@ -79,7 +83,13 @@ func GetPointCoords(pos:Vector2) -> float:
 	return coords
 
 func GetPointPosition(value:float) -> Vector2:
-	"""Return the position on the graph of a point given it's value along this axis."""
-	var pos:int = int((value - limits[0]) * unit_to_pix) - origin_pos
+	"""Return the local position on the axis of a point given it's value along this axis."""
+	var pos:int = int(value * unit_to_pix)
+	#prints("value to pos", name, value, unit_to_pix, limits[0], pos)
+	return pos * direction
+	
+func GetGlobalPointPosition(value:float) -> Vector2:
+	"""Return the global position on the axis of a point given it's value along this axis."""
+	var pos:int = int(value * unit_to_pix) + origin_pos
 	#prints("value to pos", name, value, unit_to_pix, limits[0], pos)
 	return pos * direction
