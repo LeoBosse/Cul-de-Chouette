@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://byveysu48hdxp"]
 
-[ext_resource type="Script" uid="uid://dac6du21be3l3" path="res://Scenes/game_stats.gd" id="1_ex7ht"]
+[ext_resource type="Script" uid="uid://dac6du21be3l3" path="res://Scenes/Screens/game_stats.gd" id="1_ex7ht"]
 [ext_resource type="Texture2D" uid="uid://bhroee8fvn8x5" path="res://icon.svg" id="2_qe60g"]
-[ext_resource type="PackedScene" uid="uid://ddykwkghj261c" path="res://Scenes/graph2D.tscn" id="3_gc528"]
+[ext_resource type="PackedScene" uid="uid://ddykwkghj261c" path="res://Scenes/Graph2D/graph2D.tscn" id="3_gc528"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qe60g"]
 font_size = 45

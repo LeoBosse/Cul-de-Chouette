@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://406o1r7igt6g"]
+
+[ext_resource type="Script" uid="uid://bigi24bpo3bgi" path="res://Scenes/Graph2D/axis.gd" id="1_w53fg"]
+
+[node name="Axis" type="Line2D"]
+script = ExtResource("1_w53fg")
+
+[node name="MainTicks" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="SecondTicks" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Heads" type="Node2D" parent="."]
+unique_name_in_owner = true

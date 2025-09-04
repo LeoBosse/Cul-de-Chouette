@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://drk4ise4rkyfg"]
 
 [ext_resource type="Theme" uid="uid://c1u5lm5r2f3ub" path="res://default_theme.tres" id="1_3so38"]
-[ext_resource type="Script" uid="uid://c48sum0lcyi3l" path="res://Scenes/game.gd" id="1_iukft"]
+[ext_resource type="Script" uid="uid://c48sum0lcyi3l" path="res://Scenes/Screens/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://cgn4muntpeooq" path="res://Scenes/DiceSelect/dice_roll_choice.tscn" id="2_gl6un"]
 [ext_resource type="PackedScene" uid="uid://c04lj4ep0bth5" path="res://Scenes/rules/velute_rule.tscn" id="6_dahhg"]
 [ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="7_71axn"]
-[ext_resource type="PackedScene" uid="uid://cqrnbril0pg3f" path="res://Scenes/rules_tab.tscn" id="11_dahhg"]
+[ext_resource type="PackedScene" uid="uid://cqrnbril0pg3f" path="res://Scenes/Screens/rules_tab.tscn" id="11_dahhg"]
 [ext_resource type="PackedScene" uid="uid://pkyg46bcb8bt" path="res://Scenes/rules/grellotine_tab.tscn" id="13_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://fpqqqll0ardo" path="res://Scenes/rules/sirotage.tscn" id="13_wxwew"]
-[ext_resource type="PackedScene" uid="uid://byveysu48hdxp" path="res://Scenes/game_stats.tscn" id="15_acvyw"]
+[ext_resource type="PackedScene" uid="uid://byveysu48hdxp" path="res://Scenes/Screens/game_stats.tscn" id="15_acvyw"]
 [ext_resource type="PackedScene" uid="uid://j830hr4vwgv5" path="res://Scenes/rules/artichette.tscn" id="17_tfod6"]
 [ext_resource type="PackedScene" uid="uid://b4746c43lqkmd" path="res://Scenes/rules/bévue.tscn" id="20_tfod6"]
 

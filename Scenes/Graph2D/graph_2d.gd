@@ -40,8 +40,10 @@ func Initialize(lines:Array = [], legend:Array=[], x_min=null, x_max=null, y_min
 	
 	%XAxis.Setup(Vector2.RIGHT, graph_origin.x, -20, 343, graph_size.x)
 	%YAxis.Setup(Vector2.UP,    graph_size.y - graph_origin.y, -20, 343, graph_size.y)
-	%XAxis.SetupTicks(10, 10)
-	%YAxis.SetupTicks(10, 10)
+	%XAxis.AutoTicks(0, 10, 10)
+	%XAxis.AutoTicks(1, 10, 5)
+	%YAxis.AutoTicks(0, 10, 10)
+	%YAxis.AutoTicks(1, 10, 5)
 	
 	
 	SetAxisLimits(x_min, x_max, y_min, y_max)

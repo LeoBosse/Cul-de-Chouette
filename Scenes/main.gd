@@ -1,6 +1,6 @@
 extends Node
 
-@onready var game_scene:PackedScene = load("res://Scenes/Game.tscn")
+@onready var game_scene:PackedScene = load("res://Scenes/Screens/Game.tscn")
 
 
 func _on_set_up_game_launch_new_game(players: Array, rules: Array, teams:int) -> void:

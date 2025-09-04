@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddykwkghj261c"]
+
+[ext_resource type="Script" uid="uid://cy0d40pv4va27" path="res://Scenes/Graph2D/graph_2d.gd" id="1_6r002"]
+[ext_resource type="PackedScene" uid="uid://406o1r7igt6g" path="res://Scenes/Graph2D/axis.tscn" id="2_5du7y"]
+
+[node name="Graph2D" type="Control"]
+custom_minimum_size = Vector2(343, 343)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6r002")
+metadata/_tab_index = 1
+
+[node name="Axes" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="XAxis" parent="Axes" instance=ExtResource("2_5du7y")]
+unique_name_in_owner = true
+
+[node name="YAxis" parent="Axes" instance=ExtResource("2_5du7y")]
+unique_name_in_owner = true
+
+[node name="Lines" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

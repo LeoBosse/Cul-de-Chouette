@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://h5vm2iosihj1"]
 
-[ext_resource type="Script" uid="uid://ot5xhvdcgln1" path="res://Scenes/set_up_game.gd" id="1_w5t50"]
+[ext_resource type="Script" uid="uid://ot5xhvdcgln1" path="res://Scenes/Screens/set_up_game.gd" id="1_w5t50"]
 [ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="2_1hbbt"]
 [ext_resource type="PackedScene" uid="uid://c04lj4ep0bth5" path="res://Scenes/rules/velute_rule.tscn" id="3_43qa1"]
 [ext_resource type="PackedScene" uid="uid://d2ieq50tkebgy" path="res://Scenes/rules/chouette_velute_rule.tscn" id="4_5faca"]

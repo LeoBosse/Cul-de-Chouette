@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cqrnbril0pg3f"]
 
-[ext_resource type="Script" uid="uid://firuypda67dm" path="res://Scenes/rules_tab.gd" id="1_wcsli"]
+[ext_resource type="Script" uid="uid://firuypda67dm" path="res://Scenes/Screens/rules_tab.gd" id="1_wcsli"]
 [ext_resource type="PackedScene" uid="uid://bxrqtwl1xlmm3" path="res://Scenes/rules/chouette_rule.tscn" id="2_por0w"]
 [ext_resource type="PackedScene" uid="uid://dn0bwdhfrbya3" path="res://Scenes/rules/suite.tscn" id="2_tmvnj"]
 [ext_resource type="PackedScene" uid="uid://c04lj4ep0bth5" path="res://Scenes/rules/velute_rule.tscn" id="4_xmbam"]
