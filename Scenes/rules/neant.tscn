@@ -7,10 +7,10 @@
 size_flags_vertical = 3
 script = ExtResource("2_wv0oa")
 rule_name = "neant"
+rule_type = 0
 short_description = "Aucune autre combinaison valable."
 short_score = "Rien"
 overrides = Array[String]([])
-rule_type = null
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true

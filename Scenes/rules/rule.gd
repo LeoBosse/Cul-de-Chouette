@@ -68,15 +68,19 @@ func SetState(new_state:State):
 		modulate = Color(1, 1, 1)
 		size_flags_vertical = Control.SIZE_EXPAND_FILL
 		
+		#custom_minimum_size.y = %RuleInPlay.get_minimum_size().y
+		
 		#prints("rule min size: INGAME", rule_name, $RuleInPlay.get_combined_minimum_size().y, $RuleInPlay.get_minimum_size().y)
 	
 	elif new_state == State.SETUP:
 		$RuleInSetup.visible = true
 		size_flags_vertical = Control.SIZE_EXPAND_FILL
+		
+		#custom_minimum_size.y = %RuleInSetup.get_minimum_size().y
 	
 	elif new_state == State.DOCUMENTATION:
 		%RuleInDocumentation.visible = true
-		%RuleInDocumentation/CheckButton.button_pressed = true
+		%RuleInDocumentation/CheckButton.button_pressed = false
 		
 		size_flags_vertical = Control.SIZE_EXPAND_FILL
 		
@@ -92,13 +96,16 @@ func UpdateText(new_rule_name:String, new_short_description:String, new_short_sc
 	short_text.text = new_rule_name.to_upper() + " :\n"
 	short_text.text += new_short_description + "\n"
 	short_text.text += "Score : " + new_short_score
+	#%RuleInPlay.custom_minimum_size.y = %RuleInPlay.get_minimum_size().y
 	
 	$RuleInSetup.text = rule_name.capitalize()
+	#%RuleInSetup.custom_minimum_size.y = %RuleInSetup.get_minimum_size().y
 	
 	%RuleInDocumentation/CheckButton.text = rule_name.capitalize()
 	#$RuleInDocumentation/RichTextLabel.clear()
 	#$RuleInDocumentation/RichTextLabel.append_text(full_description)
 	$RuleInDocumentation/RichTextLabel.text = full_description
+	#$RuleInDocumentation.custom_minimum_size.y = $RuleInDocumentation.get_minimum_size().y
 
 func ComputePoints(_dice_values:Array) -> int:
 	return 0
@@ -150,6 +157,6 @@ func Clean():
 func _on_rule_in_setup_toggled(toggled_on: bool) -> void:
 	in_use = toggled_on
 
-
 func _on_documentation_check_button_toggled(toggled_on: bool) -> void:
 	$RuleInDocumentation/RichTextLabel.visible = toggled_on
+	custom_minimum_size.y = %RuleInDocumentation.get_minimum_size().y

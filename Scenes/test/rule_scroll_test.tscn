@@ -1,0 +1,521 @@
+[gd_scene load_steps=2 format=3 uid="uid://efafxijvrxqq"]
+
+[ext_resource type="PackedScene" uid="uid://o5np0sf873cq" path="res://Scenes/rules/rule.tscn" id="1_ab83v"]
+
+[node name="RuleScrollTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Rule" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule2" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule3" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule4" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule5" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule6" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule7" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule8" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule9" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule10" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule11" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule12" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule13" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule14" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule15" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule16" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule17" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule18" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule19" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule20" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule21" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule22" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule23" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="Rule24" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 3
+rule_type = 0
+current_state = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 701.0
+offset_right = 701.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button3" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button4" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button5" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button6" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button7" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button8" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button9" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button10" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button11" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button12" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button13" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button14" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button15" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button16" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button17" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button18" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button19" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button20" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button21" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button22" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button23" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button24" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button25" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button26" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button27" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button28" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button29" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button30" type="Button" parent="ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="ScrollContainer3" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1334.0
+offset_top = 14.0
+offset_right = 1334.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button2" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button3" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button4" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button5" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button6" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button7" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button8" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button9" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button10" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button11" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button12" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button13" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button14" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button15" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button16" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button17" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button18" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button19" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button20" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button21" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button22" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button23" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button24" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button25" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button26" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button27" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button28" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button29" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"
+
+[node name="Button30" type="Label" parent="ScrollContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "test simple
+button"

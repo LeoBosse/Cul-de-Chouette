@@ -124,15 +124,15 @@ columns = 2
 modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 1
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="Velute" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("3_43qa1")]
 modulate = Color(0, 0.752941, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 1
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="ChouetteVelute" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("4_5faca")]
 modulate = Color(0, 0.752941, 0, 1)
@@ -156,15 +156,15 @@ current_state = 1
 modulate = Color(0.806368, 0.393277, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 1
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="Souflette" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("8_tktok")]
 modulate = Color(0.807843, 0.392157, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 1
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="Neant" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("13_x33ao")]
 modulate = Color(0.807843, 0.392157, 0, 1)
@@ -176,29 +176,29 @@ current_state = 1
 modulate = Color(0.807843, 0.392157, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 1
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="ContreSirop" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("10_4riew")]
 modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 1
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="CivetSiroteRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("11_0l87j")]
 modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 1
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="CivetRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("12_dsfxb")]
 modulate = Color(0.976471, 0.152941, 0.12549, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 1
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 
 [node name="GrellotineRule" parent="VBoxContainer/ScrollContainer/Options/ScrollContainer/Rules" instance=ExtResource("14_tktok")]
 modulate = Color(0.976471, 0.152941, 0.12549, 1)

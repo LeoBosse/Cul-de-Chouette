@@ -7,9 +7,9 @@
 size_flags_vertical = 3
 script = ExtResource("2_skngs")
 rule_name = "velute"
+rule_type = 0
 short_description = "La somme de deux dés vaut le troisième (la velute)."
 short_score = "le double du carré de la velute. "
-rule_type = null
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true
