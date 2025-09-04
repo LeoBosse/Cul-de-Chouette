@@ -51,86 +51,92 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="Suite" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_tmvnj")]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="Velute" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_xmbam")]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="Artichette" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_1jhqx")]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["chouette", "", "neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="ChouetteVelute" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_nnjx5")]
 custom_minimum_size = Vector2(0, 136)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["chouette", "velute", "neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="CivetRule" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("7_1eo2e")]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="Chouette3" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_por0w")]
 custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="Suite2" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_tmvnj")]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="Velute2" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_xmbam")]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="Artichette2" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_1jhqx")]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["chouette", "", "neant", "grellotine"])
 current_state = 2
 
 [node name="ChouetteVelute2" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_nnjx5")]
 custom_minimum_size = Vector2(0, 136)
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["chouette", "velute", "neant", "grellotine"])
 current_state = 2
 
 [node name="CivetRule2" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("7_1eo2e")]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="ContreSirop2" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_nnjx5")]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2
 
 [node name="ContreSirop" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_nnjx5")]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
 size_flags_horizontal = 3
+overrides = Array[String](["neant", "grellotine", "grelottine"])
 current_state = 2

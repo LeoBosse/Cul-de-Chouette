@@ -9,7 +9,6 @@ script = ExtResource("2_chmnu")
 rule_name = "contre sirop"
 short_description = "Lors d'un sirotage raté, le premier joueur à lever le poing en criant \"J'apprécie les fruits au sirop !\""
 short_score = "1/5e des points du Cul de Chouette tenté."
-overrides = Array[String](["neant", "grellotine"])
 prerequisites = Array[String](["sirotage"])
 
 [node name="RuleInPlay" parent="." index="0"]

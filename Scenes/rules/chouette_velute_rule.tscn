@@ -16,7 +16,7 @@ La Velute a pour valeur le chiffre du 3e dé.
 Le joueur qui a lancé les dés gagne les points correspondant au double du carré de la Velute :
 Velute de 2 = 8 pts, de 3 = 18 pts, de 4 = 32 pts, de 5 = 50 pts, de 6 = 72 pts."
 selectable_player = true
-overrides = Array[String](["chouette", "velute", "neant", "grellotine"])
+overrides = Array[String](["chouette", "velute", "neant", "grellotine", "grelottine"])
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true

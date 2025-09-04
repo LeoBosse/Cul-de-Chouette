@@ -157,12 +157,13 @@ func UpdateRoll(reset_player:bool=false):
 				rule.SetPlayer(current_player)
 	
 	#SetupSirotageRules(%Sirotage.successfull, %Sirotage.contre_sirop_player)
-	roll_scores = ComputePoints(valid_rules)
+	roll_scores = GetTotalRollScore(valid_rules)
 	team_roll_scores = ComputeTeamsPoints(roll_scores)
+	
 	
 	#print(valid_rules.map(func(x):return x.rule_name))
 	var val_rules_names:Array = valid_rules.map(func(x):return x.rule_name)
-	grelottine_access = "grelottine" in val_rules_names
+	grelottine_access = "grelottine" in val_rules_names or %Grelottine.ongoing_challenge
 	if not players[current_player].has_grelottine:
 		players[current_player].has_grelottine = "grelottine" in val_rules_names
 	
@@ -171,8 +172,18 @@ func UpdateRoll(reset_player:bool=false):
 	UpdateRollScoreLabel()
 	#print(dice_values, " ", valid_rules, " ", roll_scores)
 
-func ValidateDices():
+func GetTotalRollScore(valid_rules) -> Array[int]:
+	""""""
+	var total_roll_points:Array[int] = ComputePoints(valid_rules)
 	
+	for i in range(nb_players):
+		total_roll_points[i] += int(%Sirotage.scores[i])
+		total_roll_points[i] += int(%Grelottine.final_scores[i])
+	
+	return total_roll_points
+	
+	
+func ValidateDices():
 	if dice_values.has(0):
 		return 
 	
@@ -235,8 +246,6 @@ func PassTurn():
 	
 	%Grelottine.Clean()
 	%Sirotage.Clean()
-	#for i in range(nb_players):
-		#players[i].sirotage_score = 0
 	
 	for rule in %RulesList.get_children():
 		rule.Clean()
@@ -253,11 +262,15 @@ func PassTurn():
 
 func UpdateCurrentPlayerLabel():
 	%CurrentPlayerLabel.text = "Au tour de : " + player_names[current_player]
+
+
+func UpdateRollScoreLabel(points:Variant = null, teams_points:Variant = null):
+	if points == null: points = roll_scores
+	if teams_points == null: teams_points = team_roll_scores
 	
-func UpdateRollScoreLabel():
-	SetScoreLabelText(%PlayerRollScoreLabel, player_names, player_scores, roll_scores)
+	SetScoreLabelText(%PlayerRollScoreLabel, player_names, player_scores, points)
 	if use_teams:
-		SetScoreLabelText(%TeamRollScoreLabel, team_names, team_scores, team_roll_scores)
+		SetScoreLabelText(%TeamRollScoreLabel, team_names, team_scores, teams_points)
 	
 	
 
@@ -291,20 +304,34 @@ func GetValidRules(dices=null) -> Array:
 		if r.check_validity(dices.duplicate(), players, current_player) and r.in_use:
 			valid_rules.append(r)
 	
+	valid_rules = RulesOverride(valid_rules)
+	
+	if %Grelottine.ongoing_challenge:
+		valid_rules.append(GetRuleNode("grelottine"))
+	
 	#prints("sirotage: ", %Sirotage.successfull, %Sirotage.already_rolled)
 	#prints("valid rules: ", valid_rules)
 	
-	return RulesOverride(valid_rules)
+	return valid_rules
 
+func GetRuleNode(rule_name:String) -> Rule:
+	var rule_node:Rule = %RulesList.get_node_or_null(rule_name.capitalize())
+	if rule_node == null:
+		for r in %RulesList.get_children():
+			if r.rule_name.to_lower() == rule_name.to_lower():
+				rule_node = r
+				break
+	
+	return rule_node
 
-func RulesOverride(valid_rules:Array) -> Array:
-	var overridden_rules:Array = []
+func RulesOverride(valid_rules:Array) -> Array[Rule]:
+	var overridden_rules:Array[String] = []
 	for rule in valid_rules:
 		for overruled in rule.overrides:
 			if not overridden_rules.has(overruled):
 				overridden_rules.append(overruled)
 	
-	var winning_rules:Array = []
+	var winning_rules:Array[Rule] = []
 	for r in valid_rules:
 		if not overridden_rules.has(r.rule_name):
 			winning_rules.append(r)
@@ -342,9 +369,6 @@ func ComputePoints(valid_rules) -> Array[int]:
 		for i in range(nb_players):
 			scores[i] += rule_scores[i]
 	
-	for i in range(nb_players):
-		scores[i] += %Sirotage.scores[i]
-		scores[i] += int(%Grelottine.final_scores[i])
 	return scores
 
 
@@ -409,34 +433,36 @@ func _on_stats_undoing_turn(point_correction:Array, old_player:int, civets:Array
 	UpdateCurrentPlayerLabel()
 	UpdateRollScoreLabel()
 
-
+ 
 func _on_grellotine_grellotine_challenge() -> void:
 	
 	if not %Grelottine.ongoing_challenge:
 		%Grelottine.Update(players, current_player)
 
-func _on_grellotine_validating_grelottine(challengee:int, challenger: int, challenge_dice_values:Array) -> void:
+func _on_grellotine_validating_grelottine(_challengee:int, challenger: int, challenge_dice_values:Array) -> void:
 	
 	#print("_on_grellotine_validating_grelottine...")
 	
+	## Update dices with sirotage results and set them to non editable.
+	for i in range(3):
+		%DiceRolls.get_child(i).SelectDice(challenge_dice_values[i])
 	SetDicesAccess(false)
 	
-	
-	
-	## Remove grelottine from both players
+	## Remove grelottine from challenger
 	#players[challengee].has_grelottine = false
 	players[challenger].has_grelottine = false
 	
 	## Return to the main game tab
 	$TabContainer.current_tab = 0
 	
-	## Update roll to view the rules applying with the sirotage roll
+	GetRuleNode("grelottine").UpdateDescription(%Grelottine.successfull, %Grelottine.challenge_point)
+	
+	## Update roll to view the rules applying with the grelottine roll
 	UpdateRoll()
 
-
-	var val_rules:Array = GetValidRules(challenge_dice_values)
-	var comb_points:int = ComputePoints(val_rules)[current_player]
-	print(val_rules, comb_points)
-	if comb_points > 0:
-		roll_scores[current_player] += comb_points
-		UpdateRollScoreLabel()
+	#var val_rules:Array = GetValidRules(challenge_dice_values)
+	#var comb_points:int = ComputePoints(val_rules)[current_player]
+	#print(val_rules, comb_points)
+	#if comb_points > 0:
+		#roll_scores[current_player] += comb_points
+		#UpdateRollScoreLabel()

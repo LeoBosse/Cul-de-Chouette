@@ -6,7 +6,7 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_yfg40")
-overrides = Array[String](["neant", "grellotine", "grelottine"])
+overrides = Array[String](["neant", "grelottine"])
 
 [node name="RuleInPlay" type="HBoxContainer" parent="."]
 visible = false

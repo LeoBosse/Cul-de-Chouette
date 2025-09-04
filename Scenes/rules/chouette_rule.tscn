@@ -12,7 +12,6 @@ short_score = "Le carré de la chouette"
 full_description = "* La Chouette : 2 dés identiques
 La Chouette a pour valeur le chiffre des deux dés identiques.
 Le joueur qui a lancé les dés gagne les points correspondant au carré de la Chouette :Chouette de 1 = 1 pt, de 2 = 4 pts, de 3 = 9 pts, de 4 = 16 pts, de 5 = 25 pts, de 6 = 36 pts."
-overrides = Array[String](["neant", "grellotine"])
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true

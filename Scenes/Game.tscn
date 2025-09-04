@@ -134,7 +134,6 @@ size_flags_vertical = 3
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-overrides = Array[String](["chouette", "", "neant", "grellotine", "grelottine"])
 
 [node name="Chouette" parent="TabContainer/Lancé/ScrollContainer/RulesList" instance=ExtResource("7_71axn")]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgn4muntpeooq"]
+[gd_scene load_steps=14 format=3 uid="uid://cgn4muntpeooq"]
 
 [ext_resource type="Script" uid="uid://bth58vkp0heuv" path="res://Scenes/DiceSelect/dice_roll_choice.gd" id="1_pr1y5"]
 [ext_resource type="PackedScene" uid="uid://trj0v6863p2k" path="res://Scenes/DiceSelect/dice.tscn" id="1_uh3ep"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bqjb32ohfeest" path="res://Scenes/DiceSelect/Textures/dice_6_sprites.png" id="12_86xyg"]
 [ext_resource type="Texture2D" uid="uid://c8ill0ho0f680" path="res://Scenes/DiceSelect/Textures/dice_6_sprites_pressed.png" id="13_0jjuv"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_i6brh"]
+
 [node name="DiceRoll" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 81)
 anchors_preset = -1
@@ -25,37 +27,44 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_pr1y5")
+button_group = SubResource("ButtonGroup_i6brh")
 metadata/_edit_use_anchors_ = true
 
 [node name="Dice" parent="." instance=ExtResource("1_uh3ep")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_i6brh")
 
 [node name="Dice2" parent="." instance=ExtResource("1_uh3ep")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_i6brh")
 texture_normal = ExtResource("4_82fke")
 texture_pressed = ExtResource("5_2ixu1")
 value = 2
 
 [node name="Dice3" parent="." instance=ExtResource("1_uh3ep")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_i6brh")
 texture_normal = ExtResource("6_libbg")
 texture_pressed = ExtResource("7_n0sdm")
 value = 3
 
 [node name="Dice4" parent="." instance=ExtResource("1_uh3ep")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_i6brh")
 texture_normal = ExtResource("8_ondce")
 texture_pressed = ExtResource("9_c8o5j")
 value = 4
 
 [node name="Dice5" parent="." instance=ExtResource("1_uh3ep")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_i6brh")
 texture_normal = ExtResource("10_q3hgl")
 texture_pressed = ExtResource("11_uoj1a")
 value = 5
 
 [node name="Dice6" parent="." instance=ExtResource("1_uh3ep")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_i6brh")
 texture_normal = ExtResource("12_86xyg")
 texture_pressed = ExtResource("13_0jjuv")
 value = 6

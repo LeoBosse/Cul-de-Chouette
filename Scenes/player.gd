@@ -6,9 +6,9 @@ class_name Player
 @export var team:int = 0
 
 var score:int = 0
-var sirotage_score:int = 0
+#var sirotage_score:int = 0
 var has_grelottine:bool = false
-var grelottine_score:int = 0
+#var grelottine_score:int = 0
 var has_civet:bool = false
 
 var state:int = 0

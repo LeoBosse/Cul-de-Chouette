@@ -10,7 +10,7 @@ rule_name = "artichette"
 short_description = "3-4-3"
 short_score = "16 pts si tu cri \"Raitournelle !\"
 -16 pts si qqun crie d'abord \"Artichette !\"."
-overrides = Array[String](["chouette", "", "neant", "grellotine"])
+overrides = Array[String](["chouette", "", "neant", "grellotine", "grelottine"])
 
 [node name="RuleInPlay" parent="." index="0"]
 visible = true
