@@ -424,12 +424,13 @@ func _on_bévue_bevue(player: int) -> void:
 	
 
 
-func _on_stats_undoing_turn(point_correction:Array, old_player:int, civets:Array) -> void:
+func _on_stats_undoing_turn(point_correction:Array, old_player:int, civets:Array, grelottines:Array) -> void:
 	#prints("undoing", current_player, old_player)
 	SetScores(point_correction, false)
 	current_player = old_player
 	for i in nb_players:
 		players[i].has_civet = civets[i]
+		players[i].has_grelottine = grelottines[i]
 	UpdateCurrentPlayerLabel()
 	UpdateRollScoreLabel()
 
