@@ -13,6 +13,8 @@ class_name Graph2D
 		%Lines.position = graph_origin
 
 @export var reverse_y_axis:bool = true
+@export var auto_adapt_x_axis:bool = true
+@export var auto_adapt_y_axis:bool = true
 
 #@export var axis_min:Vector2:
 	#get():
@@ -34,34 +36,20 @@ var default_line_colors:Array[Color] = ['RED', 'GREEN', 'BLUE', 'CYAN', 'ORANGE'
 var nb_lines:int = 0
 
 func Initialize(lines:Array = [], legend:Array=[], x_min=null, x_max=null, y_min=null, y_max=null):
-	#%Xaxis.add_point(Vector2(0, graph_origin.y))
-	##%Xaxis.add_point(CoordsToPosition(Vector2(graph_size.x, 0)))
-	#%Xaxis.add_point(Vector2(graph_size.x, graph_origin.y))
-	##%Yaxis.add_point(CoordsToPosition(Vector2.ZERO))
-	#%Yaxis.add_point(Vector2(graph_origin.x, 0))
-	##%Yaxis.add_point(CoordsToPosition(Vector2(0, graph_size.y)))
-	#%Yaxis.add_point(Vector2(graph_origin.x, graph_size.y))
+	"""Initialize the graph.
+	lines:Array[Array[Vector2]] = [] : Array of arrays containing the coordonates of the points on each line.
+	legend:Array=[] : Array of Strings with the line legends.
+	x_min=null, x_max=null, y_min=null, y_max=null : min and max values (coordinates) of the axes.
+	"""
 	
 	%Axes.position = graph_origin
 	%Lines.position = graph_origin
 	
 	%XAxis.Setup(Vector2.RIGHT, graph_origin.x, -20, 343, graph_size.x)
 	%YAxis.Setup(Vector2.UP,    graph_size.y - graph_origin.y, -20, 343, graph_size.y)
-	#%XAxis.AutoTicks(0, 10, 10)
-	#%XAxis.AutoTicks(1, 10, 5)
-	#%YAxis.AutoTicks(0, 10, 10)
-	#%YAxis.AutoTicks(1, 10, 5)
 	
 	
 	SetAxisLimits(x_min, x_max, y_min, y_max)
-	
-	#AddAxisTicks("x")
-	#AddAxisTicks("y")
-	
-	#print(%Xaxis.points)
-	#print(%Yaxis.points)
-	#print(CoordsToPosition(Vector2.ZERO))
-	#print(PositionToCoords(graph_origin))
 	
 	if not lines:
 		return
@@ -75,35 +63,13 @@ func Initialize(lines:Array = [], legend:Array=[], x_min=null, x_max=null, y_min
 	GetGraphLimits()
 
 
-#func EraseTicks():
-	#for c in $Axes/XaxisTicks.get_children():
-		#c.queue_free()
-	#for c in $Axes/YaxisTicks.get_children():
-		#c.queue_free()
-		#
-#func AddAxisTicks(axis_name:String, nb_ticks:int=10, tick_size:int = 10):
-	#var axis:Line2D = %Xaxis
-	#var ticks_node:Control = $Axes/XaxisTicks
-	#var axis_size:int = int(graph_size.x)
-	#if axis_name[0].to_lower() == "y":
-		#axis = %Yaxis
-		#ticks_node = $Axes/YaxisTicks
-		#axis_size = int(graph_size.y)
-	#
-	#var axis_direction:Vector2 = (PositionToCoords(axis.get_point_position(1)) - PositionToCoords(axis.get_point_position(0))).normalized()
-	#var axis_perp:Vector2 = axis_direction.rotated(PI/2).normalized()
-	#
-	#var new_tick_line:Line2D
-	#for i in range(1, nb_ticks+1):
-		#new_tick_line = Line2D.new()
-		#new_tick_line.width = 1
-		#new_tick_line.default_color = Color(1, 1, 1)
-		#new_tick_line.add_point(CoordsToPosition(axis_direction * i * axis_size/nb_ticks + axis_perp * tick_size/2))
-		#new_tick_line.add_point(CoordsToPosition(axis_direction * i * axis_size/nb_ticks - axis_perp * tick_size/2))
-		#ticks_node.add_child(new_tick_line)
-
 func AddLine(points:Array, _legend:String="", width:int = 2, color:Color=Color(0,0,0,0)):
-	
+	"""Add a line to the graph.
+	points:Array : Array of the line points
+	_legend:String="" :  
+	width:int = 2, 
+	color:Color=Color(0,0,0,0)
+	"""
 	var new_line:Graph2DLine = Graph2DLine.new()
 	new_line.width = width
 	if color.a == 0:
@@ -115,64 +81,63 @@ func AddLine(points:Array, _legend:String="", width:int = 2, color:Color=Color(0
 	for p in points:
 		new_line.AddPoint(CoordsToPosition(p), p)
 		#prints("adding line ", p, CoordsToPosition(p))
+	new_line.changed.connect(_on_line_changed.bind(%Lines.get_child_count()))
 	%Lines.add_child(new_line)
 	nb_lines += 1
 
+func _on_line_changed(line:Graph2DLine, line_id:int):
+	AdaptScalingToLines()
+
 func CoordsToPosition(point_coord:Vector2, scaling=null):
-	"""Transform a point coordinates (in the reference frame of the graph) to its position (in the ref frame of the Line2D node)"""
+	"""Transform a point values (in the reference frame of the graph) to its position (in the ref frame of the Line node)"""
 	if scaling == null:
 		scaling = axes_scaling
 
-	#if reverse_y_axis:
-		#point_coord.y *= -1
-	#var point_pos = point_coord * scaling + graph_origin
-	
 	var point_pos:Vector2 = %XAxis.GetPointPosition(point_coord.x) + %YAxis.GetPointPosition(point_coord.y)
 	
-	prints("coords to pos", graph_origin, scaling, point_coord, point_pos)
+	#prints("coords to pos", graph_origin, scaling, point_coord, point_pos)
 	return point_pos
 
 func PositionToCoords(point_pos:Vector2, scaling=null):
-	"""Transform a point position (in the ref frame of the Line2D node) to its coordinates (in the reference frame of the graph)"""
+	"""Transform a point position (in the ref frame of the Line node) to its coordinates  (values in the reference frame of the graph)"""
 	if scaling == null:
 		scaling = axes_scaling
-	#var point_coords = (point_pos - graph_origin) / scaling
-	#if reverse_y_axis:
-		#point_coords.y *= -1
 	var point_coords:Vector2 = Vector2(%XAxis.GetPointCoords(point_pos), %YAxis.GetPointCoords(point_pos))
-	prints("pos to coords ", graph_origin, scaling, point_pos, point_coords)
+	#prints("pos to coords ", graph_origin, scaling, point_pos, point_coords)
 	return point_coords 
 
 func CheckLineExists(line_id:int) -> bool:
+	"""Check if a line exists. Else, send an error"""
 	if line_id >= 0 and line_id < %Lines.get_child_count():
 		return true
 	push_error("Incorrect Line id ({0}): Graph {1} has {2} lines".format([line_id, self, nb_lines]))
 	return false
 
 func AddPointToLine(line:int, point:Vector2, adapt_scaling:bool = true):
-	#prints("adding point at coords ", point)
+	"""
+	Add a point to a line.
+	line:int  : line ID
+	point:Vector2 : Value of the point
+	adapt_scaling:bool = true
+	"""
 	CheckLineExists(line)
-	#print("line exists")
-	#%Lines.get_child(line).AddPoint(CoordsToPosition(point), point)
 	%Lines.get_child(line).AddPoint(CoordsToPosition(point), point)
-	#print(CoordsToPosition(point))
-	if adapt_scaling:
-		#print("adapting scaling")
-		AdaptScalingToLines()
+	#if adapt_scaling:
+		#AdaptScalingToLines()
+
+func GetLine(line_id:int) -> Graph2DLine:
+	CheckLineExists(line_id)
+	return %Lines.get_child(line_id)
 
 func ChangePointFromLine(line:int, new_position:Vector2, point_id:int = -1, adapt_scaling:bool = true):
-	CheckLineExists(line)
-	%Lines.get_child(line).set_point_position(point_id, CoordsToPosition(new_position))
-	if adapt_scaling:
-		AdaptScalingToLines()
+	GetLine(line).set_point_position(point_id, CoordsToPosition(new_position))
+	#if adapt_scaling:
+		#AdaptScalingToLines()
 
 func RemovePointFromLine(line:int, point_id:int = -1, adapt_scaling:bool = true):
-	CheckLineExists(line)
-	if point_id < 0:
-		point_id += %Lines.get_child(line).get_point_count()
-	%Lines.get_child(line).RemovePoint(point_id)
-	if adapt_scaling:
-		AdaptScalingToLines()
+	GetLine(line).RemovePoint(point_id)
+	#if adapt_scaling:
+		#AdaptScalingToLines()
 
 func EraseLine(line:int, adapt_scaling:bool = true):
 	CheckLineExists(line)
@@ -182,8 +147,8 @@ func EraseLine(line:int, adapt_scaling:bool = true):
 
 	nb_lines -= 1
 	
-	if adapt_scaling:
-		AdaptScalingToLines()
+	#if adapt_scaling:
+		#AdaptScalingToLines()
 
 func GetPointCoords(line_id:int, point_id:int) -> Vector2:
 	return %Lines.get_child(line_id).GetPointValue(point_id)
@@ -235,6 +200,7 @@ func GetGraphLimits() -> Array:
 	return [Vector2(graph_min_x, graph_min_y), Vector2(graph_max_x, graph_max_y)]
 
 func SetAxisLimits(x_min=null, x_max=null, y_min=null, y_max=null):
+	""""""
 	if x_min == null: x_min = PositionToCoords(Vector2(0, 0)).x
 	if x_max == null: x_max = PositionToCoords(Vector2(graph_size.x, 0)).x
 	if y_min == null: y_min = PositionToCoords(Vector2(0, 0)).y
@@ -250,7 +216,7 @@ func SetScalingFromLimits(bounding_limits:Array, adapt_x_axis:bool = true, adapt
 	#prints("bounding_size", bounding_size)
 	
 	if adapt_x_axis and bounding_size.x != 0:
-		var new_scaling:float = bounding_size.x / graph_size.x
+		var new_scaling:float = bounding_size.x / graph_size.x ## pix to coords
 		prints("adapting bounding size X", new_scaling, axes_scaling.x, graph_size.x, bounding_size.x)
 		SetScaling(new_scaling / axes_scaling.x , 1.)
 	if adapt_y_axis and bounding_size.y != 0:
@@ -258,20 +224,20 @@ func SetScalingFromLimits(bounding_limits:Array, adapt_x_axis:bool = true, adapt
 		prints("adapting bounding size y", new_scaling, axes_scaling.y, graph_size.y, bounding_size.y)
 		SetScaling(1., new_scaling / axes_scaling.y)
 
-func AdaptScalingToLines(adapt_x_axis:bool = true, adapt_y_axis:bool = true):
+func AdaptScalingToLines():
 	var bounding_limits:Array = GetGraphLimits() # In graph corrdinates
 	#prints("bounding_limits", bounding_limits)
-	SetScalingFromLimits(bounding_limits, adapt_x_axis, adapt_y_axis)
+	SetScalingFromLimits(bounding_limits, auto_adapt_x_axis, auto_adapt_y_axis)
 		
 		
-func SetScaling(mul_x_scaling:float = 1, mul_y_scaling:float = 1):
+func SetScaling(x_rescaling:float = 1, y_rescaling:float = 1):
 
-	%XAxis.scaling = %XAxis.scaling * mul_x_scaling
-	%YAxis.scaling = %YAxis.scaling * mul_y_scaling
+	%XAxis.scaling = %XAxis.scaling * x_rescaling ## pix to coords
+	%YAxis.scaling = %YAxis.scaling * y_rescaling ## pix to coords
 	
 	for line in %Lines.get_children():
-		prints("line redraw: ", Vector2(mul_x_scaling, mul_y_scaling))
-		line.Redraw(Vector2(1. / mul_x_scaling, 1. / mul_y_scaling))
+		prints("line redraw: ", Vector2(x_rescaling, y_rescaling))
+		line.Redraw(Vector2(1. / x_rescaling, 1. / y_rescaling)) 
 		
 		#for i in range(line.get_point_count()):
 			#var point_coords:Vector2 = line.GetPointValue(i)

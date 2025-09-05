@@ -45,7 +45,7 @@ func RegisterNewState(players:Array, current_player:int):
 		
 		AddEntryToScoreTable(players[i].score)
 		AddScoreToGraph(i, players[i].score)
-	%GraphScore.AdaptScalingToLines(true, false)
+	#%GraphScore.AdaptScalingToLines()
 	
 	#print(player_scores)
 
@@ -118,7 +118,7 @@ func UndoTurn():
 		grelottine_history[i].pop_back()
 		%ScoreTableGrid.get_child(%ScoreTableGrid.get_child_count() - i - 1).queue_free()
 		%GraphScore.RemovePointFromLine(i, -1, false)
-	%GraphScore.AdaptScalingToLines(true, false)
+	#%GraphScore.AdaptScalingToLines(true, false)
 	#print(civet_history)
 	undoing_turn.emit(correction, current_player_list[-1], civet_history.map(func(x):return x[-1]), grelottine_history.map(func(x):return x[-1]))
 	
