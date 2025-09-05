@@ -52,9 +52,10 @@ horizontal_alignment = 1
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
-current_tab = 0
+current_tab = 1
 
 [node name="ScoreTable" type="Control" parent="VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -75,7 +76,6 @@ size_flags_vertical = 3
 
 [node name="GraphScore" parent="VBoxContainer/TabContainer" instance=ExtResource("3_gc528")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
