@@ -23,171 +23,147 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Rule" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule2" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule3" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule4" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule5" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule6" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule7" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule8" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule9" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule10" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule11" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule12" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule13" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule14" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule15" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule16" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule17" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule18" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule19" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule20" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule21" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule22" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule23" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="Rule24" parent="ScrollContainer2/VBoxContainer" instance=ExtResource("1_ab83v")]
-custom_minimum_size = Vector2(0, 58)
+custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_vertical = 3
-rule_type = 0
 current_state = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

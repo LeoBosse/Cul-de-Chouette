@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6urawcrhomoo"]
+
+[ext_resource type="Script" uid="uid://di6gyqj37xwht" path="res://Scenes/Graph2D/graph_line.gd" id="1_s77km"]
+
+[node name="GraphLine" type="Line2D"]
+script = ExtResource("1_s77km")

@@ -7,7 +7,6 @@
 size_flags_vertical = 3
 script = ExtResource("2_0qpyv")
 rule_name = "cul de chouette"
-rule_type = 0
 short_description = "Trois dés identiques."
 short_score = "40 + 10 * (1 dé)"
 overrides = Array[String](["chouette", "neant", "grellotine", "grelottine"])

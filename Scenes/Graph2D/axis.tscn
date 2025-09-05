@@ -13,3 +13,6 @@ unique_name_in_owner = true
 
 [node name="Heads" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="MainTicksLabels" type="Node2D" parent="."]
+unique_name_in_owner = true
