@@ -117,12 +117,12 @@ func AddLine(points:Array, _legend:String="", width:int = 2, color:Color=Color(0
 	nb_lines += 1
 
 func _on_line_changed(_line:Graph2DLine, _line_id:int):
-	var bounding_limits:Array = GetGraphLimits() # In graph corrdinates
+	var bounding_limits:Array = GetGraphLimits() # In graph coordinates
 	
-	SetScalingFromLimits(bounding_limits)
+	SetAxisLimits(bounding_limits[0].x, bounding_limits[1].x, bounding_limits[0].y, bounding_limits[1].y)
 	
-	%XAxis.SetLimits(bounding_limits[0].x, bounding_limits[1].x)
-	%YAxis.SetLimits(bounding_limits[0].y, bounding_limits[1].y)
+	#%XAxis.SetLimits(bounding_limits[0].x, bounding_limits[1].x)
+	#%YAxis.SetLimits(bounding_limits[0].y, bounding_limits[1].y)
 	
 	
 func CheckLineExists(line_id:int) -> bool:
@@ -209,6 +209,8 @@ func SetAxisLimits(x_min=null, x_max=null, y_min=null, y_max=null):
 	if y_max == null: y_max = PositionToCoords(Vector2(0, graph_size.y)).y
 	
 	#prints("SetAxisLimits", Vector2(x_min, y_min), Vector2(x_max, y_max))
+	%XAxis.SetLimits(x_min, x_max)
+	%YAxis.SetLimits(y_min, y_max)
 	
 	SetScalingFromLimits([Vector2(x_min, y_min), Vector2(x_max, y_max)])
 	

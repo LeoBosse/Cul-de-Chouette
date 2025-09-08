@@ -78,22 +78,11 @@ func Setup(dir:Vector2, origin:float, min_value:float, max_value:float, graph_si
 	
 	SetTicks("auto", 0, 10, 50)
 
-func SetLimits(min_value:float, max_value:float, min_pos:Vector2 = Vector2.ZERO, max_pos:Vector2 = Vector2.ZERO):
-	if min_pos == Vector2.ZERO:
-		min_pos = get_point_position(0)
-	if max_pos == Vector2.ZERO:
-		max_pos = get_point_position(1)
+func SetLimits(min_value:float, max_value:float):
 	
 	limits = [min_value, max_value]
-	pos_limits = [min_pos, max_pos]
 	
-	pix_to_unit = (limits[1] - limits[0]) / length
-	
-	set_point_position(0, direction * min_pos)
-	set_point_position(1, direction * max_pos)
-	
-	
-	
+	#pix_to_unit = (limits[1] - limits[0]) / length
 	
 
 func SetTicks(mode:String = "auto", order:int = 0, multiplier:float = 10, tick_length:int = 10):
