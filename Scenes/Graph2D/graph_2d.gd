@@ -17,7 +17,10 @@ class_name Graph2D
 		if not get_node_or_null("Lines") == null:
 			%Lines.position = graph_origin
 
-@export var reverse_y_axis:bool = true
+@export var reverse_y_axis:bool = true:
+	set(new_value):
+		reverse_y_axis = new_value
+		%YAxis.inverted = new_value
 @export var auto_adapt_x_axis:bool = true
 @export var auto_adapt_y_axis:bool = true
 
@@ -30,7 +33,7 @@ class_name Graph2D
 		
 @export var axes_scaling:Vector2 = Vector2.ONE:
 	set(new_scaling):
-		SetScaling(new_scaling.x, new_scaling.y)
+		ReScaling(new_scaling.x, new_scaling.y)
 	get():
 		return Vector2(%XAxis.scaling, %YAxis.scaling)
 		
@@ -120,9 +123,6 @@ func _on_line_changed(_line:Graph2DLine, _line_id:int):
 	var bounding_limits:Array = GetGraphLimits() # In graph coordinates
 	
 	SetAxisLimits(bounding_limits[0].x, bounding_limits[1].x, bounding_limits[0].y, bounding_limits[1].y)
-	
-	#%XAxis.SetLimits(bounding_limits[0].x, bounding_limits[1].x)
-	#%YAxis.SetLimits(bounding_limits[0].y, bounding_limits[1].y)
 	
 	
 func CheckLineExists(line_id:int) -> bool:
@@ -222,11 +222,11 @@ func SetScalingFromLimits(bounding_limits:Array, adapt_x_axis:bool = true, adapt
 	if adapt_x_axis and bounding_size.x != 0:
 		var new_scaling:float = bounding_size.x / graph_size.x ## pix to coords
 		#prints("adapting bounding size X", new_scaling, axes_scaling.x, graph_size.x, bounding_size.x)
-		SetScaling(new_scaling / axes_scaling.x , 1.)
+		ReScaling(new_scaling / axes_scaling.x , 1.)
 	if adapt_y_axis and bounding_size.y != 0:
 		var new_scaling:float = bounding_size.y / graph_size.y
 		#prints("adapting bounding size y", new_scaling, axes_scaling.y, graph_size.y, bounding_size.y)
-		SetScaling(1., new_scaling / axes_scaling.y)
+		ReScaling(1., new_scaling / axes_scaling.y)
 
 func AdaptScalingToLines():
 	"""Adapt the axes scale to the lines min and max values"""
@@ -235,7 +235,7 @@ func AdaptScalingToLines():
 	SetScalingFromLimits(bounding_limits, auto_adapt_x_axis, auto_adapt_y_axis)
 		
 		
-func SetScaling(x_rescaling:float = 1, y_rescaling:float = 1):
+func ReScaling(x_rescaling:float = 1, y_rescaling:float = 1):
 	"""Call this function to rescale the graph axes. The axes current scale will be multiplied by the given rescaling factors."""
 	%XAxis.scaling = %XAxis.scaling * x_rescaling ## pix to coords
 	%YAxis.scaling = %YAxis.scaling * y_rescaling ## pix to coords

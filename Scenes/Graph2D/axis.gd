@@ -6,6 +6,8 @@ class_name GraphAxis2D
 		show_ticks = new_value
 		$Ticks.visible = show_ticks
 
+@export var inverted:bool = false ## true if the values on the graph are inverted compared to pixel positions (use for upward Y axis for example)
+
 var direction:Vector2:
 	set(new_dir):
 		direction = new_dir.normalized()
@@ -81,6 +83,7 @@ func Setup(dir:Vector2, origin:float, min_value:float, max_value:float, graph_si
 func SetLimits(min_value:float, max_value:float):
 	
 	limits = [min_value, max_value]
+	prints("new limits", name, limits, pix_to_unit)
 	
 	#pix_to_unit = (limits[1] - limits[0]) / length
 	
@@ -137,10 +140,10 @@ func _DrawTicks(tick_values:Array, order:int, tick_length:int = 10, color:Color 
 		new_tick.position = GetPointPosition(tick_values[i])
 		new_tick.add_point(+ axis_perp * tick_length/2.)
 		new_tick.add_point(- axis_perp * tick_length/2.)
-		prints("ticks", name, order, tick_values[i], new_tick.position)
+		#prints("ticks", name, order, tick_values[i], new_tick.position)
 		tick_node.add_child(new_tick)
 		
-	if order == 0:
+	if order == 0 and tick_node.get_child_count() > 0:
 		var last_label:Label = Label.new()
 		last_label.text = str(tick_values[-1])
 		last_label.position = tick_node.get_child(-1).position - axis_perp  * (last_label.get_line_height() - tick_length/2.)
