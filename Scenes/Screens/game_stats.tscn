@@ -50,7 +50,7 @@ label_settings = SubResource("LabelSettings_qe60g")
 horizontal_alignment = 1
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(400, 500)
 layout_mode = 2
 current_tab = 1
 
@@ -86,7 +86,7 @@ size_flags_vertical = 3
 [node name="UndoButton" type="Button" parent="VBoxContainer"]
 modulate = Color(1, 0.613905, 0.557101, 1)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 10
 text = "Annuler dernier score"
 
 [connection signal="pressed" from="VBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]

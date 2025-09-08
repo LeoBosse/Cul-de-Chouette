@@ -5,12 +5,17 @@ class_name Graph2D
 @export var line_colors:Array = []
 @export var line_legends:Array[String] = []
 
-@export var graph_size:Vector2 = Vector2(343, 343) ##In pixels
-@export var graph_origin:Vector2 = Vector2(50, graph_size.y - 50): ## In pixels
+@export var graph_size:Vector2 ##In pixels
+@export var margins:Vector2 ##In pixels
+@export var graph_origin:Vector2: ## In pixels
 	set(new_origin):
 		graph_origin = new_origin
-		%Axes.position = graph_origin
-		%Lines.position = graph_origin
+		if reverse_y_axis:
+			graph_origin.y = graph_size.y - graph_origin.y
+		if not get_node_or_null("Axes") == null:
+			%Axes.position = graph_origin
+		if not get_node_or_null("Lines") == null:
+			%Lines.position = graph_origin
 
 @export var reverse_y_axis:bool = true
 @export var auto_adapt_x_axis:bool = true
@@ -42,12 +47,14 @@ func Initialize(lines:Array = [], legend:Array=[], x_min=null, x_max=null, y_min
 	x_min=null, x_max=null, y_min=null, y_max=null : min and max values (coordinates) of the axes.
 	"""
 	
+	if graph_origin == Vector2(0, 0):
+		graph_origin = graph_origin
+	
 	%Axes.position = graph_origin
 	%Lines.position = graph_origin
 	
-	%XAxis.Setup(Vector2.RIGHT, graph_origin.x, -20, 343, graph_size.x)
-	%YAxis.Setup(Vector2.UP,    graph_size.y - graph_origin.y, -20, 343, graph_size.y)
-	
+	%XAxis.Setup(Vector2.RIGHT, graph_origin.x, x_min, x_max, graph_size.x - 2 * margins.x)
+	%YAxis.Setup(Vector2.UP,    graph_size.y - graph_origin.y, y_min, y_max, graph_size.y -  2 * margins.y)
 	
 	SetAxisLimits(x_min, x_max, y_min, y_max)
 	
@@ -110,8 +117,14 @@ func AddLine(points:Array, _legend:String="", width:int = 2, color:Color=Color(0
 	nb_lines += 1
 
 func _on_line_changed(_line:Graph2DLine, _line_id:int):
-	AdaptScalingToLines()
-
+	var bounding_limits:Array = GetGraphLimits() # In graph corrdinates
+	
+	SetScalingFromLimits(bounding_limits)
+	
+	%XAxis.SetLimits(bounding_limits[0].x, bounding_limits[1].x)
+	%YAxis.SetLimits(bounding_limits[0].y, bounding_limits[1].y)
+	
+	
 func CheckLineExists(line_id:int) -> bool:
 	"""Check if a line exists. Else, send an error"""
 	if line_id >= 0 and line_id < %Lines.get_child_count():

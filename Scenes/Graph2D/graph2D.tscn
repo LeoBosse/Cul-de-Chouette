@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://406o1r7igt6g" path="res://Scenes/Graph2D/axis.tscn" id="2_5du7y"]
 
 [node name="Graph2D" type="Control"]
-custom_minimum_size = Vector2(343, 343)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_6r002")
+graph_size = Vector2(400, 400)
+margins = Vector2(30, 30)
+graph_origin = Vector2(30, 30)
 metadata/_tab_index = 1
 
 [node name="Axes" type="Control" parent="."]
