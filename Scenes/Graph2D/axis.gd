@@ -4,9 +4,13 @@ class_name GraphAxis2D
 @export var show_ticks:bool = true:
 	set(new_value):
 		show_ticks = new_value
-		$Ticks.visible = show_ticks
-
+		%MainTicks.visible = show_ticks
+		%SecondTicks.visible = show_ticks
+		
 @export var inverted:bool = false ## true if the values on the graph are inverted compared to pixel positions (use for upward Y axis for example)
+
+@export var main_ticks_length:int = 30
+@export var second_ticks_length:int = 15
 
 var direction:Vector2:
 	set(new_dir):
@@ -88,7 +92,7 @@ func SetLimits(min_value:float, max_value:float):
 	#pix_to_unit = (limits[1] - limits[0]) / length
 	
 
-func SetTicks(mode:String = "auto", order:int = 0, multiplier:float = 10, tick_length:int = 10):
+func SetTicks(mode:String = "auto", order:int = 0, multiplier:float = 10, _tick_length:int = 10):
 	var ticks_power:int = order
 	if mode.to_lower() == "auto":
 		ticks_power = int(log(value_range) / log(multiplier)) - order
@@ -111,10 +115,10 @@ func SetTicks(mode:String = "auto", order:int = 0, multiplier:float = 10, tick_l
 	print(limits)
 	print(pos_limits, pos_limits[1] - pos_limits[0])
 	
-	print(main_tick_values)
-	_DrawTicks(main_tick_values, order, tick_length, Color(1, 0, 0))
-	print(secondary_tick_values)
-	_DrawTicks(secondary_tick_values, order+1, tick_length/2., Color(0, 1, 0))
+	#print(main_tick_values)
+	_DrawTicks(main_tick_values, order, main_ticks_length, Color(1, 0, 0))
+	#print(secondary_tick_values)
+	_DrawTicks(secondary_tick_values, order+1, second_ticks_length, Color(0, 1, 0))
 	
 func _DrawTicks(tick_values:Array, order:int, tick_length:int = 10, color:Color = Color(1, 1, 1, 0)):
 	var tick_node:Node2D = %MainTicks
@@ -123,15 +127,16 @@ func _DrawTicks(tick_values:Array, order:int, tick_length:int = 10, color:Color 
 		
 	for t in tick_node.get_children():
 		t.queue_free()
-	for l in %MainTicksLabels.get_children():
-		l.queue_free()
+	if order == 0: 
+		for l in %MainTicksLabels.get_children():
+			l.queue_free()
 	
 	#var axis_length:float = (get_point_position(1) - get_point_position(0)).length()
 	
 	if color.a == 0:
 		color = default_color
 	
-	var axis_perp:Vector2 = direction.rotated(PI/2).normalized()
+	var axis_perp:Vector2 = (direction * direction).rotated(PI/2).normalized()
 	
 	for i in range(len(tick_values)):
 		var new_tick:Line2D = Line2D.new()
@@ -140,15 +145,29 @@ func _DrawTicks(tick_values:Array, order:int, tick_length:int = 10, color:Color 
 		new_tick.position = GetPointPosition(tick_values[i])
 		new_tick.add_point(+ axis_perp * tick_length/2.)
 		new_tick.add_point(- axis_perp * tick_length/2.)
-		#prints("ticks", name, order, tick_values[i], new_tick.position)
+		if order == 0:
+			prints("ticks", name, order, tick_values[i], new_tick.position)
 		tick_node.add_child(new_tick)
 		
-	if order == 0 and tick_node.get_child_count() > 0:
-		var last_label:Label = Label.new()
-		last_label.text = str(tick_values[-1])
-		last_label.position = tick_node.get_child(-1).position - axis_perp  * (last_label.get_line_height() - tick_length/2.)
-		%MainTicksLabels.add_child(last_label)
+		if order == 0:
+			
+			var last_label:Label = Label.new()
+			last_label.text = "%d" % tick_values[i]
+			last_label.position = GetTickLabelPosition(last_label, tick_values[i], tick_length, axis_perp)
+			
+			prints("main label", last_label.text, last_label.position)
+			%MainTicksLabels.add_child(last_label)
 
+func GetTickLabelPosition(label:Label, tick_value:float, tick_length:int, tick_direction:Vector2) -> Vector2:
+	var pos:Vector2 = - label.get_minimum_size()/2.
+	pos += GetPointPosition(tick_value)
+	print(pos)
+	pos += .5 * tick_direction * (label.get_minimum_size().project(tick_direction).length() + tick_length)
+	print(pos)
+	#pos -= direction * label.get_minimum_size().project(tick_direction).length() / 2.
+	#print(pos)
+	return pos
+	
 func GetPointCoords(pos:Vector2) -> float:
 	"""Return the value of a point along this axis given it's position on the graph."""
 	pos = pos.project(direction)

@@ -380,7 +380,7 @@ func _on_sirotage_trying_sirotage() -> void:
 	%Sirotage.Update(current_player, dice_values)
 	
 
-func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, dices: Array, contre_sirop_player: int) -> void:
+func _on_sirotage_validating_sirotage(successfull:bool, _sirotage_scores: Array, dices: Array, contre_sirop_player: int) -> void:
 	
 	### Update scores with sirotage results
 	#for i in range(nb_players):

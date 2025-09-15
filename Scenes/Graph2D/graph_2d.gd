@@ -203,10 +203,10 @@ func GetGraphLimits() -> Array:
 
 func SetAxisLimits(x_min=null, x_max=null, y_min=null, y_max=null):
 	"""Set the axes limit values (min and max). In graph coordinates, not pixel positions."""
-	if x_min == null: x_min = PositionToCoords(Vector2(0, 0)).x
-	if x_max == null: x_max = PositionToCoords(Vector2(graph_size.x, 0)).x
-	if y_min == null: y_min = PositionToCoords(Vector2(0, 0)).y
-	if y_max == null: y_max = PositionToCoords(Vector2(0, graph_size.y)).y
+	if x_min == null: x_min = PositionToCoords(Vector2(margins.x, 0)).x
+	if x_max == null: x_max = PositionToCoords(Vector2(graph_size.x - margins.x, 0)).x
+	if y_min == null: y_min = PositionToCoords(Vector2(0, margins.y)).y
+	if y_max == null: y_max = PositionToCoords(Vector2(0, graph_size.y - margins.y)).y
 	
 	#prints("SetAxisLimits", Vector2(x_min, y_min), Vector2(x_max, y_max))
 	%XAxis.SetLimits(x_min, x_max)
@@ -220,11 +220,11 @@ func SetScalingFromLimits(bounding_limits:Array, adapt_x_axis:bool = true, adapt
 	#prints("bounding_size", bounding_size)
 	
 	if adapt_x_axis and bounding_size.x != 0:
-		var new_scaling:float = bounding_size.x / graph_size.x ## pix to coords
+		var new_scaling:float = bounding_size.x / (graph_size.x - 2 * margins.x) ## pix to coords
 		#prints("adapting bounding size X", new_scaling, axes_scaling.x, graph_size.x, bounding_size.x)
 		ReScaling(new_scaling / axes_scaling.x , 1.)
 	if adapt_y_axis and bounding_size.y != 0:
-		var new_scaling:float = bounding_size.y / graph_size.y
+		var new_scaling:float = bounding_size.y / (graph_size.y - 2 * margins.y)
 		#prints("adapting bounding size y", new_scaling, axes_scaling.y, graph_size.y, bounding_size.y)
 		ReScaling(1., new_scaling / axes_scaling.y)
 

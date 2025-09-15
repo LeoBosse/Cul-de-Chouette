@@ -150,8 +150,6 @@ func SetupInterface():
 		%Description.text = valid_text.replace("WIN_VALUE", value_names[chouette_value - 1])
 	
 	
-
-
 func Clean():
 	scores.fill(0)
 	player_bets.fill(0)

@@ -9,7 +9,7 @@ anchors_preset = 0
 script = ExtResource("1_6r002")
 graph_size = Vector2(400, 400)
 margins = Vector2(30, 30)
-graph_origin = Vector2(30, 30)
+graph_origin = Vector2(50, 50)
 metadata/_tab_index = 1
 
 [node name="Axes" type="Control" parent="."]
