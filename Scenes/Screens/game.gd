@@ -382,9 +382,9 @@ func _on_sirotage_trying_sirotage() -> void:
 
 func _on_sirotage_validating_sirotage(successfull:bool, sirotage_scores: Array, dices: Array, contre_sirop_player: int) -> void:
 	
-	## Update scores with sirotage results
-	for i in range(nb_players):
-		players[i].sirotage_score += sirotage_scores[i]
+	### Update scores with sirotage results
+	#for i in range(nb_players):
+		#players[i].sirotage_score += sirotage_scores[i]
 	
 	## Update dices with sirotage results and set them to non editable.
 	for i in range(3):

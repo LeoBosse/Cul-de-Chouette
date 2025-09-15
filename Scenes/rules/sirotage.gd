@@ -160,6 +160,7 @@ func Clean():
 	successfull = false
 	contre_sirop_player = -1
 	already_rolled = false
+	%ResultDiceRoll.reset()
 	SetInterfaceResponsive(true)
 	%ContreSiropWinnerButton.select(0)
 	%ErrorLabel.visible = false
